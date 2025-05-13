@@ -1,15 +1,22 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Checkbox } from "@/components/ui/checkbox"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export default function RegistrationPage() {
   const [formData, setFormData] = useState({
@@ -19,23 +26,24 @@ export default function RegistrationPage() {
     phone: "",
     institution: "",
     designation: "",
-    participantType: "",
+    participantType: "student",
     paperSubmission: false,
     dietaryRestrictions: "",
     specialRequirements: "",
-  })
+    termsAccepted: false,
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     // In a real application, this would submit the form data to a server
-    console.log("Form submitted:", formData)
-    alert("Registration submitted successfully!")
-  }
+    console.log("Form submitted:", formData);
+    alert("Registration submitted successfully!");
+  };
 
   return (
     <div className="container px-4 md:px-6 py-12">
@@ -43,8 +51,8 @@ export default function RegistrationPage() {
         <h1 className="text-3xl md:text-4xl font-bold mb-4">Registration</h1>
         <div className="w-20 h-1 bg-blue-600 mb-6"></div>
         <p className="text-lg text-gray-600 max-w-3xl">
-          Register for the National Conference on Computer Innovations (NCCI) 2025 to be held on August 24, 2025, at
-          Kathmandu University.
+          Register for the National Conference on Computer Innovations (NCCI)
+          2025 to be held on August 24, 2025, at Kathmandu University.
         </p>
       </div>
 
@@ -59,7 +67,8 @@ export default function RegistrationPage() {
             <CardHeader>
               <CardTitle>Individual Registration</CardTitle>
               <CardDescription>
-                Fill out the form below to register for the conference as an individual participant.
+                Fill out the form below to register for the conference as an
+                individual participant.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -111,7 +120,9 @@ export default function RegistrationPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="institution">Institution/Organization</Label>
+                    <Label htmlFor="institution">
+                      Institution/Organization
+                    </Label>
                     <Input
                       id="institution"
                       name="institution"
@@ -136,33 +147,64 @@ export default function RegistrationPage() {
 
                 <div className="space-y-2">
                   <Label>Participant Type</Label>
-                  <RadioGroup defaultValue="student" className="flex flex-col space-y-1">
+                  <RadioGroup
+                    value={formData.participantType || "student"}
+                    onValueChange={(value) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        participantType: value,
+                      }))
+                    }
+                    className="flex flex-col space-y-1"
+                  >
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="student" id="student" />
                       <Label htmlFor="student">Student (NPR 1,000)</Label>
                     </div>
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="faculty" id="faculty" />
-                      <Label htmlFor="faculty">Faculty Member (NPR 2,000)</Label>
+                      <Label htmlFor="faculty">
+                        Faculty Member (NPR 2,000)
+                      </Label>
                     </div>
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="professional" id="professional" />
-                      <Label htmlFor="professional">Industry Professional (NPR 3,000)</Label>
+                      <Label htmlFor="professional">
+                        Industry Professional (NPR 3,000)
+                      </Label>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="international" id="international" />
-                      <Label htmlFor="international">International Participant (USD 100)</Label>
+                      <RadioGroupItem
+                        value="international"
+                        id="international"
+                      />
+                      <Label htmlFor="international">
+                        International Participant (USD 100)
+                      </Label>
                     </div>
                   </RadioGroup>
                 </div>
 
                 <div className="flex items-center space-x-2">
-                  <Checkbox id="paperSubmission" />
-                  <Label htmlFor="paperSubmission">I will be submitting a paper for the conference</Label>
+                  <Checkbox
+                    id="paperSubmission"
+                    checked={formData.paperSubmission}
+                    onCheckedChange={(checked) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        paperSubmission: checked === true,
+                      }))
+                    }
+                  />
+                  <Label htmlFor="paperSubmission">
+                    I will be submitting a paper for the conference
+                  </Label>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="dietaryRestrictions">Dietary Restrictions (if any)</Label>
+                  <Label htmlFor="dietaryRestrictions">
+                    Dietary Restrictions (if any)
+                  </Label>
                   <Input
                     id="dietaryRestrictions"
                     name="dietaryRestrictions"
@@ -173,7 +215,9 @@ export default function RegistrationPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="specialRequirements">Special Requirements (if any)</Label>
+                  <Label htmlFor="specialRequirements">
+                    Special Requirements (if any)
+                  </Label>
                   <Input
                     id="specialRequirements"
                     name="specialRequirements"
@@ -184,8 +228,20 @@ export default function RegistrationPage() {
                 </div>
 
                 <div className="flex items-center space-x-2">
-                  <Checkbox id="terms" required />
-                  <Label htmlFor="terms">I agree to the terms and conditions of the conference</Label>
+                  <Checkbox
+                    id="terms"
+                    checked={formData.termsAccepted || false}
+                    onCheckedChange={(checked) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        termsAccepted: checked === true,
+                      }))
+                    }
+                    required
+                  />
+                  <Label htmlFor="terms">
+                    I agree to the terms and conditions of the conference
+                  </Label>
                 </div>
               </form>
             </CardContent>
@@ -202,14 +258,19 @@ export default function RegistrationPage() {
             <CardHeader>
               <CardTitle>Group Registration</CardTitle>
               <CardDescription>
-                Register multiple participants from the same institution or organization.
+                Register multiple participants from the same institution or
+                organization.
               </CardDescription>
             </CardHeader>
             <CardContent>
               <p className="mb-4">
-                For group registrations (5 or more participants), please download the group registration form, fill it
-                out, and email it to{" "}
-                <a href="mailto:ncci@ku.edu.np" className="text-blue-600 hover:underline">
+                For group registrations (5 or more participants), please
+                download the group registration form, fill it out, and email it
+                to{" "}
+                <a
+                  href="mailto:ncci@ku.edu.np"
+                  className="text-blue-600 hover:underline"
+                >
                   ncci@ku.edu.np
                 </a>
                 .
@@ -217,10 +278,18 @@ export default function RegistrationPage() {
               <Button className="mb-6">Download Group Registration Form</Button>
 
               <div className="bg-blue-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-blue-800 mb-2">Group Registration Benefits</h3>
+                <h3 className="font-semibold text-blue-800 mb-2">
+                  Group Registration Benefits
+                </h3>
                 <ul className="list-disc list-inside text-blue-700 space-y-1">
-                  <li>10% discount on registration fees for groups of 5-9 participants</li>
-                  <li>15% discount on registration fees for groups of 10 or more participants</li>
+                  <li>
+                    10% discount on registration fees for groups of 5-9
+                    participants
+                  </li>
+                  <li>
+                    15% discount on registration fees for groups of 10 or more
+                    participants
+                  </li>
                   <li>Reserved seating during keynote sessions</li>
                   <li>Group acknowledgment in the conference program</li>
                 </ul>
@@ -260,29 +329,41 @@ export default function RegistrationPage() {
             <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
               <li>Online payment through eSewa or Khalti (preferred)</li>
               <li>Bank transfer</li>
-              <li>Cash payment at the registration desk on the day of the conference (prior registration required)</li>
+              <li>
+                Cash payment at the registration desk on the day of the
+                conference (prior registration required)
+              </li>
             </ul>
           </div>
 
           <div>
             <h3 className="font-semibold">Important Dates</h3>
             <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
-              <li>Early Bird Registration Deadline: June 30, 2025 (15% discount)</li>
+              <li>
+                Early Bird Registration Deadline: June 30, 2025 (15% discount)
+              </li>
               <li>Regular Registration Deadline: August 10, 2025</li>
-              <li>Late Registration: August 11-23, 2025 (10% additional fee)</li>
+              <li>
+                Late Registration: August 11-23, 2025 (10% additional fee)
+              </li>
             </ul>
           </div>
 
           <div>
             <h3 className="font-semibold">Cancellation Policy</h3>
             <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
-              <li>Cancellations before July 24, 2025: Full refund minus processing fee</li>
-              <li>Cancellations between July 25 and August 10, 2025: 50% refund</li>
+              <li>
+                Cancellations before July 24, 2025: Full refund minus processing
+                fee
+              </li>
+              <li>
+                Cancellations between July 25 and August 10, 2025: 50% refund
+              </li>
               <li>Cancellations after August 10, 2025: No refund</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
