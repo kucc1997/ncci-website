@@ -122,6 +122,29 @@ export default function TimelinePage() {
 									</p>
 								</CardContent>
 							</Card>
+							<Card>
+								<CardHeader className="pb-2">
+									<div className="flex justify-between items-start">
+										<div>
+											<CardTitle>Conference Day</CardTitle>
+										</div>
+										<Badge className="bg-green-100 text-green-800 hover:bg-green-200">
+											Conference
+										</Badge>
+									</div>
+								</CardHeader>
+								<CardContent>
+									<div className="flex items-center gap-2 text-gray-600 mb-2">
+										<Calendar1 className="h-4 w-4" />
+										<span>24<sup>th</sup> August 2025 12:59 PM NPT</span>
+									</div>
+									<p className="text-gray-700">
+										The main event of the program featuring keynote speakers,
+										expert panels, and interactive sessions designed to share
+										insights, foster networking, and celebrate innovation.
+									</p>
+								</CardContent>
+							</Card>
 						</div>
 					</div>
 				</div>
