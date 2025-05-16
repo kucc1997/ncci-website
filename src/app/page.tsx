@@ -74,7 +74,7 @@ export default function Home() {
 					</div>
 					<div className="text-center">
 						<Image
-							src="/placeholder.svg?height=120&width=120"
+							src="/kucc-logo.png?height=120&width=120"
 							alt="KUCC Logo"
 							width={120}
 							height={120}
@@ -89,10 +89,10 @@ export default function Home() {
 
 					<div className="text-center">
 						<Image
-							src="/placeholder.svg?height=120&width=120"
+							src="/ku-logo.png"
 							alt="DoCSE Logo"
-							width={120}
-							height={120}
+							width={100}
+							height={100}
 							className="mx-auto mb-3"
 						/>
 						<p className="font-medium">
