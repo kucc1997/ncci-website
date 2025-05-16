@@ -36,6 +36,10 @@
 		background-color: hsl(var(--background));
 		color: hsl(var(--foreground));
 	}
+
+	a:hover {
+		color: var(--bg-accent2)
+	}
 }
 
 .container {
