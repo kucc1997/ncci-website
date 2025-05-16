@@ -25,7 +25,7 @@ export function SiteHeader() {
 	];
 
 	return (
-		<header className="sticky top-0 z-50 w-full border-b bg-white/85 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+		<header className="sticky top-0 z-50 w-full border-b bg-white/85 backdrop-blur supports-[backdrop-filter]:bg-white/60">
 			<div className="container flex h-16 items-center justify-between">
 				<Link href="/" className="flex items-center gap-2">
 					<Image
@@ -77,7 +77,7 @@ export function SiteHeader() {
 
 			{/* Mobile Navigation */}
 			{isMenuOpen && (
-				<div className="md:hidden absolute top-16 left-0 right-0 bg-background border-b shadow-lg">
+				<div className="md:hidden absolute top-16 left-0 right-0 bg-white/85 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b shadow-lg">
 					<div className="container py-4 flex flex-col gap-4">
 						{navItems.map((item) => (
 							<Link
