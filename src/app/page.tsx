@@ -70,10 +70,10 @@ export default function Home() {
 			</section>
 
 			{/* Organizers */}
-			<section className="py-12 bg-white">
+			<section className="py-12">
 				<div className="container px-4 md:px-6">
 					<div className="text-center mb-8">
-						<h2 className="text-2xl font-bold text-gray-900">Organized by</h2>
+						<h2 className="text-2xl font-bold">Organized by</h2>
 					</div>
 					<div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
 						<div className="text-center">
@@ -84,7 +84,7 @@ export default function Home() {
 								height={120}
 								className="mx-auto mb-3"
 							/>
-							<p className="font-medium text-gray-900">
+							<p className="font-medium">
 								Kathmandu University Computer Club
 							</p>
 						</div>
@@ -96,7 +96,7 @@ export default function Home() {
 								height={120}
 								className="mx-auto mb-3"
 							/>
-							<p className="font-medium text-gray-900">
+							<p className="font-medium">
 								Department of Computer Science and Engineering
 							</p>
 						</div>
@@ -105,9 +105,9 @@ export default function Home() {
 			</section>
 
 			{/* Key Sections */}
-			<section className="py-16 bg-gray-50">
+			<section className="py-16">
 				<div className="container px-4 md:px-6">
-					<h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+					<h2 className="text-3xl font-bold text-center mb-12">
 						Explore the Conference
 					</h2>
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -196,11 +196,11 @@ export default function Home() {
 			</section>
 
 			{/* Contact Quick Info */}
-			<section className="py-12 bg-white">
+			<section className="py-12">
 				<div className="container px-4 md:px-6">
 					<div className="flex flex-col md:flex-row justify-between items-center gap-8">
 						<div>
-							<h2 className="text-2xl font-bold text-gray-900 mb-2">
+							<h2 className="text-2xl font-bold mb-2">
 								Have Questions?
 							</h2>
 							<p className="text-gray-600">
@@ -208,10 +208,10 @@ export default function Home() {
 							</p>
 						</div>
 						<div className="flex items-center gap-3">
-							<Mail className="h-5 w-5 text-blue-600" />
+							<Mail className="h-5 w-5 text-blue-300" />
 							<a
 								href="mailto:ncci@ku.edu.np"
-								className="text-blue-600 hover:underline"
+								className="text-blue-300 hover:underline"
 							>
 								ncci@ku.edu.np
 							</a>

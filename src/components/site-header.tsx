@@ -2,19 +2,12 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { useState } from "react";
+import { Menu, X, } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useTheme } from "next-themes";
 
 export function SiteHeader() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
-	const { theme, setTheme } = useTheme();
-	const [mounted, setMounted] = useState(false);
-
-	useEffect(() => {
-		setMounted(true);
-	}, []);
 
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
@@ -59,20 +52,6 @@ export function SiteHeader() {
 				</nav>
 
 				<div className="hidden md:flex gap-4 items-center">
-					{mounted && (
-						<Button
-							variant="ghost"
-							size="icon"
-							onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-							aria-label="Toggle theme"
-						>
-							{theme === "dark" ? (
-								<Sun className="h-5 w-5" />
-							) : (
-								<Moon className="h-5 w-5" />
-							)}
-						</Button>
-					)}
 					<Button asChild variant="outline" size="sm">
 						<Link href="/authors">Submit Paper</Link>
 					</Button>
@@ -83,20 +62,6 @@ export function SiteHeader() {
 
 				{/* Mobile Menu Button */}
 				<div className="flex md:hidden items-center gap-2">
-					{mounted && (
-						<Button
-							variant="ghost"
-							size="icon"
-							onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-							aria-label="Toggle theme"
-						>
-							{theme === "dark" ? (
-								<Sun className="h-5 w-5" />
-							) : (
-								<Moon className="h-5 w-5" />
-							)}
-						</Button>
-					)}
 					<button
 						className="md:hidden"
 						onClick={toggleMenu}
