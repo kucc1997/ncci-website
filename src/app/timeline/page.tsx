@@ -1,12 +1,11 @@
 import {
 	Card,
 	CardContent,
-	CardDescription,
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Users, Coffee, FileText, Mic, Calendar1 } from "lucide-react";
+import { Calendar1 } from "lucide-react";
 
 export default function TimelinePage() {
 	return (
