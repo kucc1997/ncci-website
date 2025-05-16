@@ -105,7 +105,7 @@ export default function Home() {
 			{/* Key Sections */}
 			<section className="py-16">
 				<div className="container px-4 md:px-6">
-					<h2 className="text-3xl font-bold text-center mb-12">
+					<h2 className="text-3xl font-bold text-center mb-12 text-[var(--bg-accent)]">
 						Explore the Conference
 					</h2>
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -149,14 +149,14 @@ export default function Home() {
 								href={`/${item.title.toLowerCase()}`}
 								className="group bg-white rounded-xl shadow-sm hover:shadow-md transition-all p-6 flex flex-col items-center text-center"
 							>
-								<div className="bg-blue-100 text-blue-700 p-3 rounded-full mb-4">
+								<div className="bg-blue-100 text-[var(--bg-accent2)] p-3 rounded-full mb-4">
 									{item.icon}
 								</div>
 								<h3 className="text-xl font-semibold text-gray-900 mb-2">
 									{item.title}
 								</h3>
-								<p className="text-gray-600 mb-4">{item.description}</p>
-								<div className="mt-auto flex items-center text-blue-600 font-medium group-hover:text-blue-700">
+								<p className="text-[var(--bg-accent)] mb-4">{item.description}</p>
+								<div className="mt-auto flex items-center text-[var(--bg-accent2)] font-medium group-hover:text-blue-700">
 									Learn more <ArrowRight className="ml-1 h-4 w-4" />
 								</div>
 							</Link>
