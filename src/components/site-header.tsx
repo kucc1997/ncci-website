@@ -25,17 +25,16 @@ export function SiteHeader() {
 	];
 
 	return (
-		<header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+		<header className="sticky top-0 z-50 w-full border-b bg-white/85 backdrop-blur supports-[backdrop-filter]:bg-background/60">
 			<div className="container flex h-16 items-center justify-between">
 				<Link href="/" className="flex items-center gap-2">
 					<Image
-						src="/placeholder.svg?height=40&width=40"
+						src="/ncci-light.svg"
 						alt="NCCI Logo"
-						width={40}
-						height={40}
-						className="rounded-full"
+						width={60}
+						height={60}
 					/>
-					<div className="font-bold text-xl">NCCI 2025</div>
+					<div className="font-bold text-xl text-[var(--bg-accent)]">2025</div>
 				</Link>
 
 				{/* Desktop Navigation */}

@@ -17,26 +17,23 @@ export default function Home() {
 		<div className="flex flex-col min-h-screen">
 			{/* Hero Section */}
 			<section className="relative w-full h-[80vh] flex items-center justify-center overflow-hidden">
-				<div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-purple-900/90 z-10" />
+				<div className="absolute inset-0 bg-[var(--bg-accent)]/80 z-10" />
 				<div
-					className="absolute inset-0 bg-[url('/placeholder.svg?height=1080&width=1920')] bg-cover bg-center"
+					className="absolute inset-0 bg-cover bg-center bg-[url('/ku.jpg')]"
 					style={{ filter: "blur(2px)" }}
 				/>
 				<div className="container relative z-20 text-center px-4 md:px-6">
 					<div className="flex justify-center mb-6">
-						<div className="bg-white/10 backdrop-blur-md p-3 rounded-full">
-							<Image
-								src="/placeholder.svg?height=100&width=100"
-								alt="NCCI Logo"
-								width={80}
-								height={80}
-								className="rounded-full"
-							/>
-						</div>
+						<Image
+							src="/ncci-dark.svg"
+							alt="NCCI Logo"
+							width={348}
+							height={348}
+						/>
 					</div>
 					<h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
 						National Conference on{" "}
-						<span className="text-blue-300">Computer Innovations</span>
+						<span className="text-[var(--bg-accent2-dark)]">Computer Innovations</span>
 					</h1>
 					<p className="text-xl md:text-2xl text-white/90 mb-6">
 						Exploring the Future of Technology and Innovation
@@ -54,7 +51,7 @@ export default function Home() {
 					<div className="flex flex-wrap justify-center gap-4">
 						<Button
 							size="lg"
-							className="bg-blue-600 hover:bg-blue-700 text-white"
+							className="bg-[var(--bg-accent2)] hover:bg-blue-700 text-white"
 						>
 							Register Now
 						</Button>
@@ -73,33 +70,34 @@ export default function Home() {
 			<section className="py-12">
 				<div className="container px-4 md:px-6">
 					<div className="text-center mb-8">
-						<h2 className="text-2xl font-bold">Organized by</h2>
+						<h2 className="text-3xl font-bold text-[var(--bg-accent)]">Organized by</h2>
 					</div>
-					<div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-						<div className="text-center">
-							<Image
-								src="/placeholder.svg?height=120&width=120"
-								alt="KUCC Logo"
-								width={120}
-								height={120}
-								className="mx-auto mb-3"
-							/>
-							<p className="font-medium">
-								Kathmandu University Computer Club
-							</p>
-						</div>
-						<div className="text-center">
-							<Image
-								src="/placeholder.svg?height=120&width=120"
-								alt="DoCSE Logo"
-								width={120}
-								height={120}
-								className="mx-auto mb-3"
-							/>
-							<p className="font-medium">
-								Department of Computer Science and Engineering
-							</p>
-						</div>
+					<div className="text-center">
+						<Image
+							src="/placeholder.svg?height=120&width=120"
+							alt="KUCC Logo"
+							width={120}
+							height={120}
+							className="mx-auto mb-3"
+						/>
+						<p className="font-medium">
+							Kathmandu University Computer Club
+						</p>
+					</div>
+
+					<h3 className="text-2xl font-bold text-[var(--bg-accent)] text-center py-8">In Collaboration With</h3>
+
+					<div className="text-center">
+						<Image
+							src="/placeholder.svg?height=120&width=120"
+							alt="DoCSE Logo"
+							width={120}
+							height={120}
+							className="mx-auto mb-3"
+						/>
+						<p className="font-medium">
+							Department of Computer Science and Engineering
+						</p>
 					</div>
 				</div>
 			</section>
@@ -168,7 +166,7 @@ export default function Home() {
 			</section>
 
 			{/* Call to Action */}
-			<section className="py-16 bg-gradient-to-r from-blue-800 to-purple-800 text-white">
+			<section className="py-16 bg-[var(--bg-accent2)] text-white">
 				<div className="container px-4 md:px-6 text-center">
 					<h2 className="text-3xl font-bold mb-4">
 						Ready to be part of NCCI 2025?
@@ -208,10 +206,10 @@ export default function Home() {
 							</p>
 						</div>
 						<div className="flex items-center gap-3">
-							<Mail className="h-5 w-5 text-blue-300" />
+							<Mail className="h-5 w-5 text-blue-500" />
 							<a
 								href="mailto:ncci@ku.edu.np"
-								className="text-blue-300 hover:underline"
+								className="text-blue-500 hover:underline"
 							>
 								ncci@ku.edu.np
 							</a>
