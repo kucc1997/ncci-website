@@ -4,21 +4,20 @@ import { Facebook, Twitter, Linkedin, Mail } from "lucide-react";
 
 export function SiteFooter() {
 	return (
-		<footer className="bg-gray-900 text-gray-300 dark:bg-gray-950">
+		<footer className="bg-gray-900 text-gray-300 dark:bg-[var(--bg-accent)]">
 			<div className="container px-4 md:px-6 py-12">
 				<div className="grid grid-cols-1 md:grid-cols-4 gap-8">
 					<div className="md:col-span-1">
 						<Link href="/" className="flex items-center gap-2 mb-4">
 							<Image
-								src="/placeholder.svg?height=40&width=40"
+								src="/ncci-dark.svg"
 								alt="NCCI Logo"
-								width={40}
-								height={40}
-								className="rounded-full bg-white/10"
+								width={60}
+								height={60}
 							/>
-							<div className="font-bold text-xl text-white">NCCI 2025</div>
+							<div className="font-bold text-xl text-white">2025</div>
 						</Link>
-						<p className="text-sm text-gray-400 mb-4">
+						<p className="text-sm text-[var(--bg-secondary)] mb-4">
 							National Conference on Computer Innovations, organized by
 							Kathmandu University Computer Club in collaboration with the
 							Department of Computer Science and Engineering.
@@ -140,7 +139,7 @@ export function SiteFooter() {
 					</div>
 				</div>
 
-				<div className="border-t border-gray-800 mt-12 pt-6 text-sm text-center text-gray-500">
+				<div className="border-t border-gray-500 mt-12 pt-6 text-sm text-center">
 					<p>
 						&copy; {new Date().getFullYear()} National Conference on Computer
 						Innovations. All rights reserved.
