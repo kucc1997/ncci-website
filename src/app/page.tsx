@@ -208,10 +208,10 @@ export default function Home() {
 						<div className="flex items-center gap-3">
 							<Mail className="h-5 w-5 text-blue-500" />
 							<a
-								href="mailto:ncci@ku.edu.np"
+								href="mailto:kucc@ku.edu.np"
 								className="text-blue-500 hover:underline"
 							>
-								ncci@ku.edu.np
+								kucc@ku.edu.np
 							</a>
 						</div>
 						<Button asChild>

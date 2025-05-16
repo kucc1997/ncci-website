@@ -130,10 +130,10 @@ export function SiteFooter() {
 							<p className="flex items-center gap-2 mb-2">
 								<Mail className="h-4 w-4" />
 								<a
-									href="mailto:ncci@ku.edu.np"
+									href="mailto:kucc@ku.edu.np"
 									className="hover:text-white transition-colors"
 								>
-									ncci@ku.edu.np
+									kucc@ku.edu.np
 								</a>
 							</p>
 						</address>

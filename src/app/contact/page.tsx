@@ -71,10 +71,10 @@ export default function ContactPage() {
 								<div>
 									<h3 className="font-medium">Email</h3>
 									<a
-										href="mailto:ncci@ku.edu.np"
+										href="mailto:kucc@ku.edu.np"
 										className="text-blue-600 hover:underline"
 									>
-										ncci@ku.edu.np
+										kucc@ku.edu.np
 									</a>
 								</div>
 							</div>

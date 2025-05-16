@@ -268,10 +268,10 @@ export default function RegistrationPage() {
 								download the group registration form, fill it out, and email it
 								to{" "}
 								<a
-									href="mailto:ncci@ku.edu.np"
+									href="mailto:kucc@ku.edu.np"
 									className="text-blue-600 hover:underline"
 								>
-									ncci@ku.edu.np
+									kucc@ku.edu.np
 								</a>
 								.
 							</p>
