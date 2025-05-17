@@ -45,8 +45,8 @@ export default function TimelinePage() {
 									</div>
 									<p className="text-gray-700">
 										Submit your paper following the details mentioned in {" "}
-										<a href="/authors" className="text-[var(--bg-accent2)]">
-											authors section</a> within the deadline of <strong>30<sup>th</sup>
+										<Link href="/authors" className="text-[var(--bg-accent2)]">
+											authors section</Link> within the deadline of <strong>30<sup>th</sup>
 											June 2025 11:59 PM NPT</strong>.
 									</p>
 								</CardContent>
@@ -123,7 +123,7 @@ export default function TimelinePage() {
 									<p className="text-gray-700">
 										The early registration for all the participants as well as
 										paper presentors closes on the date mentioned above. Please
-										find the details about registration <a href="/registration" className="text-[var(--bg-accent2)]">here</a>.
+										find the details about registration <Link href="/registration" className="text-[var(--bg-accent2)]">here</Link>
 									</p>
 								</CardContent>
 							</Card>
