@@ -436,20 +436,10 @@ export default function AuthorsPage() {
 			<div className="max-w-4xl mx-auto mt-12 bg-blue-50 p-6 rounded-lg">
 				<h2 className="text-xl font-bold mb-4">Publication Opportunities</h2>
 				<p className="mb-4">
-					Selected high-quality papers from NCCI 2025 will be recommended for
-					publication in the following journals:
-				</p>
-				<ul className="list-disc list-inside ml-4 space-y-2">
-					<li>Journal of Computer Science and Engineering (JCSE)</li>
-					<li>International Journal of Computer Applications (IJCA)</li>
-					<li>Journal of Computing and Information Technology (CIT)</li>
-					<li>
-						NCCI 2025 Conference Proceedings (indexed in major academic
-						databases)
-					</li>
-				</ul>
-				<p className="mt-4 text-blue-700">
-					Note: Additional publication fees may apply for journal publications.
+					Selected papers from NCCI 2025 will be published in a special edition of {" "}
+					<a href="https://journals.ku.edu.np/kuset" target="_blank" className="text-blue-700">
+						Kathmandu University Journal of Science, Engineering and Technology (KUSET)
+					</a>.
 				</p>
 			</div>
 		</div>

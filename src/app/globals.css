@@ -38,7 +38,7 @@
 	}
 
 	a:hover {
-		color: var(--bg-accent2)
+		color: var(--bg-accent2-dark) !important;
 	}
 }
 

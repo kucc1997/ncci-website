@@ -31,10 +31,16 @@ export default function AboutPage() {
 						NCCI 2025 aims to foster innovation, collaboration, and knowledge
 						exchange in the rapidly evolving field of computer science.
 					</p>
-					<p className="text-[var(--bg-secondary-dark)]">
+					<p className="text-[var(--bg-secondary-dark)] mb-4">
 						The conference provides a platform for participants to network with
 						peers, engage with industry leaders, and gain insights into
 						cutting-edge research and technological advancements.
+					</p>
+					<p className="text-[var(--bg-secondary-dark)]">
+						The selected papers will be published in a special edition of {" "}
+						<a href="https://journals.ku.edu.np/kuset" target="_blank" className="text-[var(--bg-accent2)]">
+							Kathmandu University Journal of Science, Engineering and Technology (KUSET)
+						</a>.
 					</p>
 				</div>
 				<div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-lg">
