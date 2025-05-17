@@ -140,8 +140,8 @@ export default function Home() {
 							},
 							{
 								icon: <Clock className="h-8 w-8" />,
-								title: "Schedule",
-								description: "View the detailed agenda and timeline",
+								title: "Timeline",
+								description: "View the detailed timeline",
 							},
 						].map((item, index) => (
 							<Link
