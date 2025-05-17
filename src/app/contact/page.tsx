@@ -15,7 +15,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
+import Link from "next/link";
 
 export default function ContactPage() {
 	const [formData, setFormData] = useState({
@@ -48,8 +49,8 @@ export default function ContactPage() {
 	return (
 		<div className="container px-4 md:px-6 py-12">
 			<div className="flex flex-col items-center text-center mb-12">
-				<h1 className="text-3xl md:text-4xl font-bold mb-4">Contact Us</h1>
-				<div className="w-20 h-1 bg-blue-600 mb-6"></div>
+				<h1 className="text-[var(--bg-accent)] text-3xl md:text-4xl font-bold mb-4">Contact Us</h1>
+				<div className="w-20 h-1 bg-[var(--bg-accent2)] mb-6"></div>
 				<p className="text-lg text-gray-600 max-w-3xl">
 					Have questions about the National Conference on Computer Innovations
 					(NCCI) 2025? Get in touch with our team.
@@ -67,12 +68,12 @@ export default function ContactPage() {
 						</CardHeader>
 						<CardContent className="space-y-4">
 							<div className="flex items-start gap-3">
-								<Mail className="h-5 w-5 text-blue-600 mt-0.5" />
+								<Mail className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 								<div>
 									<h3 className="font-medium">Email</h3>
 									<a
 										href="mailto:kucc@ku.edu.np"
-										className="text-blue-600 hover:underline"
+										className="text-[var(--bg-accent2)] hover:underline"
 									>
 										kucc@ku.edu.np
 									</a>
@@ -80,31 +81,23 @@ export default function ContactPage() {
 							</div>
 
 							<div className="flex items-start gap-3">
-								<Phone className="h-5 w-5 text-blue-600 mt-0.5" />
+								<Phone className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 								<div>
 									<h3 className="font-medium">Phone</h3>
-									<p>+977-11-415100</p>
-									<p>+977-11-415101</p>
+									<a className="text-[var(--bg-accent2)]" href="tel:+9779847382531">+977 9847382531</a>
+									<br />
+									<a className="text-[var(--bg-accent2)]" href="tel:+9779861367984">+977 9861367984</a>
 								</div>
 							</div>
 
 							<div className="flex items-start gap-3">
-								<MapPin className="h-5 w-5 text-blue-600 mt-0.5" />
+								<MapPin className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 								<div>
 									<h3 className="font-medium">Address</h3>
 									<p>Kathmandu University</p>
 									<p>Department of Computer Science and Engineering</p>
 									<p>Dhulikhel, Kavre</p>
 									<p>Nepal</p>
-								</div>
-							</div>
-
-							<div className="flex items-start gap-3">
-								<Clock className="h-5 w-5 text-blue-600 mt-0.5" />
-								<div>
-									<h3 className="font-medium">Office Hours</h3>
-									<p>Sunday - Friday: 9:00 AM - 5:00 PM</p>
-									<p>Saturday: Closed</p>
 								</div>
 							</div>
 						</CardContent>
@@ -116,27 +109,35 @@ export default function ContactPage() {
 						</CardHeader>
 						<CardContent className="space-y-2">
 							<p>
-								<a
+								<Link
+									href="/timeline"
+									className="text-[var(--bg-accent2)] hover:underline"
+								>
+									Timeline
+								</Link>
+							</p>
+							<p>
+								<Link
 									href="/registration"
-									className="text-blue-600 hover:underline"
+									className="text-[var(--bg-accent2)] hover:underline"
 								>
 									Registration Information
-								</a>
+								</Link>
 							</p>
 							<p>
-								<a href="/authors" className="text-blue-600 hover:underline">
+								<Link href="/authors" className="text-[var(--bg-accent2)] hover:underline">
 									Paper Submission Guidelines
-								</a>
+								</Link>
 							</p>
 							<p>
-								<a href="/schedule" className="text-blue-600 hover:underline">
+								<Link href="/schedule" className="text-[var(--bg-accent2)] hover:underline">
 									Conference Schedule
-								</a>
+								</Link>
 							</p>
 							<p>
-								<a href="/speakers" className="text-blue-600 hover:underline">
+								<Link href="/speakers" className="text-[var(--bg-accent2)] hover:underline">
 									Keynote Speakers
-								</a>
+								</Link>
 							</p>
 						</CardContent>
 					</Card>
@@ -215,14 +216,16 @@ export default function ContactPage() {
 			</div>
 
 			<div className="mt-12 max-w-6xl mx-auto">
-				<h2 className="text-2xl font-bold mb-6 text-center">Find Us</h2>
+				<h2 className="text-2xl font-bold mb-6 text-center text-[var(--bg-accent)]">Find Us</h2>
 				<div className="aspect-video w-full bg-gray-200 rounded-lg overflow-hidden">
-					{/* In a real application, this would be replaced with an actual map */}
-					<div className="w-full h-full flex items-center justify-center bg-gray-100">
-						<p className="text-gray-500">
-							Interactive Map Would Be Embedded Here
-						</p>
-					</div>
+					<iframe
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1286.4938700187545!2d85.53757873316432!3d27.619382192211134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb09d44e64d02b%3A0xfe79a3be7ee90d1b!2sKathmandu%20University!5e0!3m2!1sen!2snp!4v1747478474847!5m2!1sen!2snp"
+						style={{ border: 0 }}
+						allowFullScreen={false}
+						loading="lazy"
+						referrerPolicy="no-referrer-when-downgrade"
+						className="w-full h-full"
+					></iframe>
 				</div>
 
 				<div className="mt-6 text-center">
@@ -239,8 +242,8 @@ export default function ContactPage() {
 				</div>
 			</div>
 
-			<div className="mt-12 max-w-4xl mx-auto bg-blue-50 p-6 rounded-lg">
-				<h2 className="text-xl font-bold mb-4">Frequently Asked Questions</h2>
+			<div className="mt-12 max-w-4xl mx-auto bg-[var(--bg-secondary)] p-6 rounded-lg">
+				<h2 className="text-xl font-bold mb-4 text-[var(--bg-accent)]">Frequently Asked Questions</h2>
 				<div className="space-y-4">
 					<div>
 						<h3 className="font-semibold">
@@ -248,10 +251,10 @@ export default function ContactPage() {
 						</h3>
 						<p className="text-gray-700 mt-1">
 							You can register for the conference through our{" "}
-							<a href="/registration" className="text-blue-600 hover:underline">
+							<Link href="/registration" className="text-[var(--bg-accent2)] hover:underline">
 								registration page
-							</a>
-							. Early bird registration is available until June 30, 2025.
+							</Link>
+							. Early bird registration is available until 27<sup>th</sup> July, 2025.
 						</p>
 					</div>
 
@@ -260,11 +263,11 @@ export default function ContactPage() {
 							What is the deadline for paper submission?
 						</h3>
 						<p className="text-gray-700 mt-1">
-							The deadline for paper submission is June 15, 2025. Please refer
+							The deadline for paper submission is June 30, 2025. Please refer
 							to our{" "}
-							<a href="/authors" className="text-blue-600 hover:underline">
+							<Link href="/authors" className="text-[var(--bg-accent2)] hover:underline">
 								authors page
-							</a>{" "}
+							</Link>{" "}
 							for detailed guidelines.
 						</p>
 					</div>
