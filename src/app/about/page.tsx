@@ -6,8 +6,8 @@ export default function AboutPage() {
 	return (
 		<div className="container px-4 md:px-6 py-12">
 			<div className="flex flex-col items-center text-center mb-12">
-				<h1 className="text-3xl md:text-4xl font-bold mb-4">About NCCI 2025</h1>
-				<div className="w-20 h-1 bg-blue-600 mb-6"></div>
+				<h1 className="text-3xl md:text-4xl font-bold mb-4 text-[var(--bg-accent)]">About NCCI 2025</h1>
+				<div className="w-20 h-1 bg-[var(--bg-accent2)] mb-6"></div>
 				<p className="text-lg text-gray-600 max-w-3xl">
 					Learn about the National Conference on Computer Innovations, its
 					objectives, and significance in the field of computer science and
@@ -17,21 +17,21 @@ export default function AboutPage() {
 
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
 				<div>
-					<h2 className="text-2xl font-bold mb-4">Conference Overview</h2>
-					<p className="text-gray-700 mb-4">
+					<h2 className="text-2xl font-bold mb-4 text-[var(--bg-accent)]">Conference Overview</h2>
+					<p className="mb-4 text-[var(--bg-secondary-dark)]">
 						The National Conference on Computer Innovations (NCCI) is a premier
 						academic event that brings together researchers, industry
 						professionals, and students to share knowledge, present research
 						findings, and discuss emerging trends in computer science and
 						technology.
 					</p>
-					<p className="text-gray-700 mb-4">
+					<p className="mb-4 text-[var(--bg-secondary-dark)]">
 						Hosted by Kathmandu University Computer Club (KUCC) in collaboration
 						with the Department of Computer Science and Engineering (DoCSE),
 						NCCI 2025 aims to foster innovation, collaboration, and knowledge
 						exchange in the rapidly evolving field of computer science.
 					</p>
-					<p className="text-gray-700">
+					<p className="text-[var(--bg-secondary-dark)]">
 						The conference provides a platform for participants to network with
 						peers, engage with industry leaders, and gain insights into
 						cutting-edge research and technological advancements.
@@ -48,7 +48,7 @@ export default function AboutPage() {
 			</div>
 
 			<div className="bg-gray-50 p-8 rounded-xl mb-16">
-				<h2 className="text-2xl font-bold mb-6 text-center">
+				<h2 className="text-2xl font-bold mb-6 text-center text-[var(--bg-accent)]">
 					Conference Objectives
 				</h2>
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -85,43 +85,77 @@ export default function AboutPage() {
 						},
 					].map((item, index) => (
 						<div key={index} className="bg-white p-6 rounded-lg shadow-sm">
-							<h3 className="text-xl font-semibold mb-3 text-blue-700">
+							<h3 className="text-xl font-semibold mb-3 text-[var(--bg-accent2)]">
 								{item.title}
 							</h3>
-							<p className="text-gray-700">{item.description}</p>
+							<p className="text-[var(--bg-secondary-dark)]">{item.description}</p>
 						</div>
 					))}
 				</div>
 			</div>
 
 			<div className="text-center mb-16">
-				<h2 className="text-2xl font-bold mb-6">Conference Themes</h2>
-				<div className="flex flex-wrap justify-center gap-3">
-					{[
-						"Artificial Intelligence",
-						"Machine Learning",
-						"Data Science",
-						"Cybersecurity",
-						"Cloud Computing",
-						"Internet of Things",
-						"Blockchain Technology",
-						"Computer Vision",
-						"Natural Language Processing",
-						"Human-Computer Interaction",
-						"Software Engineering",
-						"Computer Networks",
-					].map((theme, index) => (
-						<span
-							key={index}
-							className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm"
-						>
-							{theme}
-						</span>
-					))}
+				<h2 className="text-2xl font-bold mb-6 text-[var(--bg-accent)]">Conference Themes</h2>
+
+				<div className="space-y-8 text-left max-w-4xl mx-auto">
+
+					{/* Intelligent Systems */}
+					<div>
+						<h3 className="text-lg font-semibold mb-2 text-blue-900">Intelligent Systems and Data Innovation</h3>
+						<p className="text-sm text-gray-600 mb-2">Exploring the power of intelligent algorithms, data processing, and automation.</p>
+						<div className="flex flex-wrap gap-2">
+							{["Artificial Intelligence", "Machine Learning", "Data Science", "Deep Learning", "Computer Vision", "Natural Language Processing"].map((theme, index) => (
+								<span key={index} className="bg-[var(--bg-secondary)] text-blue-800 px-3 py-1 rounded-full text-sm">
+									{theme}
+								</span>
+							))}
+						</div>
+					</div>
+
+					{/* Secure & Scalable Systems */}
+					<div>
+						<h3 className="text-lg font-semibold mb-2 text-blue-900">Secure and Scalable Computing</h3>
+						<p className="text-sm text-gray-600 mb-2">Focusing on building reliable, connected, and protected digital infrastructures.</p>
+						<div className="flex flex-wrap gap-2">
+							{["Cybersecurity", "Cloud Computing", "Computer Networks"].map((theme, index) => (
+								<span key={index} className="bg-[var(--bg-secondary)] text-blue-800 px-3 py-1 rounded-full text-sm">
+									{theme}
+								</span>
+							))}
+						</div>
+					</div>
+
+					{/* Emerging Tech */}
+					<div>
+						<h3 className="text-lg font-semibold mb-2 text-blue-900">Emerging Technologies</h3>
+						<p className="text-sm text-gray-600 mb-2">Innovations that are transforming industries and the future of tech.</p>
+						<div className="flex flex-wrap gap-2">
+							{["Internet of Things", "Blockchain Technology"].map((theme, index) => (
+								<span key={index} className="bg-[var(--bg-secondary)] text-blue-800 px-3 py-1 rounded-full text-sm">
+									{theme}
+								</span>
+							))}
+						</div>
+					</div>
+
+					{/* Human & Software */}
+					<div>
+						<h3 className="text-lg font-semibold mb-2 text-blue-900">Human-Centered Software and Interaction</h3>
+						<p className="text-sm text-gray-600 mb-2">Bridging technology with usability, design, and system development.</p>
+						<div className="flex flex-wrap gap-2">
+							{["Human-Computer Interaction", "Software Engineering"].map((theme, index) => (
+								<span key={index} className="bg-[var(--bg-secondary)] text-blue-800 px-3 py-1 rounded-full text-sm">
+									{theme}
+								</span>
+							))}
+						</div>
+					</div>
+
 				</div>
 			</div>
 
-			<div className="bg-blue-700 text-white p-8 md:p-12 rounded-xl text-center">
+
+			<div className="bg-[var(--bg-accent2)] text-white p-8 md:p-12 rounded-xl text-center">
 				<h2 className="text-2xl md:text-3xl font-bold mb-4">
 					Join Us at NCCI 2025
 				</h2>
