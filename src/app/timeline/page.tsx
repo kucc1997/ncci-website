@@ -6,6 +6,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar1 } from "lucide-react";
+import Link from "next/link";
 
 export default function TimelinePage() {
 	return (
@@ -59,7 +60,7 @@ export default function TimelinePage() {
 											<CardTitle>Notice of Acceptance</CardTitle>
 										</div>
 										<Badge className="bg-purple-100 text-purple-800 hover:bg-purple-200">
-											Acceptance
+											Paper
 										</Badge>
 									</div>
 								</CardHeader>
@@ -76,6 +77,32 @@ export default function TimelinePage() {
 									</p>
 								</CardContent>
 							</Card>
+
+							{/* Camera Ready  */}
+							<Card>
+								<CardHeader className="pb-2">
+									<div className="flex justify-between items-start">
+										<div>
+											<CardTitle>Camera-Ready Submission Deadline</CardTitle>
+										</div>
+										<Badge className="bg-purple-100 text-purple-800 hover:bg-purple-200">
+											Paper
+										</Badge>
+									</div>
+								</CardHeader>
+								<CardContent>
+									<div className="flex items-center gap-2 text-gray-600 mb-2">
+										<Calendar1 className="h-4 w-4" />
+										<span>1<sup>st</sup> August, 2025 11:59 PM NPT</span>
+									</div>
+									<p className="text-gray-700">
+										The authors of the accepted paper should submit a camera-ready version
+										of the paper by 1<sup>st</sup> August, 2025 11:59 PM NPT in the proper
+										format mentioned in the <Link href={'/authors'} className="text-[var(--bg-accent2)]">guideline</Link>.
+									</p>
+								</CardContent>
+							</Card>
+
 							{/* Registration Deadline */}
 							<Card>
 								<CardHeader className="pb-2">

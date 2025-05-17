@@ -54,7 +54,7 @@ export default function AuthorsPage() {
 										<CalendarDays className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">Paper Submission Deadline</h4>
-											<p className="text-gray-600">June 15, 2025</p>
+											<p className="text-gray-600">30<sup>th</sup> June 2025 11:59 PM NPT</p>
 										</div>
 									</div>
 									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
@@ -63,21 +63,21 @@ export default function AuthorsPage() {
 											<h4 className="font-medium">
 												Notification of Acceptance
 											</h4>
-											<p className="text-gray-600">July 15, 2025</p>
+											<p className="text-gray-600">21<sup>st</sup> July, 2025 11:59 PM NPT</p>
 										</div>
 									</div>
 									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
 										<CalendarDays className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">Camera-Ready Submission</h4>
-											<p className="text-gray-600">August 1, 2025</p>
+											<p className="text-gray-600">1<sup>st</sup> August, 2025 11:59 PM NPT</p>
 										</div>
 									</div>
 									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
 										<CalendarDays className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">Conference Date</h4>
-											<p className="text-gray-600">August 24, 2025</p>
+											<p className="text-gray-600">24<sup>th</sup> August, 2025</p>
 										</div>
 									</div>
 								</div>
@@ -89,19 +89,19 @@ export default function AuthorsPage() {
 									<div className="p-4 border rounded-lg">
 										<h4 className="font-medium">Full Papers</h4>
 										<p className="text-gray-600">
-											Original research contributions (8-10 pages)
+											Original research contributions (5-10 pages)
 										</p>
 									</div>
 									<div className="p-4 border rounded-lg">
 										<h4 className="font-medium">Short Papers</h4>
 										<p className="text-gray-600">
-											Work in progress or preliminary results (4-6 pages)
+											Work in progress or preliminary results (3-5 pages)
 										</p>
 									</div>
 									<div className="p-4 border rounded-lg">
 										<h4 className="font-medium">Posters</h4>
 										<p className="text-gray-600">
-											Visual presentation of research (2 pages abstract)
+											Visual presentation of research
 										</p>
 									</div>
 								</div>
@@ -281,67 +281,48 @@ export default function AuthorsPage() {
 								</p>
 
 								<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
-										<CheckCircle className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
-										<div>
-											<h4 className="font-medium">Originality and Novelty</h4>
-											<p className="text-gray-600">
-												Contribution to the field and innovation
-											</p>
+									{[
+										{
+											title: "Originality and Novelty",
+											desc: "Contribution to the field and innovation",
+										},
+										{
+											title: "Technical Quality",
+											desc: "Soundness of methodology and analysis",
+										},
+										{
+											title: "Relevance",
+											desc: "Alignment with conference themes",
+										},
+										{
+											title: "Clarity and Presentation",
+											desc: "Organization, writing, and visual elements",
+										},
+										{
+											title: "Significance",
+											desc: "Potential impact on research or practice",
+										},
+										{
+											title: "References",
+											desc: "Appropriate citation of related work",
+										},
+									].map((item, index) => (
+										<div
+											key={index}
+											className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg"
+										>
+											<CheckCircle className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
+											<div>
+												<h4 className="font-medium">{item.title}</h4>
+												<p className="text-gray-600">{item.desc}</p>
+											</div>
 										</div>
-									</div>
-									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
-										<CheckCircle className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
-										<div>
-											<h4 className="font-medium">Technical Quality</h4>
-											<p className="text-gray-600">
-												Soundness of methodology and analysis
-											</p>
-										</div>
-									</div>
-									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
-										<CheckCircle className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
-										<div>
-											<h4 className="font-medium">Relevance</h4>
-											<p className="text-gray-600">
-												Alignment with conference themes
-											</p>
-										</div>
-									</div>
-									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
-										<CheckCircle className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
-										<div>
-											<h4 className="font-medium">Clarity and Presentation</h4>
-											<p className="text-gray-600">
-												Organization, writing, and visual elements
-											</p>
-										</div>
-									</div>
-									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
-										<CheckCircle className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
-										<div>
-											<h4 className="font-medium">Significance</h4>
-											<p className="text-gray-600">
-												Potential impact on research or practice
-											</p>
-										</div>
-									</div>
-									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
-										<CheckCircle className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
-										<div>
-											<h4 className="font-medium">References</h4>
-											<p className="text-gray-600">
-												Appropriate citation of related work
-											</p>
-										</div>
-									</div>
+									))}
 								</div>
 							</div>
 
 							<div className="space-y-4">
-								<h3 className="text-xl font-semibold">
-									Review Process Timeline
-								</h3>
+								<h3 className="text-xl font-semibold">Review Process Timeline</h3>
 
 								<div className="relative border-l-2 border-blue-200 pl-6 ml-4 space-y-6">
 									<div className="relative">
@@ -350,11 +331,23 @@ export default function AuthorsPage() {
 										</div>
 										<h4 className="font-medium">Initial Screening</h4>
 										<p className="text-gray-600">
-											Papers are checked for formatting, plagiarism, and
-											relevance.
+											Papers are checked for formatting, plagiarism, and relevance.
 										</p>
 										<p className="text-sm text-[var(--bg-accent2)]">
-											1-2 weeks after submission
+											July 1–2, 2025
+										</p>
+									</div>
+
+									<div className="relative">
+										<div className="absolute -left-[29px] top-0 h-6 w-6 rounded-full bg-[var(--bg-accent2)] flex items-center justify-center">
+											<Clock className="h-3 w-3 text-white" />
+										</div>
+										<h4 className="font-medium">Reviewer Assignment</h4>
+										<p className="text-gray-600">
+											Valid papers are assigned to qualified reviewers based on topic match.
+										</p>
+										<p className="text-sm text-[var(--bg-accent2)]">
+											July 3–4, 2025
 										</p>
 									</div>
 
@@ -364,11 +357,10 @@ export default function AuthorsPage() {
 										</div>
 										<h4 className="font-medium">Peer Review</h4>
 										<p className="text-gray-600">
-											Each paper is reviewed by at least two independent
-											reviewers from the technical committee.
+											Each paper is reviewed by at least two independent reviewers under a double-blind process.
 										</p>
 										<p className="text-sm text-[var(--bg-accent2)]">
-											2-3 weeks after initial screening
+											July 5–19, 2025
 										</p>
 									</div>
 
@@ -376,14 +368,11 @@ export default function AuthorsPage() {
 										<div className="absolute -left-[29px] top-0 h-6 w-6 rounded-full bg-[var(--bg-accent2)] flex items-center justify-center">
 											<Clock className="h-3 w-3 text-white" />
 										</div>
-										<h4 className="font-medium">Decision Making</h4>
+										<h4 className="font-medium">Final Decision</h4>
 										<p className="text-gray-600">
-											Based on reviewer feedback, papers are accepted, rejected,
-											or recommended for revision.
+											Program committee resolves conflicts and finalizes acceptance decisions.
 										</p>
-										<p className="text-sm text-[var(--bg-accent2)]">
-											1 week after peer review
-										</p>
+										<p className="text-sm text-[var(--bg-accent2)]">July 20, 2025</p>
 									</div>
 
 									<div className="relative">
@@ -392,10 +381,9 @@ export default function AuthorsPage() {
 										</div>
 										<h4 className="font-medium">Notification</h4>
 										<p className="text-gray-600">
-											Authors are notified of the decision along with reviewer
-											comments.
+											Authors are notified of the decision along with reviewer comments.
 										</p>
-										<p className="text-sm text-[var(--bg-accent2)]">July 15, 2025</p>
+										<p className="text-sm text-[var(--bg-accent2)]">July 21, 2025</p>
 									</div>
 
 									<div className="relative">
@@ -404,8 +392,7 @@ export default function AuthorsPage() {
 										</div>
 										<h4 className="font-medium">Camera-Ready Submission</h4>
 										<p className="text-gray-600">
-											Authors of accepted papers submit the final version
-											addressing reviewer comments.
+											Authors of accepted papers submit the final version addressing reviewer comments.
 										</p>
 										<p className="text-sm text-[var(--bg-accent2)]">August 1, 2025</p>
 									</div>
@@ -416,14 +403,9 @@ export default function AuthorsPage() {
 								<div className="flex items-start gap-3">
 									<AlertCircle className="h-5 w-5 text-yellow-600 mt-0.5" />
 									<div>
-										<h4 className="font-medium text-yellow-800">
-											Important Note
-										</h4>
+										<h4 className="font-medium text-yellow-800">Important Note</h4>
 										<p className="text-yellow-700">
-											All accepted papers must be presented at the conference by
-											at least one of the authors. Failure to present may result
-											in the paper being excluded from the conference
-											proceedings.
+											All accepted papers must be presented at the conference by at least one of the authors. Failure to present may result in the paper being excluded from the conference proceedings.
 										</p>
 									</div>
 								</div>
