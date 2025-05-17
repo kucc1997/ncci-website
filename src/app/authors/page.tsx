@@ -20,17 +20,17 @@ export default function AuthorsPage() {
 	return (
 		<div className="container px-4 md:px-6 py-12">
 			<div className="flex flex-col items-center text-center mb-12">
-				<h1 className="text-3xl md:text-4xl font-bold mb-4">
+				<h1 className="text-3xl md:text-4xl font-bold mb-4 text-[var(--bg-accent)]">
 					Information for Authors
 				</h1>
-				<div className="w-20 h-1 bg-blue-600 mb-6"></div>
+				<div className="w-20 h-1 bg-[var(--bg-accent2)] mb-6"></div>
 				<p className="text-lg text-gray-600 max-w-3xl">
 					Guidelines for paper submission, formatting requirements, and
 					important deadlines for authors.
 				</p>
 			</div>
 
-			<Tabs defaultValue="guidelines" className="max-w-4xl mx-auto">
+			<Tabs defaultValue="guidelines" className="max-w-4xl mx-auto text-[var(--bg-secondary-dark)]">
 				<TabsList className="grid w-full grid-cols-3 mb-8">
 					<TabsTrigger value="guidelines">Submission Guidelines</TabsTrigger>
 					<TabsTrigger value="format">Formatting Requirements</TabsTrigger>
@@ -50,15 +50,15 @@ export default function AuthorsPage() {
 							<div className="space-y-4">
 								<h3 className="text-xl font-semibold">Important Dates</h3>
 								<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-									<div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg">
-										<CalendarDays className="h-5 w-5 text-blue-600 mt-0.5" />
+									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
+										<CalendarDays className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">Paper Submission Deadline</h4>
 											<p className="text-gray-600">June 15, 2025</p>
 										</div>
 									</div>
-									<div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg">
-										<CalendarDays className="h-5 w-5 text-blue-600 mt-0.5" />
+									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
+										<CalendarDays className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">
 												Notification of Acceptance
@@ -66,15 +66,15 @@ export default function AuthorsPage() {
 											<p className="text-gray-600">July 15, 2025</p>
 										</div>
 									</div>
-									<div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg">
-										<CalendarDays className="h-5 w-5 text-blue-600 mt-0.5" />
+									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
+										<CalendarDays className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">Camera-Ready Submission</h4>
 											<p className="text-gray-600">August 1, 2025</p>
 										</div>
 									</div>
-									<div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg">
-										<CalendarDays className="h-5 w-5 text-blue-600 mt-0.5" />
+									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
+										<CalendarDays className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">Conference Date</h4>
 											<p className="text-gray-600">August 24, 2025</p>
@@ -158,7 +158,7 @@ export default function AuthorsPage() {
 
 								<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
 									<div className="flex items-start gap-3 p-4 border rounded-lg">
-										<FileText className="h-5 w-5 text-blue-600 mt-0.5" />
+										<FileText className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">Paper Size</h4>
 											<p className="text-gray-600">
@@ -167,35 +167,35 @@ export default function AuthorsPage() {
 										</div>
 									</div>
 									<div className="flex items-start gap-3 p-4 border rounded-lg">
-										<FileText className="h-5 w-5 text-blue-600 mt-0.5" />
+										<FileText className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">Margins</h4>
 											<p className="text-gray-600">1&quot; on all sides</p>
 										</div>
 									</div>
 									<div className="flex items-start gap-3 p-4 border rounded-lg">
-										<FileText className="h-5 w-5 text-blue-600 mt-0.5" />
+										<FileText className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">Font</h4>
 											<p className="text-gray-600">Times New Roman, 10pt</p>
 										</div>
 									</div>
 									<div className="flex items-start gap-3 p-4 border rounded-lg">
-										<FileText className="h-5 w-5 text-blue-600 mt-0.5" />
+										<FileText className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">Line Spacing</h4>
 											<p className="text-gray-600">Single-spaced</p>
 										</div>
 									</div>
 									<div className="flex items-start gap-3 p-4 border rounded-lg">
-										<FileText className="h-5 w-5 text-blue-600 mt-0.5" />
+										<FileText className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">Column Format</h4>
 											<p className="text-gray-600">Two columns</p>
 										</div>
 									</div>
 									<div className="flex items-start gap-3 p-4 border rounded-lg">
-										<FileText className="h-5 w-5 text-blue-600 mt-0.5" />
+										<FileText className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">File Format</h4>
 											<p className="text-gray-600">PDF</p>
@@ -281,8 +281,8 @@ export default function AuthorsPage() {
 								</p>
 
 								<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-									<div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg">
-										<CheckCircle className="h-5 w-5 text-blue-600 mt-0.5" />
+									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
+										<CheckCircle className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">Originality and Novelty</h4>
 											<p className="text-gray-600">
@@ -290,8 +290,8 @@ export default function AuthorsPage() {
 											</p>
 										</div>
 									</div>
-									<div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg">
-										<CheckCircle className="h-5 w-5 text-blue-600 mt-0.5" />
+									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
+										<CheckCircle className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">Technical Quality</h4>
 											<p className="text-gray-600">
@@ -299,8 +299,8 @@ export default function AuthorsPage() {
 											</p>
 										</div>
 									</div>
-									<div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg">
-										<CheckCircle className="h-5 w-5 text-blue-600 mt-0.5" />
+									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
+										<CheckCircle className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">Relevance</h4>
 											<p className="text-gray-600">
@@ -308,8 +308,8 @@ export default function AuthorsPage() {
 											</p>
 										</div>
 									</div>
-									<div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg">
-										<CheckCircle className="h-5 w-5 text-blue-600 mt-0.5" />
+									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
+										<CheckCircle className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">Clarity and Presentation</h4>
 											<p className="text-gray-600">
@@ -317,8 +317,8 @@ export default function AuthorsPage() {
 											</p>
 										</div>
 									</div>
-									<div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg">
-										<CheckCircle className="h-5 w-5 text-blue-600 mt-0.5" />
+									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
+										<CheckCircle className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">Significance</h4>
 											<p className="text-gray-600">
@@ -326,8 +326,8 @@ export default function AuthorsPage() {
 											</p>
 										</div>
 									</div>
-									<div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg">
-										<CheckCircle className="h-5 w-5 text-blue-600 mt-0.5" />
+									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
+										<CheckCircle className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">References</h4>
 											<p className="text-gray-600">
@@ -345,7 +345,7 @@ export default function AuthorsPage() {
 
 								<div className="relative border-l-2 border-blue-200 pl-6 ml-4 space-y-6">
 									<div className="relative">
-										<div className="absolute -left-[29px] top-0 h-6 w-6 rounded-full bg-blue-600 flex items-center justify-center">
+										<div className="absolute -left-[29px] top-0 h-6 w-6 rounded-full bg-[var(--bg-accent2)] flex items-center justify-center">
 											<Clock className="h-3 w-3 text-white" />
 										</div>
 										<h4 className="font-medium">Initial Screening</h4>
@@ -353,13 +353,13 @@ export default function AuthorsPage() {
 											Papers are checked for formatting, plagiarism, and
 											relevance.
 										</p>
-										<p className="text-sm text-blue-600">
+										<p className="text-sm text-[var(--bg-accent2)]">
 											1-2 weeks after submission
 										</p>
 									</div>
 
 									<div className="relative">
-										<div className="absolute -left-[29px] top-0 h-6 w-6 rounded-full bg-blue-600 flex items-center justify-center">
+										<div className="absolute -left-[29px] top-0 h-6 w-6 rounded-full bg-[var(--bg-accent2)] flex items-center justify-center">
 											<Clock className="h-3 w-3 text-white" />
 										</div>
 										<h4 className="font-medium">Peer Review</h4>
@@ -367,13 +367,13 @@ export default function AuthorsPage() {
 											Each paper is reviewed by at least two independent
 											reviewers from the technical committee.
 										</p>
-										<p className="text-sm text-blue-600">
+										<p className="text-sm text-[var(--bg-accent2)]">
 											2-3 weeks after initial screening
 										</p>
 									</div>
 
 									<div className="relative">
-										<div className="absolute -left-[29px] top-0 h-6 w-6 rounded-full bg-blue-600 flex items-center justify-center">
+										<div className="absolute -left-[29px] top-0 h-6 w-6 rounded-full bg-[var(--bg-accent2)] flex items-center justify-center">
 											<Clock className="h-3 w-3 text-white" />
 										</div>
 										<h4 className="font-medium">Decision Making</h4>
@@ -381,13 +381,13 @@ export default function AuthorsPage() {
 											Based on reviewer feedback, papers are accepted, rejected,
 											or recommended for revision.
 										</p>
-										<p className="text-sm text-blue-600">
+										<p className="text-sm text-[var(--bg-accent2)]">
 											1 week after peer review
 										</p>
 									</div>
 
 									<div className="relative">
-										<div className="absolute -left-[29px] top-0 h-6 w-6 rounded-full bg-blue-600 flex items-center justify-center">
+										<div className="absolute -left-[29px] top-0 h-6 w-6 rounded-full bg-[var(--bg-accent2)] flex items-center justify-center">
 											<Clock className="h-3 w-3 text-white" />
 										</div>
 										<h4 className="font-medium">Notification</h4>
@@ -395,11 +395,11 @@ export default function AuthorsPage() {
 											Authors are notified of the decision along with reviewer
 											comments.
 										</p>
-										<p className="text-sm text-blue-600">July 15, 2025</p>
+										<p className="text-sm text-[var(--bg-accent2)]">July 15, 2025</p>
 									</div>
 
 									<div className="relative">
-										<div className="absolute -left-[29px] top-0 h-6 w-6 rounded-full bg-blue-600 flex items-center justify-center">
+										<div className="absolute -left-[29px] top-0 h-6 w-6 rounded-full bg-[var(--bg-accent2)] flex items-center justify-center">
 											<Clock className="h-3 w-3 text-white" />
 										</div>
 										<h4 className="font-medium">Camera-Ready Submission</h4>
@@ -407,7 +407,7 @@ export default function AuthorsPage() {
 											Authors of accepted papers submit the final version
 											addressing reviewer comments.
 										</p>
-										<p className="text-sm text-blue-600">August 1, 2025</p>
+										<p className="text-sm text-[var(--bg-accent2)]">August 1, 2025</p>
 									</div>
 								</div>
 							</div>
@@ -433,7 +433,7 @@ export default function AuthorsPage() {
 				</TabsContent>
 			</Tabs>
 
-			<div className="max-w-4xl mx-auto mt-12 bg-blue-50 p-6 rounded-lg">
+			<div className="max-w-4xl mx-auto mt-12 bg-[var(--bg-secondary)] p-6 rounded-lg">
 				<h2 className="text-xl font-bold mb-4">Publication Opportunities</h2>
 				<p className="mb-4">
 					Selected papers from NCCI 2025 will be published in a special edition of {" "}
