@@ -5,7 +5,7 @@ export default function CommitteePage() {
 				<h1 className="text-3xl md:text-4xl font-bold mb-4 text-[var(--bg-accent)]">
 					Organizing Committee
 				</h1>
-				<div className="w-20 h-1 bg-blue-600 mb-6"></div>
+				<div className="w-20 h-1 bg-[var(--bg-accent2)] mb-6"></div>
 				<p className="text-lg text-[var(--bg-secondary-dark)] max-w-3xl">
 					Meet the dedicated team behind the National Conference on Computer
 					Innovations (NCCI) 2025.
