@@ -48,7 +48,7 @@ const MOCK_PAPERS = [
 		status: "Under Review",
 		submissionDate: "2025-05-10T14:30:00Z",
 		trackType: "regular",
-		presentationType: "oral",
+		theme: "nlp",
 		reviews: [
 			{
 				reviewer: "Reviewer 1",
@@ -98,7 +98,7 @@ const MOCK_PAPERS = [
 		status: "Accepted",
 		submissionDate: "2025-04-28T09:15:00Z",
 		trackType: "regular",
-		presentationType: "oral",
+		theme: "bc",
 		reviews: [
 			{
 				reviewer: "Reviewer 1",
@@ -155,7 +155,7 @@ const MOCK_PAPERS = [
 		status: "Under Review",
 		submissionDate: "2025-05-05T11:45:00Z",
 		trackType: "short",
-		presentationType: "poster",
+		theme: "iot",
 		reviews: [
 			{
 				reviewer: "Reviewer 1",
@@ -170,6 +170,22 @@ const MOCK_PAPERS = [
 		],
 	},
 ]
+
+// Map theme codes to full names
+const themeMap: Record<string, string> = {
+	ai: "Artificial Intelligence",
+	ml: "Machine Learning",
+	ds: "Data Science",
+	cs: "Cybersecurity",
+	cc: "Cloud Computing",
+	iot: "Internet of Things",
+	bc: "Blockchain Technology",
+	cv: "Computer Vision",
+	nlp: "Natural Language Processing",
+	hci: "Human-Computer Interaction",
+	se: "Software Engineering",
+	cn: "Computer Networks",
+}
 
 export default function PaperDetails() {
 	const session = useSession()
@@ -298,20 +314,22 @@ export default function PaperDetails() {
 							</CardContent>
 						</Card>
 
-						<Card>
-							<CardHeader>
-								<CardTitle>Keywords</CardTitle>
-							</CardHeader>
-							<CardContent>
-								<div className="flex flex-wrap gap-2">
-									{paper.keywords.map((keyword: string, index: number) => (
-										<Badge key={index} variant="outline">
-											{keyword}
-										</Badge>
-									))}
-								</div>
-							</CardContent>
-						</Card>
+						{paper.keywords && paper.keywords.length > 0 && (
+							<Card>
+								<CardHeader>
+									<CardTitle>Keywords</CardTitle>
+								</CardHeader>
+								<CardContent>
+									<div className="flex flex-wrap gap-2">
+										{paper.keywords.map((keyword: string, index: number) => (
+											<Badge key={index} variant="outline">
+												{keyword}
+											</Badge>
+										))}
+									</div>
+								</CardContent>
+							</Card>
+						)}
 
 						<Card>
 							<CardHeader>
@@ -335,9 +353,11 @@ export default function PaperDetails() {
 																<span className="font-medium">ORCID:</span> {author.orcid}
 															</div>
 														)}
-														<div className="text-gray-600 md:col-span-2">
-															<span className="font-medium">Affiliation:</span> {author.affiliation}
-														</div>
+														{author.affiliation && (
+															<div className="text-gray-600 md:col-span-2">
+																<span className="font-medium">Affiliation:</span> {author.affiliation}
+															</div>
+														)}
 													</div>
 												</div>
 											</div>
@@ -375,8 +395,8 @@ export default function PaperDetails() {
 									<div className="flex items-start gap-3">
 										<User className="h-5 w-5 text-blue-600 mt-0.5" />
 										<div>
-											<h3 className="font-medium">Presentation Type</h3>
-											<p className="text-gray-700 capitalize">{paper.presentationType} Presentation</p>
+											<h3 className="font-medium">Theme</h3>
+											<p className="text-gray-700">{themeMap[paper.theme] || paper.theme}</p>
 										</div>
 									</div>
 
@@ -468,10 +488,10 @@ export default function PaperDetails() {
 									<div key={index} className="relative">
 										<div
 											className={`absolute -left-[29px] top-0 h-6 w-6 rounded-full flex items-center justify-center ${event.event.includes("Accepted")
-												? "bg-green-600"
-												: event.event.includes("Rejected")
-													? "bg-red-600"
-													: "bg-blue-600"
+													? "bg-green-600"
+													: event.event.includes("Rejected")
+														? "bg-red-600"
+														: "bg-blue-600"
 												}`}
 										>
 											{event.event.includes("Accepted") ? (

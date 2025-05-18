@@ -29,7 +29,7 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 	const [coAuthors, setCoAuthors] = useState<CoAuthor[]>([{ name: "", email: "", orcid: "", affiliation: "" }])
 	const [selectedFile, setSelectedFile] = useState<File | null>(null)
 	const [trackType, setTrackType] = useState("regular")
-	const [presentationType, setPresentationType] = useState("oral")
+	const [theme, setTheme] = useState("ai")
 
 	const handleAddCoAuthor = () => {
 		setCoAuthors([...coAuthors, { name: "", email: "", orcid: "", affiliation: "" }])
@@ -67,11 +67,6 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 			return
 		}
 
-		if (!keywords.trim()) {
-			alert("Please enter at least one keyword")
-			return
-		}
-
 		if (!selectedFile) {
 			alert("Please upload your paper in PDF format")
 			return
@@ -80,7 +75,7 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 		// Check if all co-authors have at least a name and email
 		const invalidCoAuthors = coAuthors.filter((author) => !author.name.trim() || !author.email.trim())
 		if (invalidCoAuthors.length > 0) {
-			alert("Please provide at least name and email for all co-authors")
+			alert("Please provide at least name and email for all authors")
 			return
 		}
 
@@ -88,11 +83,11 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 		onSubmit({
 			title,
 			abstract,
-			keywords: keywords.split(",").map((k) => k.trim()),
+			keywords: keywords ? keywords.split(",").map((k) => k.trim()) : [],
 			coAuthors,
 			file: selectedFile,
 			trackType,
-			presentationType,
+			theme,
 			submissionDate: new Date().toISOString(),
 		})
 	}
@@ -122,7 +117,7 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 
 					<div className="space-y-2">
 						<Label htmlFor="abstract">
-							Abstract <span className="text-red-500">*</span> (150-250 words)
+							Abstract <span className="text-red-500">*</span>
 						</Label>
 						<Textarea
 							id="abstract"
@@ -136,19 +131,14 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 					</div>
 
 					<div className="space-y-2">
-						<Label htmlFor="keywords">
-							Keywords <span className="text-red-500">*</span>
-						</Label>
+						<Label htmlFor="keywords">Keywords</Label>
 						<Input
 							id="keywords"
 							value={keywords}
 							onChange={(e) => setKeywords(e.target.value)}
 							placeholder="Enter keywords separated by commas (e.g., AI, Machine Learning, Neural Networks)"
-							required
 						/>
-						<p className="text-sm text-gray-500">
-							Enter 4-6 keywords that best describe your paper, separated by commas
-						</p>
+						<p className="text-sm text-gray-500">Enter keywords that best describe your paper, separated by commas</p>
 					</div>
 
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -171,19 +161,28 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 						</div>
 
 						<div className="space-y-2">
-							<Label htmlFor="presentation">
-								Presentation Type <span className="text-red-500">*</span>
+							<Label htmlFor="theme">
+								Theme <span className="text-red-500">*</span>
 							</Label>
 							<select
-								id="presentation"
-								value={presentationType}
-								onChange={(e) => setPresentationType(e.target.value)}
+								id="theme"
+								value={theme}
+								onChange={(e) => setTheme(e.target.value)}
 								className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
 								required
 							>
-								<option value="oral">Oral Presentation</option>
-								<option value="poster">Poster Presentation</option>
-								<option value="virtual">Virtual Presentation</option>
+								<option value="ai">Artificial Intelligence</option>
+								<option value="ml">Machine Learning</option>
+								<option value="ds">Data Science</option>
+								<option value="cs">Cybersecurity</option>
+								<option value="cc">Cloud Computing</option>
+								<option value="iot">Internet of Things</option>
+								<option value="bc">Blockchain Technology</option>
+								<option value="cv">Computer Vision</option>
+								<option value="nlp">Natural Language Processing</option>
+								<option value="hci">Human-Computer Interaction</option>
+								<option value="se">Software Engineering</option>
+								<option value="cn">Computer Networks</option>
 							</select>
 						</div>
 					</div>
@@ -216,16 +215,16 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 
 			<Card className="mb-8">
 				<CardHeader>
-					<CardTitle>Co-Authors</CardTitle>
+					<CardTitle>Authors</CardTitle>
 					<CardDescription>
-						Add information about all co-authors of the paper. At least one co-author is required.
+						Add information about all authors of the paper. At least one author is required.
 					</CardDescription>
 				</CardHeader>
 				<CardContent className="space-y-6">
 					{coAuthors.map((author, index) => (
 						<div key={index} className="p-4 border rounded-lg space-y-4">
 							<div className="flex justify-between items-center">
-								<h3 className="font-medium">Co-Author {index + 1}</h3>
+								<h3 className="font-medium">Author {index + 1}</h3>
 								{index > 0 && (
 									<Button type="button" variant="ghost" size="sm" onClick={() => handleRemoveCoAuthor(index)}>
 										<MinusCircle className="h-4 w-4 mr-2" />
@@ -273,15 +272,12 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 								</div>
 
 								<div className="space-y-2">
-									<Label htmlFor={`author-affiliation-${index}`}>
-										Affiliation <span className="text-red-500">*</span>
-									</Label>
+									<Label htmlFor={`author-affiliation-${index}`}>Affiliation</Label>
 									<Input
 										id={`author-affiliation-${index}`}
 										value={author.affiliation}
 										onChange={(e) => handleCoAuthorChange(index, "affiliation", e.target.value)}
 										placeholder="Institution/Organization"
-										required
 									/>
 								</div>
 							</div>

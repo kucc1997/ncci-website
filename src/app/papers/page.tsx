@@ -11,6 +11,22 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Badge } from "@/components/ui/badge"
 import { FileText, ChevronRight, Download } from "lucide-react"
 
+// Map theme codes to full names
+const themeMap: Record<string, string> = {
+	ai: "Artificial Intelligence",
+	ml: "Machine Learning",
+	ds: "Data Science",
+	cs: "Cybersecurity",
+	cc: "Cloud Computing",
+	iot: "Internet of Things",
+	bc: "Blockchain Technology",
+	cv: "Computer Vision",
+	nlp: "Natural Language Processing",
+	hci: "Human-Computer Interaction",
+	se: "Software Engineering",
+	cn: "Computer Networks",
+}
+
 // Mock data for submitted papers
 const MOCK_PAPERS = [
 	{
@@ -23,7 +39,7 @@ const MOCK_PAPERS = [
 		status: "Under Review",
 		submissionDate: "2025-05-10T14:30:00Z",
 		trackType: "regular",
-		presentationType: "oral",
+		theme: "nlp",
 	},
 	{
 		id: "NCCI-234567",
@@ -35,7 +51,7 @@ const MOCK_PAPERS = [
 		status: "Accepted",
 		submissionDate: "2025-04-28T09:15:00Z",
 		trackType: "regular",
-		presentationType: "oral",
+		theme: "bc",
 	},
 	{
 		id: "NCCI-345678",
@@ -47,7 +63,7 @@ const MOCK_PAPERS = [
 		status: "Under Review",
 		submissionDate: "2025-05-05T11:45:00Z",
 		trackType: "short",
-		presentationType: "poster",
+		theme: "iot",
 	},
 ]
 
@@ -108,7 +124,7 @@ export default function Papers() {
 				<h1 className="text-3xl font-bold">My Submissions</h1>
 				<div className="flex gap-4">
 					<Button asChild>
-						<Link href="/register">
+						<Link href="/register-new">
 							<FileText className="mr-2 h-4 w-4" />
 							Submit New Paper
 						</Link>
@@ -127,11 +143,11 @@ export default function Papers() {
 						<div className="space-y-4">
 							<h2 className="text-xl font-semibold">No Papers Submitted Yet</h2>
 							<p className="text-gray-600">
-								You haven&apos;t submitted any papers for the conference yet. Click the button below to submit your first
+								You haven't submitted any papers for the conference yet. Click the button below to submit your first
 								paper.
 							</p>
 							<Button asChild className="mt-4">
-								<Link href="/register">
+								<Link href="/register-new">
 									<FileText className="mr-2 h-4 w-4" />
 									Submit New Paper
 								</Link>
@@ -168,23 +184,25 @@ export default function Papers() {
 								<div className="space-y-4">
 									<Accordion type="single" collapsible className="w-full">
 										<AccordionItem value="abstract">
-											<AccordionTrigger className="cursor-pointer">Abstract</AccordionTrigger>
+											<AccordionTrigger>Abstract</AccordionTrigger>
 											<AccordionContent>
 												<p className="text-gray-700">{paper.abstract}</p>
 											</AccordionContent>
 										</AccordionItem>
 									</Accordion>
 
-									<div>
-										<h3 className="text-sm font-medium mb-1">Keywords</h3>
-										<div className="flex flex-wrap gap-2">
-											{paper.keywords.map((keyword: string, index: number) => (
-												<Badge key={index} variant="outline">
-													{keyword}
-												</Badge>
-											))}
+									{paper.keywords && paper.keywords.length > 0 && (
+										<div>
+											<h3 className="text-sm font-medium mb-1">Keywords</h3>
+											<div className="flex flex-wrap gap-2">
+												{paper.keywords.map((keyword: string, index: number) => (
+													<Badge key={index} variant="outline">
+														{keyword}
+													</Badge>
+												))}
+											</div>
 										</div>
-									</div>
+									)}
 
 									<div>
 										<h3 className="text-sm font-medium mb-1">Authors</h3>
@@ -197,8 +215,8 @@ export default function Papers() {
 											<p className="text-gray-700 capitalize">{paper.trackType} Paper</p>
 										</div>
 										<div>
-											<h3 className="text-sm font-medium mb-1">Presentation Type</h3>
-											<p className="text-gray-700 capitalize">{paper.presentationType} Presentation</p>
+											<h3 className="text-sm font-medium mb-1">Theme</h3>
+											<p className="text-gray-700">{themeMap[paper.theme] || paper.theme}</p>
 										</div>
 									</div>
 								</div>
