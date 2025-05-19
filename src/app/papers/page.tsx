@@ -124,7 +124,7 @@ export default function Papers() {
 				<h1 className="text-3xl font-bold">My Submissions</h1>
 				<div className="flex gap-4">
 					<Button asChild>
-						<Link href="/register-new">
+						<Link href="/register">
 							<FileText className="mr-2 h-4 w-4" />
 							Submit New Paper
 						</Link>
@@ -143,11 +143,11 @@ export default function Papers() {
 						<div className="space-y-4">
 							<h2 className="text-xl font-semibold">No Papers Submitted Yet</h2>
 							<p className="text-gray-600">
-								You haven't submitted any papers for the conference yet. Click the button below to submit your first
+								You haven&apos;t submitted any papers for the conference yet. Click the button below to submit your first
 								paper.
 							</p>
 							<Button asChild className="mt-4">
-								<Link href="/register-new">
+								<Link href="/register">
 									<FileText className="mr-2 h-4 w-4" />
 									Submit New Paper
 								</Link>

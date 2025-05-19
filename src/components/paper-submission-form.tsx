@@ -2,13 +2,15 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { PlusCircle, MinusCircle, Upload, Loader2 } from "lucide-react"
+import { getThemes } from "@/lib/api/themes"
+import { Theme } from "@/app"
 
 interface CoAuthor {
 	name: string
@@ -28,8 +30,19 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 	const [keywords, setKeywords] = useState("")
 	const [coAuthors, setCoAuthors] = useState<CoAuthor[]>([{ name: "", email: "", orcid: "", affiliation: "" }])
 	const [selectedFile, setSelectedFile] = useState<File | null>(null)
-	const [trackType, setTrackType] = useState("regular")
-	const [theme, setTheme] = useState("ai")
+	const [trackType, setTrackType] = useState("")
+	const [theme, setTheme] = useState("")
+	const [themes, setThemes] = useState<Theme[]>([]);
+
+	useEffect(() => {
+		if (themes.length === 0) {
+			(async function() {
+				const res = await getThemes();
+				const data = res.data
+				setThemes(data.data);
+			})()
+		}
+	}, [themes])
 
 	const handleAddCoAuthor = () => {
 		setCoAuthors([...coAuthors, { name: "", email: "", orcid: "", affiliation: "" }])
@@ -153,10 +166,9 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 								className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
 								required
 							>
-								<option value="regular">Regular Paper</option>
-								<option value="short">Short Paper</option>
-								<option value="poster">Poster Presentation</option>
-								<option value="workshop">Workshop</option>
+								<option value="Regular Paper">Regular Paper</option>
+								<option value="Short Paper">Short Paper</option>
+								<option value="Poster Presentation">Poster Presentation</option>
 							</select>
 						</div>
 
@@ -171,18 +183,7 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 								className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
 								required
 							>
-								<option value="ai">Artificial Intelligence</option>
-								<option value="ml">Machine Learning</option>
-								<option value="ds">Data Science</option>
-								<option value="cs">Cybersecurity</option>
-								<option value="cc">Cloud Computing</option>
-								<option value="iot">Internet of Things</option>
-								<option value="bc">Blockchain Technology</option>
-								<option value="cv">Computer Vision</option>
-								<option value="nlp">Natural Language Processing</option>
-								<option value="hci">Human-Computer Interaction</option>
-								<option value="se">Software Engineering</option>
-								<option value="cn">Computer Networks</option>
+								{themes.map(theme => <option value={theme.id} key={theme.id}>{theme.name}</option>)}
 							</select>
 						</div>
 					</div>
