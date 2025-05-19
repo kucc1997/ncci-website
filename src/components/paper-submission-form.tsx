@@ -10,17 +10,10 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { PlusCircle, MinusCircle, Upload, Loader2 } from "lucide-react"
 import { getThemes } from "@/lib/api/themes"
-import { Theme } from "@/app"
-
-interface CoAuthor {
-	name: string
-	email: string
-	orcid: string
-	affiliation: string
-}
+import { SubmissionData, Theme } from "@/app"
 
 interface PaperSubmissionFormProps {
-	onSubmitAction: (formData: any) => void
+	onSubmitAction: (formData: SubmissionData) => void
 	isSubmitting: boolean
 }
 
@@ -30,7 +23,7 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 	const [keywords, setKeywords] = useState("")
 	const [coAuthors, setCoAuthors] = useState<CoAuthor[]>([{ name: "", email: "", orcid: "", affiliation: "" }])
 	const [selectedFile, setSelectedFile] = useState<File | null>(null)
-	const [trackType, setTrackType] = useState("")
+	const [trackType, setTrackType] = useState("Regular Paper")
 	const [theme, setTheme] = useState("")
 	const [themes, setThemes] = useState<Theme[]>([]);
 
@@ -40,6 +33,9 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 				const res = await getThemes();
 				const data = res.data
 				setThemes(data.data);
+				if (data.data.length > 0) {
+					setTheme(data.data[0].id)
+				}
 			})()
 		}
 	}, [themes])
@@ -101,7 +97,6 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 			file: selectedFile,
 			trackType,
 			theme,
-			submissionDate: new Date().toISOString(),
 		})
 	}
 

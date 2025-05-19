@@ -2,6 +2,9 @@ import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { customAlphabet } from 'nanoid'
+import { db, papers } from "@/db/schema";
+import { eq } from "drizzle-orm";
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs))
@@ -27,3 +30,4 @@ http.interceptors.request.use(
 		return Promise.reject(error);
 	}
 );
+
