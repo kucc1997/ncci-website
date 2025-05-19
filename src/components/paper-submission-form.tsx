@@ -54,7 +54,10 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 
 	const handleCoAuthorChange = (index: number, field: keyof CoAuthor, value: string) => {
 		const updatedCoAuthors = [...coAuthors]
-		updatedCoAuthors[index][field] = value
+		updatedCoAuthors[index] = {
+			...updatedCoAuthors[index],
+			[field]: value || undefined
+		}
 		setCoAuthors(updatedCoAuthors)
 	}
 
@@ -106,7 +109,11 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 			if (error instanceof AxiosError) {
 				toast.error(error.response?.data.data)
 			}
-			else toast.error(error.message)
+			else if (error instanceof Error) {
+				toast.error(error.message)
+			} else {
+				toast.error("An unexpected error occurred")
+			}
 		}
 	}
 
@@ -271,7 +278,7 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 									<Label htmlFor={`author-orcid-${index}`}>ORCID ID</Label>
 									<Input
 										id={`author-orcid-${index}`}
-										value={author.orcid}
+										value={author.orcid || ""}
 										onChange={(e) => handleCoAuthorChange(index, "orcid", e.target.value)}
 										placeholder="e.g., 0000-0002-1825-0097"
 									/>
@@ -281,7 +288,7 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 									<Label htmlFor={`author-affiliation-${index}`}>Affiliation</Label>
 									<Input
 										id={`author-affiliation-${index}`}
-										value={author.affiliation}
+										value={author.affiliation || ""}
 										onChange={(e) => handleCoAuthorChange(index, "affiliation", e.target.value)}
 										placeholder="Institution/Organization"
 									/>

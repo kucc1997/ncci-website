@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { useParams, useRouter } from "next/navigation"
+import { useParams } from "next/navigation"
 import { useSession } from "next-auth/react"
 import SignIn from "@/components/sign-in"
 import { Button } from "@/components/ui/button"
@@ -190,7 +190,6 @@ const themeMap: Record<string, string> = {
 export default function PaperDetails() {
 	const session = useSession()
 	const params = useParams()
-	const router = useRouter()
 	const { submissionId } = params
 
 	const [paper, setPaper] = useState<any | null>(null)
@@ -250,7 +249,7 @@ export default function PaperDetails() {
 					<AlertCircle className="h-12 w-12 text-yellow-500" />
 					<h1 className="text-2xl font-bold">Paper Not Found</h1>
 					<p className="text-gray-600 max-w-md text-center mb-4">
-						We couldn't find a paper with the submission ID: {submissionId}
+						We couldn&apos;t find a paper with the submission ID: {submissionId}
 					</p>
 					<Button asChild>
 						<Link href="/papers">
@@ -290,7 +289,6 @@ export default function PaperDetails() {
 								? "bg-red-100 text-red-800 hover:bg-red-200"
 								: "bg-yellow-100 text-yellow-800 hover:bg-yellow-200"
 					}
-					size="lg"
 				>
 					{paper.status}
 				</Badge>
@@ -488,10 +486,10 @@ export default function PaperDetails() {
 									<div key={index} className="relative">
 										<div
 											className={`absolute -left-[29px] top-0 h-6 w-6 rounded-full flex items-center justify-center ${event.event.includes("Accepted")
-													? "bg-green-600"
-													: event.event.includes("Rejected")
-														? "bg-red-600"
-														: "bg-blue-600"
+												? "bg-green-600"
+												: event.event.includes("Rejected")
+													? "bg-red-600"
+													: "bg-blue-600"
 												}`}
 										>
 											{event.event.includes("Accepted") ? (

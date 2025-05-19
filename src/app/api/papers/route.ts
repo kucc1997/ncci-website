@@ -4,7 +4,7 @@ import { eq } from "drizzle-orm";
 import { customAlphabet } from "nanoid";
 import path from "path";
 
-export async function generateSubmissionId() {
+async function generateSubmissionId() {
 	let submissionId: string
 	const generateId = customAlphabet('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 8)
 
