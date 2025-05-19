@@ -10,10 +10,12 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { PlusCircle, MinusCircle, Upload, Loader2 } from "lucide-react"
 import { getThemes } from "@/lib/api/themes"
-import { SubmissionData, Theme } from "@/app"
+import { CoAuthor, SubmissionData, Theme } from "@/app"
+import { AxiosError } from "axios"
+import { toast } from "sonner"
 
 interface PaperSubmissionFormProps {
-	onSubmitAction: (formData: SubmissionData) => void
+	onSubmitAction: (formData: SubmissionData) => Promise<void>
 	isSubmitting: boolean
 }
 
@@ -62,7 +64,7 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 		}
 	}
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault()
 
 		// Validate form
@@ -89,15 +91,23 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 		}
 
 		// Submit the form data
-		onSubmit({
-			title,
-			abstract,
-			keywords: keywords ? keywords.split(",").map((k) => k.trim()) : [],
-			coAuthors,
-			file: selectedFile,
-			trackType,
-			theme,
-		})
+		try {
+			await onSubmit({
+				title,
+				abstract,
+				keywords: keywords ? keywords.split(",").map((k) => k.trim()) : [],
+				coAuthors,
+				file: selectedFile,
+				trackType,
+				theme,
+			})
+
+		} catch (error) {
+			if (error instanceof AxiosError) {
+				toast.error(error.response?.data.data)
+			}
+			else toast.error(error.message)
+		}
 	}
 
 	return (

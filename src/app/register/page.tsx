@@ -15,40 +15,38 @@ export default function RegisterNew() {
 	const [submissionId, setSubmissionId] = useState<string | null>(null)
 
 	const handleSubmit = async (submission: SubmissionData) => {
-		console.log(submission)
-
-		const formData = new FormData();
-
-		formData.append("title", submission.title);
-		formData.append("abstract", submission.abstract);
-		submission.keywords.forEach((keyword, index) =>
-			formData.append(`keywords[${index}]`, keyword)
-		);
-		submission.coAuthors.forEach((author, index) => {
-			formData.append(`coAuthors[${index}][name]`, author.name);
-			formData.append(`coAuthors[${index}][email]`, author.email);
-			if (author.orcid)
-				formData.append(`coAuthors[${index}][orcid]`, author.orcid);
-			if (author.affiliation)
-				formData.append(`coAuthors[${index}][affiliation]`, author.affiliation);
-		});
-		formData.append("file", submission.file);
-		formData.append("trackType", submission.trackType);
-		formData.append("theme", submission.theme);
-
-		setIsSubmitting(true)
 		try {
+			const formData = new FormData();
+
+			formData.append("title", submission.title);
+			formData.append("abstract", submission.abstract);
+			submission.keywords.forEach((keyword, index) =>
+				formData.append(`keywords[${index}]`, keyword)
+			);
+			submission.coAuthors.forEach((author, index) => {
+				formData.append(`coAuthors[${index}][name]`, author.name);
+				formData.append(`coAuthors[${index}][email]`, author.email);
+				if (author.orcid)
+					formData.append(`coAuthors[${index}][orcid]`, author.orcid);
+				if (author.affiliation)
+					formData.append(`coAuthors[${index}][affiliation]`, author.affiliation);
+			});
+			formData.append("file", submission.file);
+			formData.append("trackType", submission.trackType);
+			formData.append("theme", submission.theme);
+
+			setIsSubmitting(true)
 			const response = await axios.post("/api/papers", formData, {
 				headers: {
 					"Content-Type": "multipart/form-data"
 				}
 			});
 
-			console.log("Success:", response.data);
-			return response.data;
+			const submissionId = response.data.data.submissionId
+			setSubmissionId(submissionId)
+			router.push('/papers/' + submissionId)
 		} catch (error) {
-			console.error("Error submitting paper:", error);
-			throw error;
+			throw error
 		} finally {
 			setIsSubmitting(false)
 		}
