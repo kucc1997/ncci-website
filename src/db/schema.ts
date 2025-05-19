@@ -32,6 +32,7 @@ export const papers = pgTable('papers', {
 	keywords: text('keywords').array(),
 	fileUrl: text('file_url').notNull(),
 	themeId: uuid('theme_id').references(() => themes.id, { onDelete: 'set null' }),
+	trackType: text('track_type').notNull(),
 
 	authorId: uuid('author_id')
 		.notNull()
@@ -50,7 +51,9 @@ export const coAuthors = pgTable('co_authors', {
 		.references(() => papers.id, { onDelete: 'cascade' }),
 	name: text('name').notNull(),
 	email: text('email'),
-	status: text('status').default('pending')
+	status: text('status').default('pending'),
+	orcid: text('orcid'),
+	affiliation: text('affiliation')
 })
 
 export const themes = pgTable('themes', {
