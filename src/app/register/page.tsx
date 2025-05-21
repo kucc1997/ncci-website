@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation"
 import { useSession } from "next-auth/react"
 import SignIn from "@/components/sign-in"
 import PaperSubmissionForm from "@/components/paper-submission-form"
+import { SubmissionData } from "@/app"
+import axios from "axios"
 
 export default function RegisterNew() {
 	const session = useSession()
@@ -12,24 +14,39 @@ export default function RegisterNew() {
 	const [isSubmitting, setIsSubmitting] = useState(false)
 	const [submissionId, setSubmissionId] = useState<string | null>(null)
 
-	const handleSubmit = async (formData: any) => {
-		setIsSubmitting(true)
+	const handleSubmit = async (submission: SubmissionData) => {
 		try {
-			// In a real application, this would be an API call to submit the paper
-			// For demo purposes, we'll simulate a submission with a timeout
-			await new Promise((resolve) => setTimeout(resolve, 1500))
+			const formData = new FormData();
 
-			// Generate a random submission ID (in a real app, this would come from the backend)
-			const newSubmissionId = `NCCI-${Math.floor(100000 + Math.random() * 900000)}`
-			setSubmissionId(newSubmissionId)
+			formData.append("title", submission.title);
+			formData.append("abstract", submission.abstract);
+			submission.keywords.forEach((keyword, index) =>
+				formData.append(`keywords[${index}]`, keyword)
+			);
+			submission.coAuthors.forEach((author, index) => {
+				formData.append(`coAuthors[${index}][name]`, author.name);
+				formData.append(`coAuthors[${index}][email]`, author.email);
+				if (author.orcid)
+					formData.append(`coAuthors[${index}][orcid]`, author.orcid);
+				if (author.affiliation)
+					formData.append(`coAuthors[${index}][affiliation]`, author.affiliation);
+			});
+			formData.append("file", submission.file);
+			formData.append("trackType", submission.trackType);
+			formData.append("theme", submission.theme);
 
-			// Redirect to the paper details page after submission
-			setTimeout(() => {
-				router.push(`/papers/${newSubmissionId}`)
-			}, 1000)
+			setIsSubmitting(true)
+			const response = await axios.post("/api/papers", formData, {
+				headers: {
+					"Content-Type": "multipart/form-data"
+				}
+			});
+
+			const submissionId = response.data.data.submissionId
+			setSubmissionId(submissionId)
+			router.push('/papers/' + submissionId)
 		} catch (error) {
-			console.error("Error submitting paper:", error)
-			alert("There was an error submitting your paper. Please try again.")
+			throw error
 		} finally {
 			setIsSubmitting(false)
 		}

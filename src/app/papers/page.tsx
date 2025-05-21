@@ -10,6 +10,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
 import { FileText, ChevronRight, Download } from "lucide-react"
+import { getPapers } from "@/lib/api/papers"
 
 // Map theme codes to full names
 const themeMap: Record<string, string> = {
@@ -78,6 +79,8 @@ export default function Papers() {
 		const fetchPapers = async () => {
 			setLoading(true)
 			try {
+				const res = await getPapers();
+				console.log(res.data)
 				await new Promise((resolve) => setTimeout(resolve, 1000))
 				setPapers(MOCK_PAPERS)
 			} catch (error) {
@@ -121,7 +124,7 @@ export default function Papers() {
 	return (
 		<div className="container py-12">
 			<div className="flex justify-between items-center mb-8">
-				<h1 className="text-3xl font-bold">My Submissions</h1>
+				<h1 className="text-3xl font-bold text-[var(--bg-accent)]">My Submissions</h1>
 				<div className="flex gap-4">
 					<Button asChild>
 						<Link href="/register">

@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
 import { SessionProvider } from "next-auth/react";
+import { Toaster } from 'sonner';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
 						<SiteHeader />
 						<main className="flex-1">{children}</main>
 						<SiteFooter />
+						<Toaster richColors closeButton />
 					</div>
 				</body>
 			</html>

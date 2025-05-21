@@ -10,17 +10,12 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { PlusCircle, MinusCircle, Upload, Loader2 } from "lucide-react"
 import { getThemes } from "@/lib/api/themes"
-import { Theme } from "@/app"
-
-interface CoAuthor {
-	name: string
-	email: string
-	orcid: string
-	affiliation: string
-}
+import { CoAuthor, SubmissionData, Theme } from "@/app"
+import { AxiosError } from "axios"
+import { toast } from "sonner"
 
 interface PaperSubmissionFormProps {
-	onSubmitAction: (formData: any) => void
+	onSubmitAction: (formData: SubmissionData) => Promise<void>
 	isSubmitting: boolean
 }
 
@@ -30,7 +25,7 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 	const [keywords, setKeywords] = useState("")
 	const [coAuthors, setCoAuthors] = useState<CoAuthor[]>([{ name: "", email: "", orcid: "", affiliation: "" }])
 	const [selectedFile, setSelectedFile] = useState<File | null>(null)
-	const [trackType, setTrackType] = useState("")
+	const [trackType, setTrackType] = useState("Regular Paper")
 	const [theme, setTheme] = useState("")
 	const [themes, setThemes] = useState<Theme[]>([]);
 
@@ -40,6 +35,9 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 				const res = await getThemes();
 				const data = res.data
 				setThemes(data.data);
+				if (data.data.length > 0) {
+					setTheme(data.data[0].id)
+				}
 			})()
 		}
 	}, [themes])
@@ -56,7 +54,10 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 
 	const handleCoAuthorChange = (index: number, field: keyof CoAuthor, value: string) => {
 		const updatedCoAuthors = [...coAuthors]
-		updatedCoAuthors[index][field] = value
+		updatedCoAuthors[index] = {
+			...updatedCoAuthors[index],
+			[field]: value || undefined
+		}
 		setCoAuthors(updatedCoAuthors)
 	}
 
@@ -66,7 +67,7 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 		}
 	}
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault()
 
 		// Validate form
@@ -93,16 +94,27 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 		}
 
 		// Submit the form data
-		onSubmit({
-			title,
-			abstract,
-			keywords: keywords ? keywords.split(",").map((k) => k.trim()) : [],
-			coAuthors,
-			file: selectedFile,
-			trackType,
-			theme,
-			submissionDate: new Date().toISOString(),
-		})
+		try {
+			await onSubmit({
+				title,
+				abstract,
+				keywords: keywords ? keywords.split(",").map((k) => k.trim()) : [],
+				coAuthors,
+				file: selectedFile,
+				trackType,
+				theme,
+			})
+
+		} catch (error) {
+			if (error instanceof AxiosError) {
+				toast.error(error.response?.data.data)
+			}
+			else if (error instanceof Error) {
+				toast.error(error.message)
+			} else {
+				toast.error("An unexpected error occurred")
+			}
+		}
 	}
 
 	return (
@@ -266,7 +278,7 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 									<Label htmlFor={`author-orcid-${index}`}>ORCID ID</Label>
 									<Input
 										id={`author-orcid-${index}`}
-										value={author.orcid}
+										value={author.orcid || ""}
 										onChange={(e) => handleCoAuthorChange(index, "orcid", e.target.value)}
 										placeholder="e.g., 0000-0002-1825-0097"
 									/>
@@ -276,7 +288,7 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 									<Label htmlFor={`author-affiliation-${index}`}>Affiliation</Label>
 									<Input
 										id={`author-affiliation-${index}`}
-										value={author.affiliation}
+										value={author.affiliation || ""}
 										onChange={(e) => handleCoAuthorChange(index, "affiliation", e.target.value)}
 										placeholder="Institution/Organization"
 									/>

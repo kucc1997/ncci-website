@@ -8,6 +8,13 @@
       "when": 1747501815966,
       "tag": "0000_furry_umar",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1747654663522,
+      "tag": "0001_dashing_goblin_queen",
+      "breakpoints": true
     }
   ]
 }
