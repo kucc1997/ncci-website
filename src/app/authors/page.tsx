@@ -148,15 +148,30 @@ export default function AuthorsPage() {
 							</CardDescription>
 						</CardHeader>
 						<CardContent className="space-y-6">
+
 							<div className="space-y-4">
 								<h3 className="text-xl font-semibold">Paper Format</h3>
 								<p>
 									All papers must be submitted in IEEE conference format. Papers
 									should be written in English and formatted according to the
-									following guidelines:
+									following templates.
 								</p>
 
-								<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+								<div className="flex justify-center gap-4">
+									<Button variant="outline" asChild>
+										<Link href="ConferenceTemplate.zip" download>
+											Download LaTeX Format
+										</Link>
+									</Button>
+
+									<Button variant="outline" asChild>
+										<Link href="ConferenceTemplate.docx" download>
+											Download .docx Format
+										</Link>
+									</Button>
+								</div>
+
+								{/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
 									<div className="flex items-start gap-3 p-4 border rounded-lg">
 										<FileText className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
@@ -201,7 +216,7 @@ export default function AuthorsPage() {
 											<p className="text-gray-600">PDF</p>
 										</div>
 									</div>
-								</div>
+								</div> */}
 							</div>
 
 							<div className="space-y-4">
@@ -214,7 +229,8 @@ export default function AuthorsPage() {
 											Title and Author Information:
 										</span>{" "}
 										Title, authors&apos; names, affiliations, and contact
-										information.
+										information. <br />
+										<em>Note: The double blind templates will not contain any author information.</em>
 									</div>
 									<div className="p-3 bg-gray-50 rounded-lg">
 										<span className="font-medium">Abstract:</span> A concise
@@ -251,14 +267,14 @@ export default function AuthorsPage() {
 								</div>
 							</div>
 
-							<div className="flex flex-col items-center gap-4 mt-6">
+							{/* <div className="flex flex-col items-center gap-4 mt-6">
 								<Button asChild>
 									<Link href="#">Download IEEE Template</Link>
 								</Button>
 								<Button variant="outline" asChild>
 									<Link href="#">View Sample Paper</Link>
 								</Button>
-							</div>
+							</div> */}
 						</CardContent>
 					</Card>
 				</TabsContent>
