@@ -46,7 +46,7 @@ export default function ContactPage() {
             });
 
             if (response.ok) {
-                alert("Message sent successfully!");
+                alert("Message sent successfully! We will get back to you soon.");
                 setFormData({
                     name: "",
                     email: "",

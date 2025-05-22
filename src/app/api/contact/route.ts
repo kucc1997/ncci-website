@@ -35,7 +35,11 @@ export async function POST(req: Request) {
             from: process.env.EMAIL_USER,
             to: process.env.EMAIL_RECIPIENT, // **Recipient email address**
             subject: `[NCCI_CONTACT]: ${subject}`,
-            text: `**Name**: ${name}\n**Email**: ${email}\n**Message**:\n ${message}`,
+            html: `<b>Name:</b> ${name} 
+            <br> 
+            <b>Email:</b> ${email} 
+            <br> 
+            <b>Message:</b> <br> ${message}`,
         });
 
         return new Response(
