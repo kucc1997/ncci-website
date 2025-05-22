@@ -10,7 +10,6 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
 	CalendarDays,
-	FileText,
 	Clock,
 	CheckCircle,
 	AlertCircle,
