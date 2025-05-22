@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react"
 import { signIn } from "next-auth/react"
 import { Button } from "./ui/button"
-import { User, LogIn, Github } from "lucide-react"
+import { User, Github } from "lucide-react"
 
 export default function SignIn() {
   const [showDropdown, setShowDropdown] = useState(false)
