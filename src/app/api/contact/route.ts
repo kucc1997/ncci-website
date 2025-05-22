@@ -1,5 +1,4 @@
 import { db, contacts } from "@/db/schema";
-import { eq } from "drizzle-orm";
 import nodemailer from "nodemailer";
 
 export async function POST(req: Request) {
