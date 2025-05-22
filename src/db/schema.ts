@@ -61,3 +61,12 @@ export const themes = pgTable('themes', {
 	name: text('name').notNull(),
 	description: text('description'),
 })
+
+export const contacts = pgTable('contacts', {
+	id: uuid('id').primaryKey().defaultRandom(),
+	name: text('name').notNull(),
+	email: text('email').notNull(),
+	subject: text('subject').notNull(),
+	message: text('message').notNull(),
+	createdAt: timestamp('created_at').defaultNow()
+})
