@@ -6,6 +6,7 @@ import { eq } from "drizzle-orm";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
 	providers: [GitHub],
+	trustHost: true,
 	callbacks: {
 		async signIn({ user }) {
 			const userEmail = user.email;
