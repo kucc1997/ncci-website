@@ -3,7 +3,7 @@
 import { useSearchParams } from "next/navigation"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { CheckCircle2, AlertCircle } from "lucide-react"
+import { CheckCircle2, AlertCircle, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { Suspense } from "react"
 
@@ -76,13 +76,21 @@ function RegistrationSuccessContent() {
 						</ul>
 					</div>
 
-					<div className="flex gap-4">
-						<Button asChild variant="outline" className="flex-1">
-							<Link href="/">Return to Home</Link>
+					<div className="flex flex-col gap-4">
+						<Button asChild className="w-full">
+							<Link href={`/registration/status/${registrationId}`} className="flex items-center justify-center gap-2">
+								View Registration Status
+								<ExternalLink className="h-4 w-4" />
+							</Link>
 						</Button>
-						<Button asChild className="flex-1">
-							<Link href="/registration">New Registration</Link>
-						</Button>
+						<div className="flex gap-4">
+							<Button asChild variant="outline" className="flex-1">
+								<Link href="/">Return to Home</Link>
+							</Button>
+							<Button asChild className="flex-1">
+								<Link href="/registration">New Registration</Link>
+							</Button>
+						</div>
 					</div>
 				</CardContent>
 			</Card>
