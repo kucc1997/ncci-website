@@ -10,10 +10,12 @@ import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Badge } from "@/components/ui/badge"
-import { Check, Users, Crown, Clock, AlertCircle, CreditCard, Star } from "lucide-react"
+import { Check, Users, Crown, Clock, AlertCircle, CreditCard, Star, Search } from "lucide-react"
 import { toast } from "sonner"
+import { useRouter } from "next/navigation"
 
 export default function RegistrationPage() {
+	const router = useRouter()
 	const [formData, setFormData] = useState({
 		firstName: "",
 		lastName: "",
@@ -32,6 +34,7 @@ export default function RegistrationPage() {
 	})
 
 	const [paymentVoucher, setPaymentVoucher] = useState<File | null>(null)
+	const [registrationId, setRegistrationId] = useState("")
 
 	// Check if early registration (before August 5th midnight NPT)
 	const isEarlyRegistration = useMemo(() => {
@@ -73,6 +76,15 @@ export default function RegistrationPage() {
 		if (e.target.files && e.target.files.length > 0) {
 			setPaymentVoucher(e.target.files[0])
 		}
+	}
+
+	const handleViewRegistration = (e: React.FormEvent) => {
+		e.preventDefault()
+		if (!registrationId.trim()) {
+			toast.error("Please enter your registration ID")
+			return
+		}
+		router.push(`/registration/status/${registrationId}`)
 	}
 
 	const calculatePrice = () => {
@@ -139,6 +151,7 @@ export default function RegistrationPage() {
 			}
 
 			toast.success("Registration submitted successfully!")
+			router.push(`/registration/success?id=${result.data.registrationId}`)
 		} catch (error) {
 			if (error instanceof Error) {
 				toast.error(error.message)
@@ -156,6 +169,34 @@ export default function RegistrationPage() {
 				<p className="text-lg text-gray-600 max-w-3xl">
 					Register for NCCI 2025 - Choose your registration type and tier based on your needs.
 				</p>
+
+				{/* Already Registered Section */}
+				<Card className="w-full max-w-2xl mt-8 border-2 border-blue-200">
+					<CardHeader className="bg-blue-50">
+						<CardTitle className="flex items-center gap-2">
+							<Search className="h-5 w-5" />
+							Already Registered?
+						</CardTitle>
+						<CardDescription>
+							Enter your registration ID to view your registration details and status.
+						</CardDescription>
+					</CardHeader>
+					<CardContent>
+						<form onSubmit={handleViewRegistration} className="flex gap-4">
+							<div className="flex-1">
+								<Input
+									placeholder="Enter your registration ID"
+									value={registrationId}
+									onChange={(e) => setRegistrationId(e.target.value)}
+									className="w-full"
+								/>
+							</div>
+							<Button type="submit">
+								View Registration
+							</Button>
+						</form>
+					</CardContent>
+				</Card>
 
 				{/* Important Notice */}
 				<div className="mt-6 p-4 rounded-lg border bg-yellow-50 border-yellow-200 max-w-4xl">
