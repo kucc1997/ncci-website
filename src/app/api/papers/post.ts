@@ -3,6 +3,10 @@ import { coAuthors, db, papers, users } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { customAlphabet } from "nanoid";
 import path from "path";
+import { writeFile, mkdir } from "fs/promises";
+
+// Get upload directory from environment variable or use default
+const UPLOAD_DIR = process.env.UPLOAD_DIR || "public/uploads";
 
 export default async function POST(req: Request) {
 	const formData = await req.formData();
@@ -11,8 +15,12 @@ export default async function POST(req: Request) {
 	const paperID = await generateSubmissionId();
 
 	// Upload file
-	const uploadPath = path.join(process.cwd(), "public", "uploads", "papers", `${paperID}.pdf`);
-	await Bun.write(uploadPath, data.file);
+	const uploadDir = path.join(process.cwd(), UPLOAD_DIR, "papers");
+	const filePath = path.join(uploadDir, `${paperID}.pdf`);
+	
+	// Ensure the upload directory exists
+	await mkdir(uploadDir, { recursive: true });
+	await writeFile(filePath, Buffer.from(await data.file.arrayBuffer()));
 
 	const authorFromDb = await db.select({ id: users.id }).from(users).where(
 		eq(users.email, data.coAuthors?.[0]?.email)
