@@ -19,16 +19,16 @@ export default function Home() {
 			<section className="relative w-full h-[80vh] flex items-center justify-center overflow-hidden">
 				<div className="absolute inset-0 bg-[var(--bg-accent)]/80 z-10" />
 				<div
-					className="absolute inset-0 bg-cover bg-center bg-[url('/ku.jpg')]"
-					style={{ filter: "blur(2px)" }}
+					className="absolute inset-0 bg-cover bg-center bg-[url('/ku.png')]"
+					style={{ filter: "blur(1px)" }}
 				/>
 				<div className="container relative z-20 text-center px-4 md:px-6">
 					<div className="flex justify-center mb-6">
 						<Image
 							src="/ncci-dark.svg"
 							alt="NCCI Logo"
-							width={348}
-							height={348}
+							width={448}
+							height={448}
 						/>
 					</div>
 					<h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
@@ -52,15 +52,16 @@ export default function Home() {
 						<Button
 							size="lg"
 							className="bg-[var(--bg-accent2)] hover:bg-blue-700 text-white"
+							asChild
 						>
-							Register Now
+							<Link href="/registration">Register Now</Link>
 						</Button>
 						<Button
 							size="lg"
 							variant="outline"
 							className="border-white text-white hover:bg-white/10"
 						>
-							Submit Paper
+							<Link href="/authors">Submit a Paper</Link>
 						</Button>
 					</div>
 				</div>
