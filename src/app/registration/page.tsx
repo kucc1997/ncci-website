@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Badge } from "@/components/ui/badge"
-import { Check, Users, Crown, Clock, AlertCircle, CreditCard } from "lucide-react"
+import { Check, Users, Crown, Clock, AlertCircle, CreditCard, Star } from "lucide-react"
 
 export default function RegistrationPage() {
 	const [formData, setFormData] = useState({
@@ -20,7 +20,7 @@ export default function RegistrationPage() {
 		phone: "",
 		institution: "",
 		designation: "",
-		participantType: "attendee",
+		participantType: "author",
 		tier: "tier1",
 		isKuccMember: false,
 		isInternational: false,
@@ -54,6 +54,14 @@ export default function RegistrationPage() {
 
 	const handleTierChange = (value: string) => {
 		setFormData((prev) => ({ ...prev, tier: value }))
+	}
+
+	const handleKuccMemberChange = (checked: boolean) => {
+		setFormData((prev) => ({ ...prev, isKuccMember: checked }))
+	}
+
+	const handleInternationalChange = (checked: boolean) => {
+		setFormData((prev) => ({ ...prev, isInternational: checked }))
 	}
 
 	const handleTermsChange = (checked: boolean) => {
@@ -372,6 +380,57 @@ export default function RegistrationPage() {
 								</RadioGroup>
 							</div>
 						)}
+
+						{/* Special Categories */}
+						<div className="space-y-4">
+							<Label className="text-base font-medium">Special Categories</Label>
+							<RadioGroup
+								value={
+									formData.isKuccMember
+										? "kuccMember"
+										: formData.isInternational
+											? "international"
+											: "none"
+								}
+								onValueChange={(value) => {
+									if (value === "kuccMember") {
+										handleKuccMemberChange(true)
+										handleInternationalChange(false)
+									} else if (value === "international") {
+										handleKuccMemberChange(false)
+										handleInternationalChange(true)
+									} else {
+										// Clear both
+										handleKuccMemberChange(false)
+										handleInternationalChange(false)
+									}
+								}}
+								className="space-y-3 pt-4"
+							>
+								<div className="flex items-center space-x-2">
+									<RadioGroupItem value="none" id="none" />
+									<Label htmlFor="none" className="cursor-pointer">
+										None
+									</Label>
+								</div>
+								<div className="flex items-center space-x-2">
+									<RadioGroupItem value="kuccMember" id="kuccMember" />
+									<Label
+										htmlFor="kuccMember"
+										className="flex items-center gap-2 cursor-pointer"
+									>
+										<Star className="h-4 w-4 text-yellow-500" />
+										KUCC Member (Discounted rate)
+									</Label>
+								</div>
+								<div className="flex items-center space-x-2">
+									<RadioGroupItem value="international" id="international" />
+									<Label htmlFor="international" className="cursor-pointer">
+										International Participant (USD pricing)
+									</Label>
+								</div>
+							</RadioGroup>
+						</div>
 
 						{/* Registration Fee Display */}
 						<div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
