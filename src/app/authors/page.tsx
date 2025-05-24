@@ -30,7 +30,7 @@ export default function AuthorsPage() {
 			</div>
 
 			<Tabs defaultValue="guidelines" className="max-w-4xl mx-auto text-[var(--bg-secondary-dark)]">
-				<TabsList className="grid w-full grid-cols-3 mb-8">
+				<TabsList className="grid w-full sm:grid-cols-3 mb-8 h-full">
 					<TabsTrigger value="guidelines">Submission Guidelines</TabsTrigger>
 					<TabsTrigger value="format">Formatting Requirements</TabsTrigger>
 					<TabsTrigger value="process">Review Process</TabsTrigger>
