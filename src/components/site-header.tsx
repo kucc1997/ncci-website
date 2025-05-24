@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { Menu, X, } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
+import AuthButton from "./auth-button";
 export function SiteHeader() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -55,6 +55,8 @@ export function SiteHeader() {
 					<Button asChild size="sm">
 						<Link href="/registration">Register</Link>
 					</Button>
+<AuthButton/>
+
 				</div>
 
 				{/* Mobile Menu Button */}
@@ -96,6 +98,11 @@ export function SiteHeader() {
 							<Button asChild size="sm">
 								<Link href="/registration" onClick={() => setIsMenuOpen(false)}>
 									Register
+								</Link>
+							</Button>
+							<Button asChild size="sm">
+								<Link href="/SignIn" onClick={() => setIsMenuOpen(false)}>
+								SingIn
 								</Link>
 							</Button>
 						</div>
