@@ -71,7 +71,7 @@ export default function RegistrationSuccessPage() {
 						<ul className="space-y-2 text-blue-700">
 							<li>• Registration confirmation may take 1-2 business days</li>
 							<li>• If you don&apos;t receive a confirmation email, please check your spam folder</li>
-							<li>• For any issues, contact us at <a href="mailto:contact@ncci.com.np" className="underline">contact@ncci.com.np</a></li>
+							<li>• For any issues, contact us at <a href="mailto:kucc@ku.edu.np" className="underline">kucc@ku.edu.np</a></li>
 						</ul>
 					</div>
 
