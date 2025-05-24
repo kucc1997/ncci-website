@@ -53,7 +53,7 @@ export default function AuthorsPage() {
 										<CalendarDays className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">Paper Submission Deadline</h4>
-											<p className="text-gray-600">30<sup>th</sup> June 2025 11:59 PM NPT</p>
+											<p className="text-gray-600">15<sup>th</sup> July 2025 11:59 PM NPT</p>
 										</div>
 									</div>
 									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
@@ -62,14 +62,14 @@ export default function AuthorsPage() {
 											<h4 className="font-medium">
 												Notification of Acceptance
 											</h4>
-											<p className="text-gray-600">21<sup>st</sup> July, 2025 11:59 PM NPT</p>
+											<p className="text-gray-600">31<sup>st</sup> July, 2025</p>
 										</div>
 									</div>
 									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
 										<CalendarDays className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">Camera-Ready Submission</h4>
-											<p className="text-gray-600">1<sup>st</sup> August, 2025 11:59 PM NPT</p>
+											<p className="text-gray-600">7<sup>th</sup> August, 2025</p>
 										</div>
 									</div>
 									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
@@ -130,7 +130,7 @@ export default function AuthorsPage() {
 
 							<div className="flex justify-center">
 								<Button size="lg" className="mt-4">
-									Submit Your Paper
+									<Link href="/register">Submit Your Paper</Link>
 								</Button>
 							</div>
 						</CardContent>
@@ -349,7 +349,7 @@ export default function AuthorsPage() {
 											Papers are checked for formatting, plagiarism, and relevance.
 										</p>
 										<p className="text-sm text-[var(--bg-accent2)]">
-											July 1–2, 2025
+											July 16, 2025
 										</p>
 									</div>
 
@@ -362,7 +362,7 @@ export default function AuthorsPage() {
 											Valid papers are assigned to qualified reviewers based on topic match.
 										</p>
 										<p className="text-sm text-[var(--bg-accent2)]">
-											July 3–4, 2025
+											July 16, 2025
 										</p>
 									</div>
 
@@ -375,7 +375,7 @@ export default function AuthorsPage() {
 											Each paper is reviewed by at least two independent reviewers under a double-blind process.
 										</p>
 										<p className="text-sm text-[var(--bg-accent2)]">
-											July 5–19, 2025
+											July 17–30, 2025
 										</p>
 									</div>
 
@@ -387,7 +387,7 @@ export default function AuthorsPage() {
 										<p className="text-gray-600">
 											Program committee resolves conflicts and finalizes acceptance decisions.
 										</p>
-										<p className="text-sm text-[var(--bg-accent2)]">July 20, 2025</p>
+										<p className="text-sm text-[var(--bg-accent2)]">July 31, 2025</p>
 									</div>
 
 									<div className="relative">
@@ -398,7 +398,7 @@ export default function AuthorsPage() {
 										<p className="text-gray-600">
 											Authors are notified of the decision along with reviewer comments.
 										</p>
-										<p className="text-sm text-[var(--bg-accent2)]">July 21, 2025</p>
+										<p className="text-sm text-[var(--bg-accent2)]">July 31, 2025</p>
 									</div>
 
 									<div className="relative">
@@ -409,7 +409,7 @@ export default function AuthorsPage() {
 										<p className="text-gray-600">
 											Authors of accepted papers submit the final version addressing reviewer comments.
 										</p>
-										<p className="text-sm text-[var(--bg-accent2)]">August 1, 2025</p>
+										<p className="text-sm text-[var(--bg-accent2)]">August 7, 2025</p>
 									</div>
 								</div>
 							</div>

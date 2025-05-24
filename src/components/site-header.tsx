@@ -29,10 +29,10 @@ export function SiteHeader() {
 					<Image
 						src="/ncci-light.svg"
 						alt="NCCI Logo"
-						width={60}
-						height={60}
+						width={160}
+						height={160}
 					/>
-					<div className="font-bold text-xl text-[var(--bg-accent)]">2025</div>
+					{/* <div className="font-bold text-xl text-[var(--bg-accent)]">2025</div> */}
 				</Link>
 
 				{/* Desktop Navigation */}

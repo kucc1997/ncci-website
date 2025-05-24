@@ -41,13 +41,39 @@ export default function TimelinePage() {
 								<CardContent>
 									<div className="flex items-center gap-2 text-gray-600 mb-2">
 										<Calendar1 className="h-4 w-4" />
-										<span>1<sup>st</sup> June 2025 - 30<sup>th</sup> June 2025</span>
+										<span>1<sup>st</sup> June 2025 - 15<sup>th</sup> July 2025</span>
 									</div>
 									<p className="text-gray-700">
 										Submit your paper following the details mentioned in {" "}
 										<Link href="/authors" className="text-[var(--bg-accent2)]">
-											authors section</Link> within the deadline of <strong>30<sup>th</sup>
-											June 2025 11:59 PM NPT</strong>.
+											authors section</Link> within the deadline of <strong>15<sup>th</sup>
+											July 2025 11:59 PM NPT</strong>.
+									</p>
+								</CardContent>
+							</Card>
+
+							{/* Review Period */}
+							<Card>
+								<CardHeader className="pb-2">
+									<div className="flex justify-between items-start">
+										<div>
+											<CardTitle>Review Period</CardTitle>
+										</div>
+										<Badge className="bg-purple-100 text-purple-800 hover:bg-purple-200">
+											Paper
+										</Badge>
+									</div>
+								</CardHeader>
+								<CardContent>
+									<div className="flex items-center gap-2 text-gray-600 mb-2">
+										<Calendar1 className="h-4 w-4" />
+										<span>16<sup>th</sup> July - 31<sup>st</sup> July 2025 </span>
+									</div>
+									<p className="text-gray-700">
+										The submitted papers will be screened and reviewed by the
+										review committee. The review process will take place from
+										16<sup>th</sup> July to 31<sup>st</sup> July 2025. Authors will be
+										informed about the review results after the end of this period.
 									</p>
 								</CardContent>
 							</Card>
@@ -67,7 +93,7 @@ export default function TimelinePage() {
 								<CardContent>
 									<div className="flex items-center gap-2 text-gray-600 mb-2">
 										<Calendar1 className="h-4 w-4" />
-										<span>21<sup>st</sup> July 2025 11:59 PM NPT</span>
+										<span>31<sup>st</sup> July 2025</span>
 									</div>
 									<p className="text-gray-700">
 										The authors of the papers accepted from the review committee
@@ -93,12 +119,13 @@ export default function TimelinePage() {
 								<CardContent>
 									<div className="flex items-center gap-2 text-gray-600 mb-2">
 										<Calendar1 className="h-4 w-4" />
-										<span>1<sup>st</sup> August, 2025 11:59 PM NPT</span>
+										<span>7<sup>th</sup> August, 2025 11:59 PM NPT</span>
 									</div>
 									<p className="text-gray-700">
 										The authors of the accepted paper should submit a camera-ready version
-										of the paper by 1<sup>st</sup> August, 2025 11:59 PM NPT in the proper
-										format mentioned in the <Link href={'/authors'} className="text-[var(--bg-accent2)]">guideline</Link>.
+										of the paper by 7<sup>th</sup> August, 2025 11:59 PM NPT in the proper
+										format. The camera-ready version template will be provided
+										after the acceptance of the paper.
 									</p>
 								</CardContent>
 							</Card>
@@ -118,7 +145,7 @@ export default function TimelinePage() {
 								<CardContent>
 									<div className="flex items-center gap-2 text-gray-600 mb-2">
 										<Calendar1 className="h-4 w-4" />
-										<span>27<sup>st</sup> July 2025 2:00 PM NPT</span>
+										<span>5<sup>th</sup> August 2025 11:59 PM NPT</span>
 									</div>
 									<p className="text-gray-700">
 										The early registration for all the participants as well as
@@ -141,7 +168,7 @@ export default function TimelinePage() {
 								<CardContent>
 									<div className="flex items-center gap-2 text-gray-600 mb-2">
 										<Calendar1 className="h-4 w-4" />
-										<span>20<sup>th</sup> August 2025 12:59 PM NPT</span>
+										<span>21<sup>st</sup> August 2025 11:59 PM NPT</span>
 									</div>
 									<p className="text-gray-700">
 										Final chance to register—secure your spot before the deadline!
@@ -162,7 +189,7 @@ export default function TimelinePage() {
 								<CardContent>
 									<div className="flex items-center gap-2 text-gray-600 mb-2">
 										<Calendar1 className="h-4 w-4" />
-										<span>24<sup>th</sup> August 2025 12:59 PM NPT</span>
+										<span>24<sup>th</sup> August 2025 09:00 AM NPT</span>
 									</div>
 									<p className="text-gray-700">
 										The main event of the program featuring keynote speakers,

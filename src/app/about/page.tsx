@@ -45,8 +45,8 @@ export default function AboutPage() {
 				</div>
 				<div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-lg">
 					<Image
-						src="/placeholder.svg?height=800&width=1200"
-						alt="Conference Hall"
+						src="/ncci-icon.svg?height=800&width=1200"
+						alt="NCCI Logo"
 						fill
 						className="object-cover"
 					/>
