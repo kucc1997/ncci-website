@@ -8,21 +8,8 @@ import { writeFile, mkdir } from "fs/promises"
 // Get upload directory from environment variable or use default
 const UPLOAD_DIR = process.env.UPLOAD_DIR || "public/uploads"
 
-async function generateRegistrationId() {
-	let registrationId: string
-	const generateId = customAlphabet('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 8)
-
-	while (true) {
-		registrationId = generateId()
-		const existing = await db
-			.select()
-			.from(registrations)
-			.where(eq(registrations.registrationId, registrationId))
-		if (existing.length === 0) break
-	}
-
-	return registrationId
-}
+// Create a custom nanoid generator for registration IDs
+const generateRegistrationId = customAlphabet('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 8)
 
 export async function POST(req: Request) {
 	try {
@@ -72,18 +59,43 @@ export async function POST(req: Request) {
 		}
 
 		// Generate unique registration ID
-		const registrationId = await generateRegistrationId()
+		let registrationId = generateRegistrationId()
+		let isUnique = false
+		while (!isUnique) {
+			const existing = await db
+				.select()
+				.from(registrations)
+				.where(eq(registrations.registrationId, registrationId))
+			isUnique = existing.length === 0
+			if (!isUnique) {
+				registrationId = generateRegistrationId()
+			}
+		}
 
 		// Upload payment voucher
 		const uploadDir = path.join(process.cwd(), UPLOAD_DIR, "vouchers")
-		const filePath = path.join(uploadDir, `${registrationId}.pdf`)
-		
+
+		// Get file extension from the uploaded file
+		const fileExtension = paymentVoucher.name.split('.').pop()?.toLowerCase()
+		if (!fileExtension || !['pdf', 'png', 'jpg', 'jpeg'].includes(fileExtension)) {
+			return NextResponse.json(
+				{
+					success: false,
+					data: "Invalid file type. Please upload PDF, PNG, or JPG files only."
+				},
+				{ status: 400 }
+			)
+		}
+
+		const filePath = path.join(uploadDir, `${registrationId}.${fileExtension}`)
+
 		// Ensure the upload directory exists
 		await mkdir(uploadDir, { recursive: true })
 		await writeFile(filePath, Buffer.from(await paymentVoucher.arrayBuffer()))
 
 		// Insert registration into database
 		const registration = await db.insert(registrations).values({
+			registrationId,
 			firstName,
 			lastName,
 			email,
@@ -97,8 +109,7 @@ export async function POST(req: Request) {
 			paperSubmission,
 			dietaryRestrictions: dietaryRestrictions || null,
 			specialRequirements: specialRequirements || null,
-			paymentVoucherPath: `/uploads/vouchers/${registrationId}.pdf`,
-			registrationId,
+			paymentVoucherPath: `/uploads/vouchers/${registrationId}.${fileExtension}`,
 			status: "pending"
 		}).returning()
 
@@ -120,5 +131,3 @@ export async function POST(req: Request) {
 		)
 	}
 }
-
-// ... rest of the file stays the same ... 

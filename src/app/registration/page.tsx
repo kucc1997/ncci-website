@@ -139,9 +139,6 @@ export default function RegistrationPage() {
 			}
 
 			toast.success("Registration submitted successfully!")
-			// Optionally redirect to a success page or clear the form
-			window.location.href = `/registration/success?id=${result.data.registrationId}`
-
 		} catch (error) {
 			if (error instanceof Error) {
 				toast.error(error.message)
