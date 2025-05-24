@@ -1,0 +1,20 @@
+CREATE TABLE "registrations" (
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"first_name" text NOT NULL,
+	"last_name" text NOT NULL,
+	"email" text NOT NULL,
+	"phone" text NOT NULL,
+	"institution" text NOT NULL,
+	"designation" text NOT NULL,
+	"participant_type" text NOT NULL,
+	"tier" text NOT NULL,
+	"is_kucc_member" boolean DEFAULT false,
+	"is_international" boolean DEFAULT false,
+	"paper_submission" boolean DEFAULT false,
+	"dietary_restrictions" text,
+	"special_requirements" text,
+	"payment_voucher_path" text NOT NULL,
+	"status" text DEFAULT 'pending' NOT NULL,
+	"created_at" timestamp DEFAULT now(),
+	CONSTRAINT "registrations_email_unique" UNIQUE("email")
+);

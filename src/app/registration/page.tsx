@@ -11,6 +11,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Badge } from "@/components/ui/badge"
 import { Check, Users, Crown, Clock, AlertCircle, CreditCard, Star } from "lucide-react"
+import { toast } from "sonner"
 
 export default function RegistrationPage() {
 	const [formData, setFormData] = useState({
@@ -100,22 +101,54 @@ export default function RegistrationPage() {
 		}
 	}
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault()
 
 		if (!formData.termsAccepted) {
-			alert("Please accept the terms and conditions to proceed.")
+			toast.error("Please accept the terms and conditions to proceed.")
 			return
 		}
 
 		if (!paymentVoucher) {
-			alert("Please upload your payment voucher or bank statement.")
+			toast.error("Please upload your payment voucher or bank statement.")
 			return
 		}
 
-		console.log("Registration submitted:", formData)
-		console.log("Payment voucher:", paymentVoucher)
-		alert("Registration submitted successfully!")
+		try {
+			const submitData = new FormData()
+
+			// Add all form fields to FormData
+			Object.entries(formData).forEach(([key, value]) => {
+				if (key !== "termsAccepted") {
+					submitData.append(key, value.toString())
+				}
+			})
+
+			// Add payment voucher
+			submitData.append("paymentVoucher", paymentVoucher)
+
+			const response = await fetch("/api/registration", {
+				method: "POST",
+				body: submitData
+			})
+
+			const result = await response.json()
+
+			if (!result.success) {
+				throw new Error(result.data)
+			}
+
+			toast.success("Registration submitted successfully!")
+			// Optionally redirect to a success page or clear the form
+			window.location.href = `/registration/success?id=${result.data.registrationId}`
+
+		} catch (error) {
+			if (error instanceof Error) {
+				toast.error(error.message)
+			} else {
+				toast.error("An error occurred while submitting your registration. Please try again.")
+			}
+		}
 	}
 
 	return (

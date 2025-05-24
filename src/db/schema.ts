@@ -3,6 +3,7 @@ import {
 	pgTable,
 	text,
 	uuid,
+	boolean,
 } from "drizzle-orm/pg-core"
 import postgres from "postgres"
 import { drizzle } from "drizzle-orm/postgres-js"
@@ -68,5 +69,26 @@ export const contacts = pgTable('contacts', {
 	email: text('email').notNull(),
 	subject: text('subject').notNull(),
 	message: text('message').notNull(),
+	createdAt: timestamp('created_at').defaultNow()
+})
+
+export const registrations = pgTable('registrations', {
+	id: uuid('id').primaryKey().defaultRandom(),
+	registrationId: text('registration_id').notNull().unique(),
+	firstName: text('first_name').notNull(),
+	lastName: text('last_name').notNull(),
+	email: text('email').notNull().unique(),
+	phone: text('phone').notNull(),
+	institution: text('institution').notNull(),
+	designation: text('designation').notNull(),
+	participantType: text('participant_type').notNull(),
+	tier: text('tier').notNull(),
+	isKuccMember: boolean('is_kucc_member').default(false),
+	isInternational: boolean('is_international').default(false),
+	paperSubmission: boolean('paper_submission').default(false),
+	dietaryRestrictions: text('dietary_restrictions'),
+	specialRequirements: text('special_requirements'),
+	paymentVoucherPath: text('payment_voucher_path').notNull(),
+	status: text('status').default('pending').notNull(),
 	createdAt: timestamp('created_at').defaultNow()
 })

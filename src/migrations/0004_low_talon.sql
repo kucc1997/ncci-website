@@ -1,0 +1,2 @@
+ALTER TABLE "registrations" ADD COLUMN "registration_id" text NOT NULL;--> statement-breakpoint
+ALTER TABLE "registrations" ADD CONSTRAINT "registrations_registration_id_unique" UNIQUE("registration_id");
