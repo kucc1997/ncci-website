@@ -5,8 +5,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { CheckCircle2, AlertCircle } from "lucide-react"
 import Link from "next/link"
+import { Suspense } from "react"
 
-export default function RegistrationSuccessPage() {
+function RegistrationSuccessContent() {
 	const searchParams = useSearchParams()
 	const registrationId = searchParams.get("id")
 
@@ -86,5 +87,22 @@ export default function RegistrationSuccessPage() {
 				</CardContent>
 			</Card>
 		</div>
+	)
+}
+
+export default function RegistrationSuccessPage() {
+	return (
+		<Suspense fallback={
+			<div className="container px-4 md:px-6 py-12">
+				<Card className="max-w-2xl mx-auto">
+					<CardHeader>
+						<CardTitle>Loading...</CardTitle>
+						<CardDescription>Please wait while we load your registration details.</CardDescription>
+					</CardHeader>
+				</Card>
+			</div>
+		}>
+			<RegistrationSuccessContent />
+		</Suspense>
 	)
 } 
