@@ -1,17 +1,17 @@
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 import { db, registrations } from "@/db/schema"
 import { eq } from "drizzle-orm"
 
 export async function GET(
-	request: Request,
-	context: { params: { id: string } }
+	request: NextRequest,
+	{ params }: { params: Promise<{ id: string }> }
 ) {
 	try {
-		const { params } = context;
+		const { id } = await params
 		const registration = await db
 			.select()
 			.from(registrations)
-			.where(eq(registrations.registrationId, params.id))
+			.where(eq(registrations.registrationId, id))
 			.limit(1)
 
 		if (registration.length === 0) {
