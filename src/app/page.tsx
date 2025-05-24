@@ -59,7 +59,7 @@ export default function Home() {
 						<Button
 							size="lg"
 							variant="outline"
-							className="border-white text-white hover:bg-white/10"
+							className="border-white hover:bg-white/10"
 						>
 							<Link href="/authors">Submit a Paper</Link>
 						</Button>
