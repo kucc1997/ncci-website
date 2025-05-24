@@ -4,6 +4,7 @@ import { eq } from "drizzle-orm"
 import { customAlphabet } from "nanoid"
 import path from "path"
 import { writeFile, mkdir } from "fs/promises"
+import { sendRegistrationEmail } from "@/lib/mail"
 
 // Get upload directory from environment variable or use default
 const UPLOAD_DIR = process.env.UPLOAD_DIR || "public/uploads"
@@ -112,6 +113,21 @@ export async function POST(req: Request) {
 			paymentVoucherPath: `/uploads/vouchers/${registrationId}.${fileExtension}`,
 			status: "pending"
 		}).returning()
+
+		// Send confirmation email
+		const emailResult = await sendRegistrationEmail({
+			to: email,
+			registrationId,
+			firstName,
+			lastName,
+			participantType,
+			tier,
+		})
+
+		if (!emailResult.success) {
+			console.error("Failed to send confirmation email:", emailResult.error)
+			// Continue with the registration process even if email fails
+		}
 
 		return NextResponse.json({
 			success: true,

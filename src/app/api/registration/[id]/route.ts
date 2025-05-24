@@ -4,9 +4,10 @@ import { eq } from "drizzle-orm"
 
 export async function GET(
 	request: Request,
-	{ params }: { params: { id: string } }
+	context: { params: { id: string } }
 ) {
 	try {
+		const { params } = context;
 		const registration = await db
 			.select()
 			.from(registrations)
