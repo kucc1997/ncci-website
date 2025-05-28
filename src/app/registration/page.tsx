@@ -234,26 +234,26 @@ export default function RegistrationPage() {
 				</div>
 			</div>
 
-			{/* Registration Tiers Overview */}
+			{/* Kit Options Overview */}
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 max-w-5xl mx-auto">
 				<Card className="border-2 border-blue-200 relative">
 					<div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
 						<Badge className="bg-[var(--bg-accent2)] text-white px-4 py-1">
 							<Crown className="h-4 w-4 mr-1" />
-							Tier 1 - Premium
+							With Conference Kit
 						</Badge>
 					</div>
 					<CardHeader className="pt-8">
-						<CardTitle className="text-center">Premium Experience</CardTitle>
+						<CardTitle className="text-center">Complete Experience</CardTitle>
 						<CardDescription className="text-center">
-							Enhanced conference experience with exclusive benefits
+							Full conference experience with exclusive conference kit
 						</CardDescription>
 					</CardHeader>
 					<CardContent>
 						<ul className="space-y-3">
 							<li className="flex items-center gap-2">
 								<Check className="h-4 w-4 text-green-600" />
-								<span>Reserved special seating</span>
+								<span>Access to all sessions</span>
 							</li>
 							<li className="flex items-center gap-2">
 								<Check className="h-4 w-4 text-green-600" />
@@ -261,17 +261,21 @@ export default function RegistrationPage() {
 							</li>
 							<li className="flex items-center gap-2">
 								<Check className="h-4 w-4 text-green-600" />
-								<span>Exclusive networking dinner with keynote speakers</span>
+								<span>Conference materials and swag</span>
 							</li>
 							<li className="flex items-center gap-2">
 								<Check className="h-4 w-4 text-green-600" />
-								<span>Priority access to all sessions</span>
+								<span>Refreshments and lunch</span>
 							</li>
 							<li className="flex items-center gap-2">
 								<Check className="h-4 w-4 text-green-600" />
 								<span>Certificate of participation</span>
 							</li>
 						</ul>
+						<div className="mt-4 text-center">
+							<div className="text-2xl font-bold text-[var(--bg-accent2)]">NPR 3,000</div>
+							<div className="text-sm text-gray-600">Base + Kit</div>
+						</div>
 					</CardContent>
 				</Card>
 
@@ -280,36 +284,36 @@ export default function RegistrationPage() {
 						<CardTitle className="text-center">
 							<Badge variant="outline" className="mb-2">
 								<Users className="h-4 w-4 mr-1" />
-								Tier 2 - Standard
+								Without Conference Kit
 							</Badge>
 						</CardTitle>
 						<CardDescription className="text-center">
-							Essential conference experience with core benefits
+							Essential conference experience without physical kit
 						</CardDescription>
 					</CardHeader>
 					<CardContent>
 						<ul className="space-y-3">
 							<li className="flex items-center gap-2">
 								<Check className="h-4 w-4 text-green-600" />
-								<span>General seating</span>
-							</li>
-							<li className="flex items-center gap-2">
-								<Check className="h-4 w-4 text-green-600" />
-								<span>Standard conference kit</span>
-							</li>
-							<li className="flex items-center gap-2">
-								<Check className="h-4 w-4 text-green-600" />
-								<span>Standard refreshments and lunch</span>
-							</li>
-							<li className="flex items-center gap-2">
-								<Check className="h-4 w-4 text-green-600" />
 								<span>Access to all sessions</span>
+							</li>
+							<li className="flex items-center gap-2">
+								<Check className="h-4 w-4 text-green-600" />
+								<span>Digital conference materials</span>
+							</li>
+							<li className="flex items-center gap-2">
+								<Check className="h-4 w-4 text-green-600" />
+								<span>Refreshments and lunch</span>
 							</li>
 							<li className="flex items-center gap-2">
 								<Check className="h-4 w-4 text-green-600" />
 								<span>Certificate of participation</span>
 							</li>
 						</ul>
+						<div className="mt-4 text-center">
+							<div className="text-2xl font-bold text-[var(--bg-accent2)]">NPR 1,500</div>
+							<div className="text-sm text-gray-600">Base only</div>
+						</div>
 					</CardContent>
 				</Card>
 			</div>
