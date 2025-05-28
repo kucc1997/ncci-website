@@ -98,10 +98,10 @@ export function SiteFooter() {
 							</li>
 							<li>
 								<Link
-									href="/schedule"
+									href="/timeline"
 									className="hover:text-white transition-colors"
 								>
-									Schedule
+									Timeline
 								</Link>
 							</li>
 							<li>
