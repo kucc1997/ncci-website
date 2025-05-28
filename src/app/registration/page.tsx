@@ -24,7 +24,7 @@ export default function RegistrationPage() {
 		institution: "",
 		designation: "",
 		participantType: "author",
-		tier: "tier1",
+		tier: "withKit",
 		isKuccMember: false,
 		isInternational: false,
 		paperSubmission: false,
@@ -52,7 +52,7 @@ export default function RegistrationPage() {
 		setFormData((prev) => ({
 			...prev,
 			participantType: value,
-			tier: value === "author" ? "tier1" : prev.tier,
+			tier: value === "author" ? "withKit" : prev.tier,
 		}))
 	}
 
@@ -91,25 +91,32 @@ export default function RegistrationPage() {
 		const { participantType, tier, isKuccMember, isInternational } = formData
 
 		if (isInternational) {
-			if (participantType === "author" || tier === "tier1") {
+			if (participantType === "author") {
 				return isEarlyRegistration ? "$50" : "$65"
+			} else if (participantType === "attendee" && tier === "withKit") {
+				return isEarlyRegistration ? "$44" : "$55";
 			}
-			return "Contact us for Tier 2 international pricing"
+			return isEarlyRegistration ? "$22" : "$30";
 		}
 
-		if (participantType === "author" || tier === "tier1") {
+		if (participantType === "author") {
 			if (isEarlyRegistration) {
 				return isKuccMember ? "NPR 3,000" : "NPR 3,500"
 			} else {
 				return isKuccMember ? "NPR 4,200" : "NPR 4,500"
 			}
-		} else {
-			// Tier 2
+		}
+		if (tier === "withKit") {
 			if (isEarlyRegistration) {
-				return isKuccMember ? "NPR 2,150" : "NPR 2,500"
+				return isKuccMember ? "NPR 2,700" : "NPR 3,000"
 			} else {
-				return isKuccMember ? "NPR 3,150" : "NPR 3,500"
+				return isKuccMember ? "NPR 3,350" : "NPR 3,500"
 			}
+		}
+		if (isEarlyRegistration) {
+			return isKuccMember ? "NPR 1,300" : "NPR 1,500"
+		} else {
+			return isKuccMember ? "NPR 1,850" : "NPR 2,000"
 		}
 	}
 
@@ -395,16 +402,17 @@ export default function RegistrationPage() {
 								onValueChange={handleParticipantTypeChange}
 								className="space-y-3"
 							>
-								<div className="flex items-start space-x-3 p-4 border rounded-lg">
+								<div className="flex items-start space-x-3 p-4 rounded-lg border-2 border-orange-200 bg-orange-50">
 									<RadioGroupItem value="author" id="author" className="mt-1" />
 									<div className="flex-1">
 										<Label htmlFor="author" className="font-medium cursor-pointer">
 											Author
 										</Label>
 										<p className="text-sm text-gray-600 mt-1">
-											Required if you are presenting a paper. Automatically includes Tier 1 benefits.
+											<strong>Required if you are presenting a paper.</strong> At least one author must register as
+											&quot;Author&quot; to present the paper at the conference. Includes all conference benefits.
 										</p>
-										<Badge className="mt-2 bg-blue-100 text-blue-800">Tier 1 Premium</Badge>
+										<Badge className="mt-2 bg-orange-100 text-orange-800">Paper Presenter</Badge>
 									</div>
 								</div>
 								<div className="flex items-start space-x-3 p-4 border rounded-lg">
@@ -421,31 +429,35 @@ export default function RegistrationPage() {
 							</RadioGroup>
 						</div>
 
-						{/* Tier Selection (only for attendees) */}
+						{/* Kit Selection - only show for attendees */}
 						{formData.participantType === "attendee" && (
 							<div className="space-y-4">
-								<Label className="text-base font-medium">Select Tier</Label>
-								<RadioGroup value={formData.tier} onValueChange={handleTierChange} className="space-y-3">
+								<Label className="text-base font-medium">Conference Kit Option</Label>
+								<RadioGroup
+									value={formData.tier}
+									onValueChange={handleTierChange}
+									className="space-y-3"
+								>
 									<div className="flex items-start space-x-3 p-4 border-2 border-blue-200 rounded-lg">
-										<RadioGroupItem value="tier1" id="tier1" className="mt-1" />
+										<RadioGroupItem value="withKit" id="with-kit" className="mt-1" />
 										<div className="flex-1">
-											<Label htmlFor="tier1" className="font-medium flex items-center gap-2 cursor-pointer">
+											<Label htmlFor="with-kit" className="font-medium flex items-center gap-2 cursor-pointer">
 												<Crown className="h-4 w-4 text-[var(--bg-accent2)]" />
-												Tier 1 - Premium Experience
+												With Conference Kit (+NPR 1,500)
 											</Label>
 											<p className="text-sm text-gray-600 mt-1">
-												Reserved seating, premium kit, exclusive networking dinner with speakers
+												Includes premium conference kit with materials, swag, and branded items
 											</p>
 										</div>
 									</div>
 									<div className="flex items-start space-x-3 p-4 border rounded-lg">
-										<RadioGroupItem value="tier2" id="tier2" className="mt-1" />
+										<RadioGroupItem value="withoutKit" id="without-kit" className="mt-1" />
 										<div className="flex-1">
-											<Label htmlFor="tier2" className="font-medium flex items-center gap-2 cursor-pointer">
+											<Label htmlFor="without-kit" className="font-medium flex items-center gap-2 cursor-pointer">
 												<Users className="h-4 w-4 text-gray-600" />
-												Tier 2 - Standard Experience
+												Without Conference Kit
 											</Label>
-											<p className="text-sm text-gray-600 mt-1">General seating, standard kit, standard refreshments</p>
+											<p className="text-sm text-gray-600 mt-1">No physical conference kit</p>
 										</div>
 									</div>
 								</RadioGroup>
@@ -511,16 +523,13 @@ export default function RegistrationPage() {
 									<p className="text-sm text-gray-600">
 										{isEarlyRegistration ? "Early Registration" : "Late Registration"} -
 										{formData.participantType === "author"
-											? " Author (Tier 1)"
-											: ` Attendee (${formData.tier === "tier1" ? "Tier 1" : "Tier 2"})`}
+											? " Author"
+											: ` Attendee (${formData.tier === "withKit" ? "With Kit" : "Without Kit"})`}
 										{formData.isKuccMember && " - KUCC Member Discount Applied"}
 									</p>
 								</div>
 								<div className="text-right">
 									<div className="text-2xl font-bold text-[var(--bg-accent2)]">{calculatePrice()}</div>
-									{formData.isInternational && formData.participantType === "attendee" && formData.tier === "tier2" && (
-										<p className="text-sm text-gray-600 mt-1">Please contact us for payment details</p>
-									)}
 								</div>
 							</div>
 						</div>
