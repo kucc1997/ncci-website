@@ -1,11 +1,18 @@
 export const runtime = "nodejs";
 import NextAuth from "next-auth";
 import GitHub from "next-auth/providers/github";
+import Google from "next-auth/providers/google"; // Add this import
 import { db, users } from "./db/schema";
 import { eq } from "drizzle-orm";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-	providers: [GitHub],
+	providers: [
+		GitHub,
+		Google({
+			clientId: process.env.GOOGLE_CLIENT_ID!,
+			clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+		}),
+	],
 	trustHost: true,
 	callbacks: {
 		async signIn({ user }) {
@@ -31,3 +38,4 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 	},
 	secret: process.env.NEXTAUTH_SECRET,
 });
+
