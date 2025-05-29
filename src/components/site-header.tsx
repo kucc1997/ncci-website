@@ -3,11 +3,20 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { Menu, X, } from "lucide-react";
+import { Menu, X, User, LogOut, FileText, UserPlus, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useSession, signIn, signOut } from "next-auth/react";
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function SiteHeader() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const { data: session, status } = useSession();
 
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
@@ -32,7 +41,6 @@ export function SiteHeader() {
 						width={160}
 						height={160}
 					/>
-					{/* <div className="font-bold text-xl text-[var(--bg-accent)]">2025</div> */}
 				</Link>
 
 				{/* Desktop Navigation */}
@@ -49,16 +57,187 @@ export function SiteHeader() {
 				</nav>
 
 				<div className="hidden md:flex gap-4 items-center">
-					<Button asChild variant="outline" size="sm">
-						<Link href="/authors">Submit Paper</Link>
-					</Button>
-					<Button asChild size="sm">
-						<Link href="/registration">Register</Link>
-					</Button>
+					{/* Authentication Section */}
+					{status === "loading" ? (
+						<div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse" />
+					) : session ? (
+						<DropdownMenu>
+							<DropdownMenuTrigger asChild>
+								<Button variant="ghost" className="relative h-10 w-10 rounded-full p-0">
+									<div className="relative w-8 h-8">
+										{session.user?.image ? (
+											<>
+												<Image
+													className="rounded-full ring-2 ring-[var(--bg-accent)] object-cover w-8 h-8"
+													src={session.user.image}
+													alt={session.user?.name || "User"}
+													width={32}
+													height={32}
+													onError={(e) => {
+														const target = e.target as HTMLImageElement;
+														target.style.display = 'none';
+														const fallback = target.parentElement?.querySelector('.fallback-avatar') as HTMLElement;
+														if (fallback) {
+															fallback.style.display = 'flex';
+														}
+													}}
+												/>
+												<div
+													className="fallback-avatar w-8 h-8 rounded-full ring-2 ring-[var(--bg-accent)] bg-[var(--bg-accent)] items-center justify-center text-sm font-medium text-white absolute top-0 left-0 hidden"
+												>
+													{session.user?.name?.charAt(0).toUpperCase() || 'U'}
+												</div>
+											</>
+										) : (
+											<div
+												className="w-8 h-8 rounded-full ring-2 ring-[var(--bg-accent)] bg-[var(--bg-accent)] flex items-center justify-center text-sm font-medium text-white"
+											>
+												{session.user?.name?.charAt(0).toUpperCase() || 'U'}
+											</div>
+										)}
+									</div>
+								</Button>
+							</DropdownMenuTrigger>
+							<DropdownMenuContent className="w-56" align="end" forceMount>
+								<div className="flex items-center justify-start gap-2 p-2">
+									<div className="flex flex-col space-y-1 leading-none">
+										{session.user?.name && (
+											<p className="font-medium">{session.user.name}</p>
+										)}
+										{session.user?.email && (
+											<p className="w-[200px] truncate text-sm text-muted-foreground">
+												{session.user.email}
+											</p>
+										)}
+									</div>
+								</div>
+								<DropdownMenuSeparator />
+								<DropdownMenuItem asChild>
+									<Link href="/authors" className="flex items-center gap-2">
+										<Upload className="h-4 w-4" />
+										Submit Paper
+									</Link>
+								</DropdownMenuItem>
+								<DropdownMenuItem asChild>
+									<Link href="/papers" className="flex items-center gap-2">
+										<FileText className="h-4 w-4" />
+										View My Submissions
+									</Link>
+								</DropdownMenuItem>
+								<DropdownMenuItem asChild>
+									<Link href="/registration" className="flex items-center gap-2">
+										<UserPlus className="h-4 w-4" />
+										Register for Conference
+									</Link>
+								</DropdownMenuItem>
+								<DropdownMenuSeparator />
+								<DropdownMenuItem
+									className="flex items-center gap-2 cursor-pointer"
+									onClick={() => signOut()}
+								>
+									<LogOut className="h-4 w-4" />
+									Sign Out
+								</DropdownMenuItem>
+							</DropdownMenuContent>
+						</DropdownMenu>
+					) : (
+						<Button
+							variant="outline"
+							size="sm"
+							onClick={() => signIn()}
+							className="flex items-center gap-2"
+						>
+							<User className="h-4 w-4" />
+							Sign In
+						</Button>
+					)}
 				</div>
 
 				{/* Mobile Menu Button */}
 				<div className="flex md:hidden items-center gap-2">
+					{/* Mobile Auth */}
+					{status !== "loading" && (
+						session ? (
+							<DropdownMenu>
+								<DropdownMenuTrigger asChild>
+									<Button variant="ghost" className="relative h-8 w-8 rounded-full">
+										<div className="relative w-8 h-8">
+											{session.user?.image ? (
+												<Image
+													className="rounded-full ring-2 ring-[var(--bg-accent)] object-cover"
+													src={session.user.image}
+													alt={session.user?.name || "User"}
+													width={32}
+													height={32}
+													onError={(e) => {
+														e.currentTarget.style.display = 'none';
+														const fallback = e.currentTarget.parentElement?.querySelector('.fallback-avatar');
+														if (fallback) fallback.style.display = 'flex';
+													}}
+												/>
+											) : null}
+											<div
+												className={`fallback-avatar w-8 h-8 rounded-full ring-2 ring-[var(--bg-accent)] bg-[var(--bg-accent)] flex items-center justify-center text-sm font-medium text-white ${session.user?.image ? 'hidden' : 'flex'}`}
+											>
+												{session.user?.name?.charAt(0).toUpperCase() || 'U'}
+											</div>
+										</div>
+									</Button>
+								</DropdownMenuTrigger>
+								<DropdownMenuContent className="w-56" align="end" forceMount>
+									<div className="flex items-center justify-start gap-2 p-2">
+										<div className="flex flex-col space-y-1 leading-none">
+											{session.user?.name && (
+												<p className="font-medium">{session.user.name}</p>
+											)}
+											{session.user?.email && (
+												<p className="w-[200px] truncate text-sm text-muted-foreground">
+													{session.user.email}
+												</p>
+											)}
+										</div>
+									</div>
+									<DropdownMenuSeparator />
+									<DropdownMenuItem asChild>
+										<Link href="/authors" className="flex items-center gap-2">
+											<Upload className="h-4 w-4" />
+											Submit Paper
+										</Link>
+									</DropdownMenuItem>
+									<DropdownMenuItem asChild>
+										<Link href="/papers" className="flex items-center gap-2">
+											<FileText className="h-4 w-4" />
+											View My Submissions
+										</Link>
+									</DropdownMenuItem>
+									<DropdownMenuItem asChild>
+										<Link href="/registration" className="flex items-center gap-2">
+											<UserPlus className="h-4 w-4" />
+											Register for Conference
+										</Link>
+									</DropdownMenuItem>
+									<DropdownMenuSeparator />
+									<DropdownMenuItem
+										className="flex items-center gap-2 cursor-pointer"
+										onClick={() => signOut()}
+									>
+										<LogOut className="h-4 w-4" />
+										Sign Out
+									</DropdownMenuItem>
+								</DropdownMenuContent>
+							</DropdownMenu>
+						) : (
+							<Button
+								variant="ghost"
+								size="sm"
+								onClick={() => signIn()}
+								className="p-2"
+							>
+								<User className="h-4 w-4" />
+							</Button>
+						)
+					)}
+
 					<button
 						className="md:hidden"
 						onClick={toggleMenu}
@@ -88,16 +267,21 @@ export function SiteHeader() {
 							</Link>
 						))}
 						<div className="flex flex-col gap-2 pt-2 border-t">
-							<Button asChild variant="outline" size="sm">
-								<Link href="/authors" onClick={() => setIsMenuOpen(false)}>
-									Submit Paper
-								</Link>
-							</Button>
-							<Button asChild size="sm">
-								<Link href="/registration" onClick={() => setIsMenuOpen(false)}>
-									Register
-								</Link>
-							</Button>
+							{/* Mobile Auth Section */}
+							{!session && (
+								<Button
+									variant="outline"
+									size="sm"
+									onClick={() => {
+										signIn();
+										setIsMenuOpen(false);
+									}}
+									className="flex items-center gap-2"
+								>
+									<User className="h-4 w-4" />
+									Sign In
+								</Button>
+							)}
 						</div>
 					</div>
 				</div>
@@ -105,3 +289,4 @@ export function SiteHeader() {
 		</header>
 	);
 }
+
