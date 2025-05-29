@@ -83,7 +83,7 @@ export function SiteHeader() {
 													}}
 												/>
 												<div
-													className="fallback-avatar w-8 h-8 rounded-full ring-2 ring-[var(--bg-accent)] bg-[var(--bg-accent)] items-center justify-center text-sm font-medium text-white absolute top-0 left-0 hidden"
+													className="fallback-avatar w-8 h-8 rounded-full ring-2 ring-[var(--bg-accent)] bg-[var(--bg-accent)] flex items-center justify-center text-sm font-medium text-white absolute top-0 left-0 hidden"
 												>
 													{session.user?.name?.charAt(0).toUpperCase() || 'U'}
 												</div>
@@ -160,27 +160,38 @@ export function SiteHeader() {
 						session ? (
 							<DropdownMenu>
 								<DropdownMenuTrigger asChild>
-									<Button variant="ghost" className="relative h-8 w-8 rounded-full">
+									<Button variant="ghost" className="relative h-8 w-8 rounded-full p-0">
 										<div className="relative w-8 h-8">
 											{session.user?.image ? (
-												<Image
-													className="rounded-full ring-2 ring-[var(--bg-accent)] object-cover"
-													src={session.user.image}
-													alt={session.user?.name || "User"}
-													width={32}
-													height={32}
-													onError={(e) => {
-														e.currentTarget.style.display = 'none';
-														const fallback = e.currentTarget.parentElement?.querySelector('.fallback-avatar');
-														if (fallback) fallback.style.display = 'flex';
-													}}
-												/>
-											) : null}
-											<div
-												className={`fallback-avatar w-8 h-8 rounded-full ring-2 ring-[var(--bg-accent)] bg-[var(--bg-accent)] flex items-center justify-center text-sm font-medium text-white ${session.user?.image ? 'hidden' : 'flex'}`}
-											>
-												{session.user?.name?.charAt(0).toUpperCase() || 'U'}
-											</div>
+												<>
+													<Image
+														className="rounded-full ring-2 ring-[var(--bg-accent)] object-cover w-8 h-8"
+														src={session.user.image}
+														alt={session.user?.name || "User"}
+														width={32}
+														height={32}
+														onError={(e) => {
+															const target = e.target as HTMLImageElement;
+															target.style.display = 'none';
+															const fallback = target.parentElement?.querySelector('.fallback-avatar') as HTMLElement;
+															if (fallback) {
+																fallback.style.display = 'flex';
+															}
+														}}
+													/>
+													<div
+														className="fallback-avatar w-8 h-8 rounded-full ring-2 ring-[var(--bg-accent)] bg-[var(--bg-accent)] flex items-center justify-center text-sm font-medium text-white absolute top-0 left-0 hidden"
+													>
+														{session.user?.name?.charAt(0).toUpperCase() || 'U'}
+													</div>
+												</>
+											) : (
+												<div
+													className="w-8 h-8 rounded-full ring-2 ring-[var(--bg-accent)] bg-[var(--bg-accent)] flex items-center justify-center text-sm font-medium text-white"
+												>
+													{session.user?.name?.charAt(0).toUpperCase() || 'U'}
+												</div>
+											)}
 										</div>
 									</Button>
 								</DropdownMenuTrigger>
