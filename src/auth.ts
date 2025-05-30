@@ -1,7 +1,7 @@
 export const runtime = "nodejs";
 import NextAuth from "next-auth";
 import GitHub from "next-auth/providers/github";
-import Google from "next-auth/providers/google"; // Add this import
+import Google from "next-auth/providers/google";
 import { db, users } from "./db/schema";
 import { eq } from "drizzle-orm";
 
@@ -18,7 +18,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 		async signIn({ user }) {
 			const userEmail = user.email;
 			if (!userEmail) {
-				return false; // Don't allow sign in without email
+				return false;
 			}
 			const existingUsers = await db
 				.select()
@@ -33,7 +33,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 				});
 			}
 
-			return true; // allow sign-in
+			return true;
 		},
 	},
 	secret: process.env.NEXTAUTH_SECRET,

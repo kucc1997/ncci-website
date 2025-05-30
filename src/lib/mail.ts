@@ -31,6 +31,7 @@ export async function sendRegistrationEmail({
 	const mailOptions = {
 		from: `"NCCI 2025" <${process.env.SMTP_USER}>`,
 		to,
+		cc: "kucc@ku.edu.np",
 		subject: "NCCI 2025 - Registration Confirmation",
 		html: `
 			<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
