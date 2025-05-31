@@ -1,5 +1,5 @@
 import { InferSelectModel } from "drizzle-orm";
-import { themes } from "./db/schema";
+import { papers, themes } from "./db/schema";
 
 type Theme = InferSelectModel<typeof themes>
 
@@ -21,3 +21,5 @@ type SubmissionData = {
 	trackType: string;
 	theme: string;
 };
+
+type Paper = InferSelectModel<typeof papers>

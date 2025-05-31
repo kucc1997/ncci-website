@@ -11,35 +11,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Badge } from "@/components/ui/badge"
 import { FileText, ChevronRight, Download } from "lucide-react"
 import { getPapers } from "@/lib/api/papers"
-
-// Map theme codes to full names
-const themeMap: Record<string, string> = {
-	ai: "Artificial Intelligence",
-	ml: "Machine Learning",
-	ds: "Data Science",
-	cs: "Cybersecurity",
-	cc: "Cloud Computing",
-	iot: "Internet of Things",
-	bc: "Blockchain Technology",
-	cv: "Computer Vision",
-	nlp: "Natural Language Processing",
-	hci: "Human-Computer Interaction",
-	se: "Software Engineering",
-	cn: "Computer Networks",
-}
-
-interface Paper {
-	id: string
-	title: string
-	abstract: string
-	keywords: string[]
-	submissionId: string
-	status: string
-	submissionDate: string
-	trackType: string
-	themeId: string
-	fileUrl: string
-}
+import { PaperWithTheme as Paper } from "@/app"
 
 export default function Papers() {
 	const { status } = useSession()
@@ -48,6 +20,9 @@ export default function Papers() {
 	const [error, setError] = useState<string | null>(null)
 
 	useEffect(() => {
+		let papers: Paper[] = []
+		let paperFetchSuccess = false
+
 		const fetchPapers = async () => {
 			if (status !== "authenticated") return
 
@@ -57,19 +32,23 @@ export default function Papers() {
 			try {
 				const response = await getPapers()
 				if (response.success) {
-					setPapers(response.data)
+					papers = response.data
+					paperFetchSuccess = true
 				} else {
 					setError(response.data || "Failed to fetch papers")
 				}
 			} catch (error) {
 				console.error("Error fetching papers:", error)
 				setError("Failed to fetch papers")
-			} finally {
-				setLoading(false)
 			}
 		}
-
-		fetchPapers()
+		(async function() {
+			await fetchPapers()
+			if (!paperFetchSuccess) {
+				setLoading(false)
+				return
+			}
+		})()
 	}, [status])
 
 	if (status === "loading") {
@@ -155,7 +134,7 @@ export default function Papers() {
 									<div>
 										<CardTitle className="text-xl">{paper.title}</CardTitle>
 										<CardDescription>
-											Submission ID: {paper.submissionId} | Submitted on: {new Date(paper.submissionDate || Date.now()).toLocaleDateString()}
+											Submission ID: {paper.submissionId} | Submitted on: {paper.submittedAt!.toLocaleDateString()}
 										</CardDescription>
 									</div>
 									<Badge
@@ -202,7 +181,7 @@ export default function Papers() {
 										</div>
 										<div>
 											<h3 className="text-sm font-medium mb-1">Theme</h3>
-											<p className="text-gray-700">{themeMap[paper.themeId] || paper.themeId}</p>
+											<p className="text-gray-700">{paper.theme.name}</p>
 										</div>
 									</div>
 								</div>

@@ -20,29 +20,14 @@ import {
 	AlertCircle,
 } from "lucide-react"
 import { getPaperById } from "@/lib/api/papers"
-
-// Map theme codes to full names
-const themeMap: Record<string, string> = {
-	ai: "Artificial Intelligence",
-	ml: "Machine Learning",
-	ds: "Data Science",
-	cs: "Cybersecurity",
-	cc: "Cloud Computing",
-	iot: "Internet of Things",
-	bc: "Blockchain Technology",
-	cv: "Computer Vision",
-	nlp: "Natural Language Processing",
-	hci: "Human-Computer Interaction",
-	se: "Software Engineering",
-	cn: "Computer Networks",
-}
+import { Paper } from "@/app"
 
 export default function PaperDetails() {
 	const { status } = useSession()
 	const params = useParams()
 	const { submissionId } = params
 
-	const [paper, setPaper] = useState<any | null>(null)
+	const [paper, setPaper] = useState<Paper | null>(null)
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState<string | null>(null)
 
@@ -219,7 +204,7 @@ export default function PaperDetails() {
 										<User className="h-5 w-5 text-blue-600 mt-0.5" />
 										<div>
 											<h3 className="font-medium">Theme</h3>
-											<p className="text-gray-700">{themeMap[paper.themeId] || paper.themeId}</p>
+											<p className="text-gray-700">{paper.theme.name}</p>
 										</div>
 									</div>
 
