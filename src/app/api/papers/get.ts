@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import { coAuthors, db, papers, users } from "@/db/schema";
+import { coAuthors, db, papers, themes, users } from "@/db/schema";
 import { eq, InferSelectModel } from "drizzle-orm";
 
 export default async function GET() {
@@ -37,8 +37,27 @@ export default async function GET() {
 		allPapers.push(paperAndCoauthors.papers)
 	}
 
+	const allPapersWithThemes = []
+
+	// Add themes to papers
+	for (const paper of allPapers) {
+		const themeArr = await db.select().from(themes)
+			.where(eq(themes.id, paper.themeId || ""))
+
+		const theme = themeArr[0]
+
+		if (!theme) {
+			return Response.json({
+				success: false,
+				data: "Failed to find theme for paper " + paper.title
+			}, { status: 404 })
+		}
+
+		allPapersWithThemes.push({ ...paper, theme })
+	}
+
 	return Response.json({
 		success: true,
-		data: allPapers
+		data: allPapersWithThemes
 	})
 }

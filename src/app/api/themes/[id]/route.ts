@@ -20,5 +20,5 @@ export async function GET(
 	return Response.json({
 		success: false,
 		data: "Theme not found."
-	})
+	}, { status: 404 })
 }

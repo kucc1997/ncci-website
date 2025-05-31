@@ -20,9 +20,6 @@ export default function Papers() {
 	const [error, setError] = useState<string | null>(null)
 
 	useEffect(() => {
-		let papers: Paper[] = []
-		let paperFetchSuccess = false
-
 		const fetchPapers = async () => {
 			if (status !== "authenticated") return
 
@@ -32,23 +29,19 @@ export default function Papers() {
 			try {
 				const response = await getPapers()
 				if (response.success) {
-					papers = response.data
-					paperFetchSuccess = true
+					setPapers(response.data)
 				} else {
 					setError(response.data || "Failed to fetch papers")
 				}
 			} catch (error) {
 				console.error("Error fetching papers:", error)
 				setError("Failed to fetch papers")
+			} finally {
+				setLoading(false)
 			}
 		}
-		(async function() {
-			await fetchPapers()
-			if (!paperFetchSuccess) {
-				setLoading(false)
-				return
-			}
-		})()
+
+		fetchPapers()
 	}, [status])
 
 	if (status === "loading") {
@@ -134,7 +127,7 @@ export default function Papers() {
 									<div>
 										<CardTitle className="text-xl">{paper.title}</CardTitle>
 										<CardDescription>
-											Submission ID: {paper.submissionId} | Submitted on: {paper.submittedAt!.toLocaleDateString()}
+											Submission ID: {paper.submissionId} | Submitted on: {new Date(paper.submittedAt).toLocaleDateString()}
 										</CardDescription>
 									</div>
 									<Badge
