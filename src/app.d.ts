@@ -23,3 +23,8 @@ type SubmissionData = {
 };
 
 type Paper = InferSelectModel<typeof papers>
+
+type PaperUnFlat = PaperDb & { theme: Theme }
+type PaperWithTheme = {
+	[key in keyof PaperUnFlat]: PaperUnFlat[key]
+}
