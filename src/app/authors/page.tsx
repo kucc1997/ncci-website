@@ -130,8 +130,7 @@ export default function AuthorsPage() {
 
 							<div className="flex justify-center">
 								<Button size="lg" className="mt-4">
-									{/* <Link href="/register">Submit Your Paper</Link> */}
-									Submissions will start from June 1st!
+									<Link href="/register">Submit Your Paper</Link>
 								</Button>
 							</div>
 						</CardContent>
