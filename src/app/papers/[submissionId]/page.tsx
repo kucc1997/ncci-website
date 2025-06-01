@@ -20,7 +20,7 @@ import {
 	AlertCircle,
 } from "lucide-react"
 import { getPaperById } from "@/lib/api/papers"
-import { Paper } from "@/app"
+import { PaperWithTheme as Paper } from "@/app"
 
 export default function PaperDetails() {
 	const { status } = useSession()
@@ -187,7 +187,7 @@ export default function PaperDetails() {
 										<div>
 											<h3 className="font-medium">Submission Date</h3>
 											<p className="text-gray-700">
-												{new Date(paper.createdAt || Date.now()).toLocaleDateString()}
+												{new Date(paper.submittedAt || Date.now()).toLocaleDateString()}
 											</p>
 										</div>
 									</div>

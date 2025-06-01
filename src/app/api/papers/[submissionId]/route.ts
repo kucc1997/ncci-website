@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import { coAuthors, db, papers, users } from "@/db/schema";
+import { coAuthors, db, papers, themes, users } from "@/db/schema";
 import { eq, and } from "drizzle-orm";
 
 export async function GET(
@@ -20,10 +20,12 @@ export async function GET(
 	const paperWithAuthor = await db
 		.select({
 			paper: papers,
-			author: users
+			author: users,
+			theme: themes,
 		})
 		.from(papers)
 		.innerJoin(users, eq(papers.authorId, users.id))
+		.innerJoin(themes, eq(papers.themeId, themes.id))
 		.where(eq(papers.submissionId, submissionId));
 
 	if (paperWithAuthor.length === 0) {
@@ -69,7 +71,8 @@ export async function GET(
 		data: {
 			...paper.paper,
 			author: paper.author,
-			coAuthors: paperCoAuthors
+			theme: paper.theme,
+			coAuthors: paperCoAuthors,
 		}
 	});
 }

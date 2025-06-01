@@ -1,5 +1,5 @@
 import { InferSelectModel } from "drizzle-orm";
-import { papers, themes } from "./db/schema";
+import { coAuthors, papers, themes, users } from "./db/schema";
 
 type Theme = InferSelectModel<typeof themes>
 
@@ -24,7 +24,14 @@ type SubmissionData = {
 
 type Paper = InferSelectModel<typeof papers>
 
-type PaperUnFlat = PaperDb & { theme: Theme }
+type PaperWithThemeUnFlat = PaperDb & { theme: Theme }
 type PaperWithTheme = {
-	[key in keyof PaperUnFlat]: PaperUnFlat[key]
+	[key in keyof PaperWithThemeUnFlat]: PaperWithThemeUnFlat[key]
+}
+type PaperWithAuthorsUnFlat = PaperWithTheme & {
+	author: InferSelectModel<typeof users>;
+	coAuthors: InferSelectModel<typeof coAuthors>;
+}
+type PaperWithAuthors = {
+	[key in keyof PaperWithAuthorsUnFlat]: PaperWithAuthorsUnFlat[key]
 }
