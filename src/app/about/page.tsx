@@ -181,7 +181,7 @@ export default function AboutPage() {
 						asChild
 						size="lg"
 						variant="outline"
-						className="border-white text-white hover:bg-white/10"
+						className="border-white text-white hover:bg-white/90 bg-transparent"
 					>
 						<Link href="/authors">Submit Paper</Link>
 					</Button>
