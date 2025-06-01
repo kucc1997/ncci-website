@@ -43,22 +43,6 @@ export async function POST(req: Request) {
 			)
 		}
 
-		// Check if email already exists
-		const existingRegistration = await db
-			.select()
-			.from(registrations)
-			.where(eq(registrations.email, email))
-
-		if (existingRegistration.length > 0) {
-			return NextResponse.json(
-				{
-					success: false,
-					data: "Email already registered"
-				},
-				{ status: 400 }
-			)
-		}
-
 		// Generate unique registration ID
 		let registrationId = generateRegistrationId()
 		let isUnique = false

@@ -36,6 +36,13 @@
       "when": 1748117252428,
       "tag": "0004_low_talon",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1748738013349,
+      "tag": "0005_ordinary_prima",
+      "breakpoints": true
     }
   ]
 }

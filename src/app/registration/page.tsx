@@ -35,6 +35,7 @@ export default function RegistrationPage() {
 
 	const [paymentVoucher, setPaymentVoucher] = useState<File | null>(null)
 	const [registrationId, setRegistrationId] = useState("")
+	const [isSubmitting, setIsSubmitting] = useState(false)
 
 	// Check if early registration (before August 5th midnight NPT)
 	const isEarlyRegistration = useMemo(() => {
@@ -121,6 +122,7 @@ export default function RegistrationPage() {
 	}
 
 	const handleSubmit = async (e: React.FormEvent) => {
+		setIsSubmitting(true)
 		e.preventDefault()
 
 		if (!formData.termsAccepted) {
@@ -165,6 +167,8 @@ export default function RegistrationPage() {
 			} else {
 				toast.error("An error occurred while submitting your registration. Please try again.")
 			}
+		} finally {
+			setIsSubmitting(false)
 		}
 	}
 
@@ -629,8 +633,8 @@ export default function RegistrationPage() {
 							</Label>
 						</div>
 
-						<Button type="submit" className="w-full" size="lg">
-							Complete Registration
+						<Button type="submit" className="w-full hover:opacity-90 cursor-pointer" size="lg">
+							{isSubmitting ? "Registering..." : "Complete Registration"}
 						</Button>
 					</form>
 				</CardContent>
