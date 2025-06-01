@@ -177,19 +177,23 @@ export default function Home() {
 						brightest minds in computer science.
 					</p>
 					<div className="flex flex-wrap justify-center gap-4">
-						<Button
-							size="lg"
-							className="bg-white text-blue-800 hover:bg-gray-100"
-						>
-							Register Now
-						</Button>
-						<Button
-							size="lg"
-							variant="outline"
-							className="border-white text-white bg-transparent hover:bg-white/10"
-						>
-							Submit Paper
-						</Button>
+						<Link href='/registration'>
+							<Button
+								size="lg"
+								className="bg-white text-blue-800 hover:bg-gray-100"
+							>
+								Register Now
+							</Button>
+						</Link>
+						<Link href='/papers'>
+							<Button
+								size="lg"
+								variant="outline"
+								className="border-white text-white hover:text-black bg-transparent hover:bg-white/90"
+							>
+								Submit Paper
+							</Button>
+						</Link>
 					</div>
 				</div>
 			</section>
