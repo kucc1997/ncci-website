@@ -6,8 +6,8 @@ const transporter = nodemailer.createTransport({
 	port: Number(process.env.SMTP_PORT),
 	secure: process.env.SMTP_SECURE === "true",
 	auth: {
-		user: process.env.SMTP_USER,
-		pass: process.env.SMTP_PASS,
+		user: process.env.EMAIL_USER,
+		pass: process.env.EMAIL_PASS,
 	},
 })
 
@@ -29,9 +29,8 @@ export async function sendRegistrationEmail({
 	tier,
 }: SendRegistrationEmailParams) {
 	const mailOptions = {
-		from: `"NCCI 2025" <${process.env.SMTP_USER}>`,
+		from: `"NCCI 2025" <${process.env.EMAIL_USER}>`,
 		to,
-		cc: "kucc@ku.edu.np",
 		subject: "NCCI 2025 - Registration Confirmation",
 		html: `
 			<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
