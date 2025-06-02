@@ -11,7 +11,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 		Google({
 			clientId: process.env.GOOGLE_CLIENT_ID!,
 			clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-		}),
+		})
+
 	],
 	trustHost: true,
 	callbacks: {
@@ -35,6 +36,26 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
 			return true;
 		},
+		async jwt({ token, user }) {
+			if (user?.email) {
+				const dbUser = await db
+					.select()
+					.from(users)
+					.where(eq(users.email, user.email))
+					.then(rows => rows[0]);
+
+				if (dbUser) {
+					token.role = dbUser.role;
+				}
+			}
+			return token;
+		},
+		async session({ session, token }) {
+			if (session.user) {
+				session.user.role = token.role;
+			}
+			return session;
+		}
 	},
 	secret: process.env.NEXTAUTH_SECRET,
 });
