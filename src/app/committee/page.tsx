@@ -103,6 +103,44 @@ export default function CommitteePage() {
 						</div>
 					</div>
 
+					{/* Technical Program Committee */}
+					<div className="my-12">
+						<h3 className="text-3xl font-semibold mb-6 text-center">
+							Technical Program Committee
+						</h3>
+					</div>
+					<div className="flex flex-col sm:flex-row gap-12 justify-center mb-12">
+						<div className="text-center sm:max-w-xs">
+							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+								<Image
+									src="/oc/BikashNakarmi.webp"
+									alt="Dr. Bikash Nakarmi"
+									fill
+									className="object-cover"
+									style={{ objectPosition: 'top' }}
+								/>
+							</div>
+							<h3 className="text-xl font-semibold">Dr. Bikash Nakarmi</h3>
+							<p className="text-gray-600">Professor</p>
+							<p className="text-gray-600 max-w-50">College of Electronic and Information Engineering</p>
+							<p className="text-gray-600">NUAA, China</p>
+						</div>
+						<div className="text-center sm:max-w-xs">
+							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+								<Image
+									src="/oc/BasantaJoshi.webp"
+									alt="Dr. Basanta Joshi"
+									fill
+									className="object-cover"
+									style={{ objectPosition: 'center' }}
+								/>
+							</div>
+							<h3 className="text-xl font-semibold">Dr. Basanta Joshi</h3>
+							<p className="text-gray-600">Assistant Professor</p>
+							<p className="text-gray-600 max-w-60">Department of Electronics and Computer Engineering</p>
+							<p className="text-gray-600">Pulchowk Campus </p>
+						</div>
+					</div>
 
 					{/* Technical Coordinator */}
 					<div className="mb-12">
@@ -144,12 +182,11 @@ export default function CommitteePage() {
 									/>
 								</div>
 								<h3 className="text-xl font-semibold">Abhiyan Dhakal</h3>
-								<p className="text-gray-600">President</p>
-								<p className="text-gray-600">Kathmandu University Computer Club</p>
+								<p className="text-gray-600">Student</p>
+								<p className="text-gray-600">KU, DoCSE</p>
 							</div>
 						</div>
 					</div>
-
 
 					{/* Conference Secretary */}
 					<div className="mb-12">
@@ -168,8 +205,8 @@ export default function CommitteePage() {
 									/>
 								</div>
 								<h3 className="text-xl font-semibold">Mukul Aryal</h3>
-								<p className="text-gray-600">General Secretary</p>
-								<p className="text-gray-600">Kathmandu University Computer Club</p>
+								<p className="text-gray-600">Student</p>
+								<p className="text-gray-600">KU, DoCSE</p>
 							</div>
 						</div>
 					</div>
@@ -191,167 +228,236 @@ export default function CommitteePage() {
 									/>
 								</div>
 								<h3 className="text-xl font-semibold">Suyog Ghimire</h3>
-								<p className="text-gray-600">Treasurer</p>
-								<p className="text-gray-600">Kathmandu University Computer Club</p>
+								<p className="text-gray-600">Student</p>
+								<p className="text-gray-600">KU, DoCSE</p>
 							</div>
 						</div>
 					</div>
-					{/* <div className="mb-16"> */}
-					{/* 	<h3 className="text-3xl font-semibold mb-6 text-center"> */}
-					{/* 		Student Committee */}
-					{/* 	</h3> */}
+					<div className="mb-16">
 
-					{/* Technical Committee */}
-					{/* <div className="mb-12"> */}
-					{/* 	<h3 className="text-xl font-semibold mb-6 text-center"> */}
-					{/* 		Technical Committee */}
-					{/* 	</h3> */}
-					{/* 	<div className="flex justify-center"> */}
-					{/* 		{[ */}
-					{/* 			{ */}
-					{/* 				name: "Ashwini Subedi", */}
-					{/* 				position: "Coordinator", */}
-					{/* 				affiliation: "KUOSC", */}
-					{/* 				image: "/oc/Ashwini.webp" */}
-					{/* 			}, */}
-					{/* 		].map((member, index) => ( */}
-					{/* 			<div key={index} className="text-center max-w-xs"> */}
-					{/* 				<div className="relative w-28 h-28 mx-auto mb-3 rounded-full overflow-hidden border-4 border-blue-100"> */}
-					{/* 					<Image */}
-					{/* 						src={member.image} */}
-					{/* 						alt={member.name} */}
-					{/* 						fill */}
-					{/* 						className="object-cover" */}
-					{/* 						style={{ objectPosition: 'center' }} */}
-					{/* 					/> */}
-					{/* 				</div> */}
-					{/* 				<h3 className="text-lg font-semibold">{member.name}</h3> */}
-					{/* 				<p className="text-gray-600">{member.position}</p> */}
-					{/* 				<p className="text-gray-600">{member.affiliation}</p> */}
-					{/* 			</div> */}
-					{/* 		))} */}
-					{/* 	</div> */}
-					{/* </div> */}
-					{/* Logistics Committee */}
-					{/* <div className="mb-12"> */}
-					{/* 	<h3 className="text-xl font-semibold mb-6 text-center"> */}
-					{/* 		Logistics Committee */}
-					{/* 	</h3> */}
-					{/* 	<div className="flex justify-center"> */}
-					{/* 		{[ */}
-					{/* 			{ */}
-					{/* 				name: "Saroj Sigdel", */}
-					{/* 				position: "Vice President", */}
-					{/* 				affiliation: "Kathmandu University Computer Club", */}
-					{/* 				image: "/oc/SarojSigdel.webp" */}
-					{/* 			}, */}
-					{/* 		].map((member, index) => ( */}
-					{/* 			<div key={index} className="text-center max-w-xs"> */}
-					{/* 				<div className="relative w-28 h-28 mx-auto mb-3 rounded-full overflow-hidden border-4 border-blue-100"> */}
-					{/* 					<Image */}
-					{/* 						src={member.image} */}
-					{/**/}
-					{/* 						alt={member.name} */}
-					{/* 						fill */}
-					{/* 						className="object-cover" */}
-					{/* 						style={{ objectPosition: 'center' }} */}
-					{/* 					/> */}
-					{/* 				</div> */}
-					{/* 				<h3 className="text-lg font-semibold">{member.name}</h3> */}
-					{/* 				<p className="text-gray-600">{member.position}</p> */}
-					{/* 				<p className="text-gray-600">{member.affiliation}</p> */}
-					{/* 			</div> */}
-					{/* 		))} */}
-					{/* 	</div> */}
-					{/* </div> */}
+						<div className="mb-12">
+							<h3 className="text-3xl font-semibold mb-6 text-center">
+								Web Development Committee
+							</h3>
+							<div className="flex justify-center">
+								{[
+									{
+										name: "Ashwini Subedi",
+										position: "Student",
+										affiliation: "KU, DoCSE",
+										image: "/oc/Ashwini.webp"
+									},
+								].map((member, index) => (
+									<div key={index} className="text-center max-w-xs">
+										<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+											<Image
+												src={member.image}
+												alt={member.name}
+												fill
+												className="object-cover"
+												style={{ objectPosition: 'center' }}
+											/>
+										</div>
+										<h3 className="text-xl font-semibold">{member.name}</h3>
+										<p className="text-gray-600">{member.position}</p>
+										<p className="text-gray-600 max-w-50">{member.affiliation}</p>
+									</div>
+								))}
+							</div>
+						</div>
+						<div className="mb-12">
+							<h3 className="text-3xl font-semibold mb-6 text-center">
+								Logistics Committee
+							</h3>
+							<div className="flex justify-center">
+								{[
+									{
+										name: "Saroj Sigdel",
+										position: "Student",
+										affiliation: "KU, DoCSE",
+										image: "/oc/SarojSigdel.webp"
+									},
+								].map((member, index) => (
+									<div key={index} className="text-center max-w-xs">
+										<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+											<Image
+												src={member.image}
+												alt={member.name}
+												fill
+												className="object-cover"
+												style={{ objectPosition: 'center' }}
+											/>
+										</div>
+										<h3 className="text-xl font-semibold">{member.name}</h3>
+										<p className="text-gray-600">{member.position}</p>
+										<p className="text-gray-600">{member.affiliation}</p>
+									</div>
+								))}
+							</div>
+						</div>
 
+						<div className="mb-12">
+							<h3 className="text-3xl font-semibold mb-6 text-center">
+								Design Committee
+							</h3>
+							<div className="flex justify-center gap-12">
+								{[
+									{
+										name: "Avipsa Hamo",
+										position: "Committee Head",
+										affiliation: "Student, KU DoCSE",
+										image: "/oc/AvipsaHamo.webp"
+									},
+									{
+										name: "Sakshi KC",
+										position: "Member",
+										affiliation: "Student, KU DoCSE",
+										image: "/oc/SakshiKC.webp"
+									},
+								].map((member, index) => (
+									<div key={index} className="text-center max-w-xs">
+										<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+											<Image
+												src={member.image}
+												alt={member.name}
+												fill
+												className="object-cover"
+												style={{ objectPosition: 'center' }}
+											/>
+										</div>
+										<h3 className="text-xl font-semibold">{member.name}</h3>
+										<p className="text-gray-600">{member.position}</p>
+										<p className="text-gray-600 max-w-50 mx-auto">{member.affiliation}</p>
+									</div>
+								))}
+							</div>
+						</div>
+						<div className="mb-12">
+							<h3 className="text-3xl font-semibold mb-6 text-center">
+								Digital Marketing Committee
+							</h3>
+							<div className="flex justify-center gap-12">
+								{[
+									{
+										name: "Aakriti Pandey",
+										position: "Committee Head",
+										affiliation: "Student, KU DoCSE",
+										image: "/oc/AakritiPandey.webp"
+									},
+									{
+										name: "Aatmiyata Pokhrel",
+										position: "Member",
+										affiliation: "Student, KU DoCSE",
+										image: "/oc/AatmiyataPokhrel.webp"
+									},
+								].map((member, index) => (
+									<div key={index} className="text-center max-w-xs">
+										<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+											<Image
+												src={member.image}
+												alt={member.name}
+												fill
+												className="object-cover"
+												style={{ objectPosition: 'center' }}
+											/>
+										</div>
+										<h3 className="text-xl font-semibold">{member.name}</h3>
+										<p className="text-gray-600">{member.position}</p>
+										<p className="text-gray-600 max-w-50 mx-auto">{member.affiliation}</p>
+									</div>
+								))}
+							</div>
+						</div>
 
+						<div className="mb-12">
+							<h3 className="text-3xl font-semibold mb-6 text-center">
+								Physical Marketing Committee
+							</h3>
+							<div className="flex justify-center gap-12">
+								{[
+									{
+										name: "Kiran Dahal",
+										position: "Committee Head",
+										affiliation: "Student, KU DoCSE",
+										image: "/oc/KiranDahal.webp"
+									},
+									{
+										name: "Abhinav Bhatt",
+										position: "Member",
+										affiliation: "Student, KU DoCSE",
+										image: "/oc/AbhinavBhatt.webp"
+									},
+									{
+										name: "Sameer singh",
+										position: "Member",
+										affiliation: "Student, KU DoCSE",
+										image: "/oc/SameerSingh.webp"
+									},
+								].map((member, index) => (
+									<div key={index} className="text-center max-w-xs">
+										<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+											<Image
+												src={member.image}
+												alt={member.name}
+												fill
+												className="object-cover"
+												style={{ objectPosition: 'center' }}
+											/>
+										</div>
+										<h3 className="text-xl font-semibold">{member.name}</h3>
+										<p className="text-gray-600">{member.position}</p>
+										<p className="text-gray-600 max-w-50 mx-auto">{member.affiliation}</p>
+									</div>
+								))}
+							</div>
+						</div>
+						<div className="mb-12">
+							<h3 className="text-3xl font-semibold mb-6 text-center">
+								Sponsorship Committee
+							</h3>
+							<div className="flex justify-center gap-12">
+								{[
+									{
+										name: "Lawan Poudyal",
+										position: "Committee Head",
+										affiliation: "Student, KU DoCSE",
+										image: "/oc/LawanPoudyal.webp"
+									},
+									{
+										name: "Bishist Bikram Pant",
+										position: "Member",
+										affiliation: "Student, KU DoCSE",
+										image: "/oc/BishistBPant.webp"
+									},
+									{
+										name: "Nischal Subedi",
+										position: "Member",
+										affiliation: "Student, KU DoCSE",
+										image: "/oc/NischalSubedi.webp"
+									},
+								].map((member, index) => (
+									<div key={index} className="text-center max-w-xs">
+										<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+											<Image
+												src={member.image}
+												alt={member.name}
+												fill
+												className="object-cover"
+												style={{ objectPosition: 'center' }}
+											/>
+										</div>
+										<h3 className="text-xl font-semibold">{member.name}</h3>
+										<p className="text-gray-600">{member.position}</p>
+										<p className="text-gray-600 max-w-50 mx-auto">{member.affiliation}</p>
+									</div>
+								))}
+							</div>
+						</div>
 
-					{/* Design Committee  */}
-					{/* <div className="mb-12"> */}
-					{/* 	<h3 className="text-xl font-semibold mb-6 text-center"> */}
-					{/* 		Design Committee */}
-					{/* 	</h3> */}
-					{/* 	<div className="flex justify-center gap-10"> */}
-					{/* 		{[ */}
-					{/* 			{ */}
-					{/* 				name: "Avipsa Hamo", */}
-					{/* 				position: "Design Coordinator", */}
-					{/* 				affiliation: "Kathmandu University Computer Club", */}
-					{/* 			}, */}
-					{/* 			{ */}
-					{/* 				name: "Sakshi KC", */}
-					{/* 				position: "Club Secretary", */}
-					{/* 				affiliation: "Kathmandu University Computer Club", */}
-					{/* 			}, */}
-					{/* 		].map((member, index) => ( */}
-					{/* 			<div key={index} className="text-center max-w-xs"> */}
-					{/* 				<div className="relative w-28 h-28 mx-auto mb-3 rounded-full overflow-hidden border-4 border-blue-100"> */}
-					{/* 					<Image */}
-					{/* 						src={`/placeholder.svg?height=280&width=280&text=${index + 1}`} */}
-					{/* 						alt={member.name} */}
-					{/* 						fill */}
-					{/* 						className="object-cover" */}
-					{/* 						style={{ objectPosition: 'center' }} */}
-					{/* 					/> */}
-					{/* 				</div> */}
-					{/* 				<h3 className="text-lg font-semibold">{member.name}</h3> */}
-					{/* 				<p className="text-gray-600">{member.position}</p> */}
-					{/* 				<p className="text-gray-600">{member.affiliation}</p> */}
-					{/* 			</div> */}
-					{/* 		))} */}
-					{/* 	</div> */}
-					{/* </div> */}
-					{/* Marketing Committee */}
-					{/* 	<div className="mb-12"> */}
-					{/* 		<h3 className="text-xl font-semibold mb-6 text-center"> */}
-					{/* 			Marketing Committee */}
-					{/* 		</h3> */}
-					{/* 		<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center"> */}
-					{/* 			{[ */}
-					{/* 				{ */}
-					{/* 					name: "Aakriti Pandey", */}
-					{/* 					position: "Committee Chair", */}
-					{/* 					affiliation: "Kathmandu University", */}
-					{/* 				}, */}
-					{/* 				{ */}
-					{/* 					name: "Aatmiyata ", */}
-					{/* 					position: "Member", */}
-					{/* 					affiliation: "Kathmandu University", */}
-					{/* 				}, */}
-					{/* 				{ */}
-					{/* 					name: "Dr. Jessica Rodriguez", */}
-					{/* 					position: "Member", */}
-					{/* 					affiliation: "Kathmandu University", */}
-					{/* 				}, */}
-					{/* 				{ */}
-					{/* 					name: "Dr. Kevin Anderson", */}
-					{/* 					position: "Member", */}
-					{/* 					affiliation: "Kathmandu University", */}
-					{/* 				}, */}
-					{/* 			].map((member, index) => ( */}
-					{/* 				<div key={index} className="text-center max-w-xs"> */}
-					{/* 					<div className="relative w-28 h-28 mx-auto mb-3 rounded-full overflow-hidden border-4 border-blue-100"> */}
-					{/* 						<Image */}
-					{/* 							src={`/placeholder.svg?height=280&width=280&text=${index + 1}`} */}
-					{/* 							alt={member.name} */}
-					{/* 							fill */}
-					{/* 							className="object-cover" */}
-					{/* 							style={{ objectPosition: 'center' }} */}
-					{/* 						/> */}
-					{/* 					</div> */}
-					{/* 					<h3 className="text-lg font-semibold">{member.name}</h3> */}
-					{/* 					<p className="text-gray-600">{member.position}</p> */}
-					{/* 					<p className="text-gray-600">{member.affiliation}</p> */}
-					{/* 				</div> */}
-					{/* 			))} */}
-					{/* 		</div> */}
-					{/* 	</div> */}
-					{/**/}
-					{/* </div> */}
+					</div>
 				</div>
 			</div>
-		</div >
+		</div>
 	);
 }
 
