@@ -79,6 +79,27 @@ export default function CommitteePage() {
 						</div>
 					</div>
 
+					{/* Publication Chair */}
+					<h3 className="text-3xl font-semibold mb-6 text-center">
+						Publication Chair
+					</h3>
+					<div className="flex justify-center">
+						<div className="text-center max-w-xs mb-12">
+							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+								<Image
+									src="/oc/GajendraSharma.jpg"
+									alt="Gajendra Sharma, PhD."
+									fill
+									className="object-cover"
+									style={{ objectPosition: 'center' }}
+								/>
+							</div>
+							<h3 className="text-xl font-semibold">Gajendra Sharma, PhD.</h3>
+							<p className="text-gray-600">Professor of Computer Engineering</p>
+							<p className="text-gray-600">Department of Computer Science and Engineering, Kathmandu University</p>
+						</div>
+					</div>
+
 					{/* Convener */}
 					<div className="mb-12">
 						<h3 className="text-3xl font-semibold mb-6 text-center">
