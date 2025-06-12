@@ -264,9 +264,15 @@ export default function CommitteePage() {
 								{[
 									{
 										name: "Ashwini Subedi",
-										position: "Student",
+										position: "Committee Head",
 										affiliation: "KU, DoCSE",
 										image: "/oc/Ashwini.webp"
+									},
+									{
+										name: "Shreejan Prasad Karmacharya",
+										position: "Member",
+										affiliation: "KU, DoCSE",
+										image: "/oc/ShreejanKarmacharya.webp"
 									},
 								].map((member, index) => (
 									<div key={index} className="text-center max-w-xs">
@@ -334,6 +340,24 @@ export default function CommitteePage() {
 										position: "Member",
 										affiliation: "Student, KU DoCSE",
 										image: "/oc/SakshiKC.webp"
+									},
+									{
+										name: "Prabal Shakya",
+										position: "Member",
+										affiliation: "Student, KU DoCSE",
+										image: "/oc/PrabalShakya.webp"
+									},
+									{
+										name: "Subhechha Karki",
+										position: "Member",
+										affiliation: "Student, KU DoCSE",
+										image: "/oc/SubhechhaKarki.webp"
+									},
+									{
+										name: "Shubham Sharma",
+										position: "Member",
+										affiliation: "Student, KU DoCSE",
+										image: "/oc/ShubhamSharma.webp"
 									},
 								].map((member, index) => (
 									<div key={index} className="text-center max-w-xs">
