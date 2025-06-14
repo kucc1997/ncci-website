@@ -161,6 +161,21 @@ export default function CommitteePage() {
 							<p className="text-gray-600 max-w-60">Department of Electronics and Computer Engineering</p>
 							<p className="text-gray-600">Pulchowk Campus </p>
 						</div>
+						<div className="text-center sm:max-w-xs">
+							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+								<Image
+									src="/oc/AmanShakya.webp"
+									alt="Aman Shakya, PhD"
+									fill
+									className="object-cover"
+									style={{ objectPosition: 'center' }}
+								/>
+							</div>
+							<h3 className="text-xl font-semibold">Aman Shakya, PhD</h3>
+							<p className="text-gray-600">Assistant Professor</p>
+							<p className="text-gray-600 max-w-60">Department of Electronics and Computer Engineering</p>
+							<p className="text-gray-600">Pulchowk Campus </p>
+						</div>
 					</div>
 
 					{/* Technical Coordinator */}
@@ -285,7 +300,7 @@ export default function CommitteePage() {
 												style={{ objectPosition: 'center' }}
 											/>
 										</div>
-										<h3 className="text-xl font-semibold">{member.name}</h3>
+										<h3 className="text-xl font-semibold max-w-50">{member.name}</h3>
 										<p className="text-gray-600">{member.position}</p>
 										<p className="text-gray-600 max-w-50">{member.affiliation}</p>
 									</div>
@@ -437,6 +452,12 @@ export default function CommitteePage() {
 										position: "Member",
 										affiliation: "Student, KU DoCSE",
 										image: "/oc/SameerSingh.webp"
+									},
+									{
+										name: "Poshan karki",
+										position: "Member",
+										affiliation: "Student, KU DoCSE",
+										image: "/oc/Poshankarki.webp"
 									},
 								].map((member, index) => (
 									<div key={index} className="text-center max-w-xs">
