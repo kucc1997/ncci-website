@@ -19,7 +19,7 @@ export default function Home() {
 			<section className="relative w-full h-[80vh] flex items-center justify-center overflow-hidden">
 				<div className="absolute inset-0 bg-[var(--bg-accent)]/80 z-10" />
 				<div
-					className="absolute inset-0 bg-cover bg-center bg-[url('/ku.png')]"
+					className="absolute inset-0 bg-cover bg-center bg-[url('/ku.webp')]"
 					style={{ filter: "blur(1px)" }}
 				/>
 				<div className="container relative z-20 text-center px-4 md:px-6">
@@ -33,7 +33,7 @@ export default function Home() {
 					</div>
 					<h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
 						National Conference on{" "}
-						<span className="text-[var(--bg-accent2-dark)]">Computer Innovations</span>
+						<span className="text-[var(--bg-secondary)]">Computer Innovations</span>
 					</h1>
 					<p className="text-xl md:text-2xl text-white/90 mb-6">
 						Exploring the Future of Technology and Innovation
