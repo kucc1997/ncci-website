@@ -40,10 +40,10 @@ export default function CommitteePage() {
 						</div>
 					</div>
 
-					{/* Advisor */}
+					{/* Advisory Board */}
 					<div className="my-12">
 						<h3 className="text-3xl font-semibold mb-6 text-center">
-							Advisor
+							Advisory Board
 						</h3>
 					</div>
 					<div className="flex flex-col sm:flex-row gap-12 justify-center mb-12">
@@ -143,7 +143,7 @@ export default function CommitteePage() {
 							</div>
 							<h3 className="text-xl font-semibold">Dr. Bikash Nakarmi</h3>
 							<p className="text-gray-600">Professor</p>
-							<p className="text-gray-600 max-w-50">College of Electronic and Information Engineering</p>
+							<p className="text-gray-600 max-w-60">College of Electronic and Information Engineering</p>
 							<p className="text-gray-600">NUAA, China</p>
 						</div>
 						<div className="text-center sm:max-w-xs">
@@ -175,6 +175,36 @@ export default function CommitteePage() {
 							<p className="text-gray-600">Assistant Professor</p>
 							<p className="text-gray-600 max-w-60">Department of Electronics and Computer Engineering</p>
 							<p className="text-gray-600">Pulchowk Campus </p>
+						</div>
+						<div className="text-center sm:max-w-xs">
+							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+								<Image
+									src="/oc/ManojShakya.webp"
+									alt="Dr. Manoj Shakya"
+									fill
+									className="object-cover"
+									style={{ objectPosition: 'top' }}
+								/>
+							</div>
+							<h3 className="text-xl font-semibold">Dr. Manoj Shakya</h3>
+							<p className="text-gray-600">Assistant Professor</p>
+							<p className="text-gray-600 max-w-60">Department of Computer Science and Engineering</p>
+							<p className="text-gray-600">Kathmandu University</p>
+						</div>
+						<div className="text-center sm:max-w-xs">
+							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+								<Image
+									src="/oc/PrakashPoudyal.webp"
+									alt="Dr. Prakash Poudyal"
+									fill
+									className="object-cover"
+									style={{ objectPosition: 'top' }}
+								/>
+							</div>
+							<h3 className="text-xl font-semibold">Dr. Prakash Poudyal</h3>
+							<p className="text-gray-600">Assistant Professor</p>
+							<p className="text-gray-600">Researcher, ILPRL</p>
+							<p className="text-gray-600">Kathmandu University</p>
 						</div>
 					</div>
 
