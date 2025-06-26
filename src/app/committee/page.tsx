@@ -130,7 +130,8 @@ export default function CommitteePage() {
 							Technical Program Committee
 						</h3>
 					</div>
-					<div className="flex flex-col sm:flex-row gap-12 justify-center mb-12">
+					{/* First Row */}
+					<div className="flex flex-col sm:flex-row gap-12 justify-center mb-12 flex-wrap">
 						<div className="text-center sm:max-w-xs">
 							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
 								<Image
@@ -204,6 +205,21 @@ export default function CommitteePage() {
 							<h3 className="text-xl font-semibold">Dr. Prakash Poudyal</h3>
 							<p className="text-gray-600">Assistant Professor</p>
 							<p className="text-gray-600">Researcher, ILPRL</p>
+							<p className="text-gray-600">Kathmandu University</p>
+						</div>
+						<div className="text-center sm:max-w-xs">
+							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+								<Image
+									src="/oc/DhirajShrestha.webp"
+									alt="Dhiraj Shrestha"
+									fill
+									className="object-cover"
+									style={{ objectPosition: 'top' }}
+								/>
+							</div>
+							<h3 className="text-xl font-semibold">Dhiraj Shrestha</h3>
+							<p className="text-gray-600">Assistant Professor</p>
+							<p className="text-gray-600 max-w-60">Department of Computer Science and Engineering</p>
 							<p className="text-gray-600">Kathmandu University</p>
 						</div>
 					</div>
