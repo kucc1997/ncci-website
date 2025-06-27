@@ -28,15 +28,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 		<div className="min-h-screen bg-gray-50 flex">
 			{/* Sidebar */}
 			<div className={`fixed inset-y-0 left-0 z-50 w-full bg-white shadow-lg transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:inset-0 md:w-64`}>
-				{/* Sidebar Header */}
-				<div className="flex items-center justify-center h-16 bg-gradient-to-r from-blue-600 to-blue-700 px-4">
-					<div className="flex items-center space-x-3">
-						<div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full flex items-center justify-center">
-							<span className="text-white font-bold text-sm">NCCI</span>
-						</div>
-						<h1 className="text-white text-lg font-bold">Admin Portal</h1>
-					</div>
-				</div>
+				
 
 				{/* Navigation */}
 				<nav className="mt-8">
