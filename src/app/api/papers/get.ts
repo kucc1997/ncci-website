@@ -20,6 +20,24 @@ export default async function GET() {
 		}, { status: 401 })
 	}
 
+	if (user?.role === 'admin') {
+		const allPapers = await db.select().from(papers);
+		const allPapersWithThemesAndAuthors = [];
+		for (const paper of allPapers) {
+			const themeArr = await db.select().from(themes).where(eq(themes.id, paper.themeId || ""));
+			const authorArr = await db.select().from(users).where(eq(users.id, paper.authorId));
+			allPapersWithThemesAndAuthors.push({
+				...paper,
+				theme: themeArr[0] || null,
+				author: authorArr[0] || null,
+			});
+		}
+		return Response.json({
+			success: true,
+			data: allPapersWithThemesAndAuthors
+		});
+	}
+
 	const usersPaperFromDb = await db.select().from(papers)
 		.innerJoin(users, eq(papers.authorId, users.id))
 		.where(eq(users.email, user.email || ""));

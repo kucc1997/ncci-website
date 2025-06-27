@@ -131,3 +131,9 @@ export async function POST(req: Request) {
 		)
 	}
 }
+
+export async function GET() {
+	const allRegs = await db.select().from(registrations);
+	return NextResponse.json({ success: true, data: allRegs });
+}
+
