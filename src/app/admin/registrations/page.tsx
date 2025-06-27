@@ -21,7 +21,7 @@ export default function RegistrationsPage() {
 			setLoading(true)
 			setError(null)
 			try {
-				const response = await fetch('/api/registration/all')
+				const response = await fetch('/api/registration')
 				const result = await response.json()
 				if (!result.success) throw new Error(result.data)
 				setRegistrations(result.data.map((r: any) => ({
