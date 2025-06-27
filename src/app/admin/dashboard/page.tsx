@@ -1,10 +1,7 @@
 "use client"
-
-import { useSession } from "next-auth/react"
 import { useEffect, useState } from 'react'
 
 export default function AdminDashboard() {
-	const { data: session } = useSession()
 	const [stats, setStats] = useState<any[]>([])
 	const [recentActivity, setRecentActivity] = useState<any[]>([])
 	const [loading, setLoading] = useState(true)
