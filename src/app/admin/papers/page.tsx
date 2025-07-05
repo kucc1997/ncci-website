@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 
 interface Paper {
 	id: string
+	submissionId: string
 	title: string
 	author: string
 	theme: string
@@ -28,6 +29,7 @@ export default function PapersPage() {
 				if (!result.success) throw new Error(result.data)
 				setPapers(result.data.map((p: any) => ({
 					id: p.id,
+					submissionId: p.submissionId,
 					title: p.title,
 					author: p.author?.name || '',
 					theme: p.theme?.name || '',
@@ -97,6 +99,9 @@ export default function PapersPage() {
 						<thead className="bg-gray-50">
 							<tr>
 								<th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+									Submission ID
+								</th>
+								<th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
 									Title
 								</th>
 								<th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -119,6 +124,9 @@ export default function PapersPage() {
 						<tbody className="bg-white divide-y divide-gray-200">
 							{filteredPapers.map((paper) => (
 								<tr key={paper.id}>
+									<td className="px-6 py-4 text-sm font-medium text-gray-900">
+										<div className="max-w-xs truncate">{paper.submissionId}</div>
+									</td>
 									<td className="px-6 py-4 text-sm font-medium text-gray-900">
 										<div className="max-w-xs truncate">{paper.title}</div>
 									</td>
