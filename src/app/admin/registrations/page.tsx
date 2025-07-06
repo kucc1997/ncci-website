@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 
 interface Registration {
 	id: string
+	registrationId: string
 	name: string
 	email: string
 	organization: string
@@ -26,6 +27,7 @@ export default function RegistrationsPage() {
 				if (!result.success) throw new Error(result.data)
 				setRegistrations(result.data.map((r: any) => ({
 					id: r.id,
+					registrationId: r.registrationId,
 					name: r.firstName + ' ' + r.lastName,
 					email: r.email,
 					organization: r.institution,
@@ -72,6 +74,9 @@ export default function RegistrationsPage() {
 						<thead className="bg-gray-50">
 							<tr>
 								<th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+									Registration ID
+								</th>
+								<th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
 									Name
 								</th>
 								<th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -94,6 +99,9 @@ export default function RegistrationsPage() {
 						<tbody className="bg-white divide-y divide-gray-200">
 							{registrations.map((registration) => (
 								<tr key={registration.id}>
+									<td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+										{registration.registrationId}
+									</td>
 									<td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
 										{registration.name}
 									</td>

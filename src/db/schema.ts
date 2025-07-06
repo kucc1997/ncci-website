@@ -18,7 +18,7 @@ export const users = pgTable('user', {
 	name: text('name').notNull(),
 	email: text('email').notNull(),
 	password: text('password'),
-	role: text('role').default("user"),
+	role: text('role').default("user").notNull(),
 	profile_pic: text('profile_pic'),
 	createdAt: timestamp('created_at').defaultNow(),
 	orcid: text('orcid')
