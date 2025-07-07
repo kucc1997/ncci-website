@@ -413,6 +413,12 @@ export default function CommitteePage() {
 							</h3>
 							<div className="flex justify-center">
 								{[
+                  {
+                    name: "Shriharsh Sharma Acharya",
+                    position: "Member",
+                    affiliation: "KU, DoCSE",
+                    image: "/oc/Shriharsh.webp"
+                  },
 									{
 										name: "Ashwini Subedi",
 										position: "Committee Head",
