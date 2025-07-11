@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useState, useEffect } from 'react'
 
 interface Registration {
@@ -10,6 +11,7 @@ interface Registration {
 	organization: string
 	status: 'pending' | 'accepted' | 'rejected'
 	registrationDate: string
+	fileUrl: string
 }
 
 export default function RegistrationsPage() {
@@ -32,7 +34,8 @@ export default function RegistrationsPage() {
 					email: r.email,
 					organization: r.institution,
 					status: r.status,
-					registrationDate: r.createdAt ? new Date(r.createdAt).toISOString().slice(0, 10) : ''
+					registrationDate: r.createdAt ? new Date(r.createdAt).toISOString().slice(0, 10) : '',
+					fileUrl: r.paymentVoucherPath
 				})))
 			} catch (err) {
 				setError(err instanceof Error ? err.message : 'Failed to fetch registrations')
@@ -100,7 +103,7 @@ export default function RegistrationsPage() {
 							{registrations.map((registration) => (
 								<tr key={registration.id}>
 									<td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-										{registration.registrationId}
+										<Link className="max-w-xs truncate text-blue-900" href={registration.fileUrl}>{registration.registrationId}</Link>
 									</td>
 									<td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
 										{registration.name}

@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useState, useEffect } from 'react'
 
 interface Paper {
@@ -10,6 +11,7 @@ interface Paper {
 	theme: string
 	status: 'submitted' | 'under_review' | 'accepted' | 'rejected'
 	submissionDate: string
+	fileUrl: string
 }
 
 export default function PapersPage() {
@@ -34,6 +36,7 @@ export default function PapersPage() {
 					author: p.author?.name || '',
 					theme: p.theme?.name || '',
 					status: p.status,
+					fileUrl: p.fileUrl,
 					submissionDate: p.submittedAt ? new Date(p.submittedAt).toISOString().slice(0, 10) : ''
 				})))
 			} catch (err) {
@@ -124,8 +127,8 @@ export default function PapersPage() {
 						<tbody className="bg-white divide-y divide-gray-200">
 							{filteredPapers.map((paper) => (
 								<tr key={paper.id}>
-									<td className="px-6 py-4 text-sm font-medium text-gray-900">
-										<div className="max-w-xs truncate">{paper.submissionId}</div>
+									<td className="px-6 py-4 text-sm font-medium">
+										<Link className="max-w-xs truncate text-blue-900" href={paper.fileUrl}>{paper.submissionId}</Link>
 									</td>
 									<td className="px-6 py-4 text-sm font-medium text-gray-900">
 										<div className="max-w-xs truncate">{paper.title}</div>
