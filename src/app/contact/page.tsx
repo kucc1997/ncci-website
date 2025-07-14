@@ -271,7 +271,7 @@ export default function ContactPage() {
 							What is the deadline for paper submission?
 						</h3>
 						<p className="text-gray-700 mt-1">
-							The deadline for paper submission is June 30, 2025. Please refer
+							The deadline for paper submission is July 20, 2025. Please refer
 							to our{" "}
 							<Link href="/authors" className="text-[var(--bg-accent2)] hover:underline">
 								authors page
