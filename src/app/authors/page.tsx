@@ -53,7 +53,7 @@ export default function AuthorsPage() {
 										<CalendarDays className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">Paper Submission Deadline</h4>
-											<p className="text-gray-600">15<sup>th</sup> July 2025 11:59 PM NPT</p>
+											<p className="text-gray-600">20<sup>th</sup> July 2025 11:59 PM NPT</p>
 										</div>
 									</div>
 									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">

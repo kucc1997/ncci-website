@@ -41,7 +41,7 @@ export default function TimelinePage() {
 								<CardContent>
 									<div className="flex items-center gap-2 text-gray-600 mb-2">
 										<Calendar1 className="h-4 w-4" />
-										<span>1<sup>st</sup> June 2025 - 15<sup>th</sup> July 2025</span>
+										<span>1<sup>st</sup> June 2025 - 20<sup>th</sup> July 2025</span>
 									</div>
 									<p className="text-gray-700">
 										Submit your paper following the details mentioned in {" "}
@@ -67,7 +67,7 @@ export default function TimelinePage() {
 								<CardContent>
 									<div className="flex items-center gap-2 text-gray-600 mb-2">
 										<Calendar1 className="h-4 w-4" />
-										<span>16<sup>th</sup> July - 31<sup>st</sup> July 2025 </span>
+										<span>21<sup>st</sup> July - 31<sup>st</sup> July 2025 </span>
 									</div>
 									<p className="text-gray-700">
 										The submitted papers will be screened and reviewed by the
