@@ -413,12 +413,6 @@ export default function CommitteePage() {
 							</h3>
 							<div className="flex justify-center">
 								{[
-                  {
-                    name: "Shriharsh Sharma Acharya",
-                    position: "Member",
-                    affiliation: "KU, DoCSE",
-                    image: "/oc/Shriharsh.webp"
-                  },
 									{
 										name: "Ashwini Subedi",
 										position: "Committee Head",
@@ -431,6 +425,12 @@ export default function CommitteePage() {
 										affiliation: "KU, DoCSE",
 										image: "/oc/ShreejanKarmacharya.webp"
 									},
+                  {
+                    name: "Shriharsh Sharma Acharya",
+                    position: "Member",
+                    affiliation: "KU, DoCSE",
+                    image: "/oc/Shriharsh.webp"
+                  },
 								].map((member, index) => (
 									<div key={index} className="text-center max-w-xs">
 										<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
