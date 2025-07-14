@@ -76,8 +76,6 @@ export default function AdminUsersPage() {
       </div>
       {loading ? (
         <div className="p-8 text-center">Loading...</div>
-      ) : error ? (
-        <div className="p-8 text-center text-red-600">{error}</div>
       ) : (
         <>
           {success && <div className="p-2 text-green-600">{success}</div>}
@@ -106,6 +104,7 @@ export default function AdminUsersPage() {
               onChange={e => setPromoteEmail(e.target.value)}
               className="border px-3 py-2 rounded w-full md:w-auto"
             />
+
             <button
               onClick={handlePromote}
               disabled={promoting || !promoteEmail}
@@ -113,6 +112,12 @@ export default function AdminUsersPage() {
             >
               {promoting ? "Promoting..." : "Add as Admin"}
             </button>
+            {error ? (
+              <div className="bg-red-200 p-2 rounded">
+                Error adding user as admin!
+              </div>
+            ) :
+              (<div></div>)}
           </div>
           <h2 className="text-lg font-semibold mb-2">All Users</h2>
           <table className="min-w-full divide-y divide-gray-200">
