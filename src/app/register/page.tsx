@@ -18,6 +18,7 @@ export default function RegisterNew() {
 		try {
 			const formData = new FormData();
 
+
 			formData.append("title", submission.title);
 			formData.append("abstract", submission.abstract);
 			submission.keywords.forEach((keyword, index) =>
