@@ -97,7 +97,7 @@ export async function PATCH(
 
   // Checks if erroneous status passed
   if (!["accepted", "submitted", "under_review", "rejected"].includes(status)) {
-    return Response.json({ error: 'Invalid Status' }, { status: 400 })
+    return Response.json({ success: false, error: 'Invalid Status' }, { status: 400 })
   }
   const _ = await db
     .update(papers)
