@@ -1,7 +1,6 @@
 import { auth } from "@/auth";
 import { coAuthors, db, papers, themes, users } from "@/db/schema";
 import { eq, and } from "drizzle-orm";
-import { NextResponse } from "next/server";
 
 export async function GET(
   request: Request,
@@ -99,7 +98,7 @@ export async function PATCH(
   if (!["accepted", "submitted", "under_review", "rejected"].includes(status)) {
     return Response.json({ success: false, error: 'Invalid Status' }, { status: 400 })
   }
-  const _ = await db
+  await db
     .update(papers)
     .set({ status: status })
     .where(eq(papers.id, submissionId))

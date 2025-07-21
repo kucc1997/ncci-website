@@ -1,7 +1,7 @@
 import { auth } from "@/auth";
-import { coAuthors, db, papers, themes, users } from "@/db/schema";
+import { coAuthors, db, papers,  users } from "@/db/schema";
 import { json2csv } from 'json-2-csv';
-import { eq, InferSelectModel } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 
 export async function GET() {
 

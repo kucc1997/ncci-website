@@ -57,11 +57,10 @@ export default function PapersPage() {
   }
 
   const submitPaperStatus = async (id: string, newStatus: Paper['status']) => {
-    const response = await fetch('/api/papers/' + id, {
+    await fetch('/api/papers/' + id, {
       method: 'PATCH',
       body: JSON.stringify({ status: newStatus })
     })
-    const data = await response.json()
   }
 
   const getStatusColor = (status: string) => {
@@ -169,8 +168,8 @@ export default function PapersPage() {
                   </td>
                   <td>
                     <button
-                      onClick={(e) => submitPaperStatus(paper.id, paper.status)}
-                      className= "rounded-md p-3 bg-blue-100 hover:bg-blue-200"
+                      onClick={() => submitPaperStatus(paper.id, paper.status)}
+                      className="rounded-md p-3 bg-blue-100 hover:bg-blue-200"
                     >
                       Submit
                     </button>
