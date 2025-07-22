@@ -304,7 +304,7 @@ export default function PaperDetails() {
 				</TabsContent>
 
 
-				<ReviewsTab />
+				<ReviewsTab paperId={submissionId} />
 			</Tabs>
 		</div>
 	)

@@ -16,7 +16,7 @@ interface Paper {
 	title: string;
 }
 
-interface Review {
+export interface Review {
 	typeOfPaper: string,
 	significance: string,
 	originality: string,
