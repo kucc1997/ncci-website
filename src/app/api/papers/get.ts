@@ -1,4 +1,4 @@
-import { auth } from "@/auth";
+import { auth } from "@/auth"; 
 import { coAuthors, db, papers, themes, users } from "@/db/schema";
 import { eq, InferSelectModel } from "drizzle-orm";
 

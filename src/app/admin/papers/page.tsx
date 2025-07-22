@@ -91,7 +91,6 @@ export default function PapersPage() {
 					</select>
 				</div>
 			</div>
-
 			{loading ? (
 				<div className="p-8 text-center">Loading...</div>
 			) : error ? (

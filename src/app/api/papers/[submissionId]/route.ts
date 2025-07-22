@@ -77,4 +77,32 @@ export async function GET(
 		}
 	});
 }
+export async function PATCH(
+	request: Request,
+	{ params }: { params: Promise<{ submissionId: string }> }
+) {
 
+	const session = await auth();
+
+	if (!session?.user?.email) {
+		return Response.json({
+			success: false,
+			data: "User not logged in."
+		}, { status: 401 });
+	}
+
+	const { status }: { status: string } = await request.json()
+
+	const { submissionId } = await params;
+
+	// Checks if erroneous status passed
+	if (!["accepted", "submitted", "under_review", "rejected"].includes(status)) {
+		return Response.json({ success: false, error: 'Invalid Status' }, { status: 400 })
+	}
+	await db
+		.update(papers)
+		.set({ status: status })
+		.where(eq(papers.id, submissionId))
+
+	return Response.json({ success: 'Status changed!' }, { status: 200 })
+}
