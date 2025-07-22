@@ -128,7 +128,7 @@ export default function PapersPage() {
 							{filteredPapers.map((paper) => (
 								<tr key={paper.id}>
 									<td className="px-6 py-4 text-sm font-medium">
-										<Link className="max-w-xs truncate text-blue-900" href={paper.fileUrl}>{paper.submissionId}</Link>
+										<Link className="max-w-xs truncate text-blue-900" href={`/papers/${paper.submissionId}?fromAdmin=true`}>{paper.submissionId}</Link>
 									</td>
 									<td className="px-6 py-4 text-sm font-medium text-gray-900">
 										<div className="max-w-xs truncate">{paper.title}</div>

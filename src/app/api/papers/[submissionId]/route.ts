@@ -38,7 +38,8 @@ export async function GET(
 	const paper = paperWithAuthor[0];
 
 	// Check if user has access to this paper
-	const hasAccess = paper.author.email === session.user.email;
+	const loggedinUser = await db.select().from(users).where(eq(users.email, session.user.email));
+	const hasAccess = paper.author.email === session.user.email || loggedinUser?.[0].role === "admin";
 
 	// Also check if user is a co-author
 	if (!hasAccess) {

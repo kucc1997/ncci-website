@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { useParams } from "next/navigation"
+import { useParams, useSearchParams } from "next/navigation"
 import { useSession } from "next-auth/react"
 import SignIn from "@/components/sign-in"
 import { Button } from "@/components/ui/button"
@@ -26,6 +26,8 @@ export default function PaperDetails() {
 	const { status } = useSession()
 	const params = useParams()
 	const { submissionId } = params
+	const searchParams = useSearchParams()
+	const fromAdmin = searchParams.get('fromAdmin')
 
 	const [paper, setPaper] = useState<Paper | null>(null)
 	const [loading, setLoading] = useState(true)
@@ -87,9 +89,9 @@ export default function PaperDetails() {
 			<div className="container py-12">
 				<div className="mb-6">
 					<Button variant="outline" asChild>
-						<Link href="/papers">
+						<Link href={fromAdmin ? '/admin/papers' : "/papers"}>
 							<ArrowLeft className="mr-2 h-4 w-4" />
-							Back to My Submissions
+							{fromAdmin ? 'Back To Admin Dashboard' : 'Back to My Submissions'}
 						</Link>
 					</Button>
 				</div>
@@ -100,9 +102,9 @@ export default function PaperDetails() {
 						{error || `We couldn't find a paper with the submission ID: ${submissionId}`}
 					</p>
 					<Button asChild>
-						<Link href="/papers">
+						<Link href={fromAdmin ? '/admin/papers' : "/papers"}>
 							<ArrowLeft className="mr-2 h-4 w-4" />
-							Back to My Submissions
+							{fromAdmin ? 'Back To Admin Dashboard' : 'Back to My Submissions'}
 						</Link>
 					</Button>
 				</div>
@@ -114,9 +116,9 @@ export default function PaperDetails() {
 		<div className="container py-12">
 			<div className="mb-6">
 				<Button variant="outline" asChild>
-					<Link href="/papers">
+					<Link href={fromAdmin ? '/admin/papers' : "/papers"}>
 						<ArrowLeft className="mr-2 h-4 w-4" />
-						Back to My Submissions
+						{fromAdmin ? 'Back To Admin Dashboard' : 'Back to My Submissions'}
 					</Link>
 				</Button>
 			</div>
