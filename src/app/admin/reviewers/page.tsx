@@ -1,38 +1,35 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select"
+import { toast } from "sonner"
+
+interface Paper {
+  id: string;
+  submissionId: string;
+  title: string;
+}
 
 interface Review {
   paperType: string;
-  evaluation: {
-    significance: string;
-    originality: string;
-    technicalQuality: string;
-    relatedWorkAwareness: string;
-    presentationClarity: string;
-    manuscriptOrganization: string;
-    references: string;
-    paperLength: string;
-  };
+  evaluation: Record<string, string>;
   comfortLevel: string;
   mandatoryComments: string;
   suggestedComments: string;
   overallRecommendation: string;
   forwarded?: boolean;
 }
-
 interface AssignedPaper {
   id: string;
+  submissionId?: string;
   title: string;
   review?: Review;
 }
-
 interface Reviewer {
   id: string;
   name: string;
@@ -40,101 +37,86 @@ interface Reviewer {
   assignedPapers: AssignedPaper[];
 }
 
-const initialReviewers: Reviewer[] = [
-  {
-    id: "rev1",
-    name: "Dr. Evelyn Reed",
-    email: "evelyn.reed@university.edu",
-    assignedPapers: [
-      {
-        id: "paper1",
-        title: "The Impact of Quantum Computing on Cryptography",
-        review: {
-          paperType: "Research",
-          evaluation: {
-            significance: "Very Good",
-            originality: "Very Good",
-            technicalQuality: "Good",
-            relatedWorkAwareness: "Very Good",
-            presentationClarity: "Good",
-            manuscriptOrganization: "Good",
-            references: "Very Good",
-            paperLength: "Good",
-          },
-          comfortLevel: "Very Confident",
-          mandatoryComments:
-            "The analysis in section 3 needs to be expanded with more recent cryptographic protocols. The conclusion should better summarize the key findings.",
-          suggestedComments:
-            "Consider adding a brief section on post-quantum cryptography for a more complete picture.",
-          overallRecommendation: "Accept",
-          forwarded: false,
-        },
-      },
-      {
-        id: "paper2",
-        title: "A Comprehensive Survey of Machine Learning Models for Natural Language Processing",
-        review: undefined,
-      },
-    ],
-  },
-  {
-    id: "rev2",
-    name: "Dr. Samuel Chen",
-    email: "samuel.chen@research.org",
-    assignedPapers: [],
-  },
-]
-
-interface AvailablePaper {
-  id: string;
-  title: string;
-}
-
-const availablePapers: AvailablePaper[] = [
-  { id: "paper3", title: "Advancements in Renewable Energy Sources" },
-  { id: "paper4", title: "The Role of AI in Personalized Medicine" },
-]
-
 export default function ReviewersPage() {
-  const [reviewers, setReviewers] = useState<Reviewer[]>(initialReviewers)
+  const [reviewers, setReviewers] = useState<Reviewer[]>([])
+  const [papers, setPapers] = useState<Paper[]>([])
   const [newReviewerName, setNewReviewerName] = useState("")
   const [newReviewerEmail, setNewReviewerEmail] = useState("")
   const [assigningReviewerId, setAssigningReviewerId] = useState<string | null>(null)
   const [selectedPaperId, setSelectedPaperId] = useState<string>("")
   const [expandedReviewers, setExpandedReviewers] = useState<string[]>([])
+  const [addError, setAddError] = useState<string>("")
+  const [addLoading, setAddLoading] = useState(false)
+  const [assignLoading, setAssignLoading] = useState(false)
 
-  const handleAddReviewer = (e: React.FormEvent<HTMLFormElement>) => {
+  // Fetch reviewers and papers on mount
+  useEffect(() => {
+    fetch("/api/reviewers")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) setReviewers(data.data)
+      })
+    fetch("/api/papers")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) setPapers(data.data)
+      })
+  }, [])
+
+  const handleAddReviewer = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (newReviewerName && newReviewerEmail) {
-      const newReviewer: Reviewer = {
-        id: `rev${reviewers.length + 1}`,
-        name: newReviewerName,
-        email: newReviewerEmail,
-        assignedPapers: [],
+    setAddError("")
+    setAddLoading(true)
+    try {
+      const res = await fetch("/api/reviewers", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: newReviewerName, email: newReviewerEmail }),
+      })
+      const data = await res.json()
+      if (data.success) {
+        setReviewers([
+          ...reviewers,
+          { ...data.data, assignedPapers: [] },
+        ])
+        setNewReviewerName("")
+        setNewReviewerEmail("")
+      } else {
+        setAddError(data.data || "Failed to add reviewer.")
       }
-      setReviewers([...reviewers, newReviewer])
-      setNewReviewerName("")
-      setNewReviewerEmail("")
+    } catch {
+      setAddError("Network error. Please try again.")
+    } finally {
+      setAddLoading(false)
     }
   }
 
-  const handleAssignPaper = (reviewerId: string, paperId: string) => {
-    const paperToAssign = availablePapers.find((p) => p.id === paperId)
-    if (!paperToAssign) return
-    setReviewers(
-      reviewers.map((r) => {
-        if (r.id === reviewerId) {
-          const newAssignedPaper: AssignedPaper = {
-            ...paperToAssign,
-            review: undefined,
-          }
-          return { ...r, assignedPapers: [...r.assignedPapers, newAssignedPaper] }
-        }
-        return r
+  // TODO: Implement real assignment API call
+  const handleAssignPaper = async (reviewerId: string, paperId: string) => {
+    setAssignLoading(true)
+    try {
+      const res = await fetch("/api/reviewer-assignments", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ reviewerId, paperId }),
       })
-    )
-    setAssigningReviewerId(null)
-    setSelectedPaperId("")
+      const data = await res.json()
+      if (data.success) {
+        // Refresh reviewers list
+        const reviewersRes = await fetch("/api/reviewers")
+        const reviewersData = await reviewersRes.json()
+        if (reviewersData.success) setReviewers(reviewersData.data)
+        setAssigningReviewerId(null)
+        setSelectedPaperId("")
+        toast.success("Paper assigned to reviewer.")
+      } else {
+        toast.error(data.data || "Failed to assign paper.")
+      }
+    } catch {
+      toast.error("Network error. Please try again.")
+    } finally {
+      setAssignLoading(false)
+    }
   }
 
   const handleForwardReview = (reviewerId: string, paperId: string) => {
@@ -236,8 +218,11 @@ export default function ReviewersPage() {
                 required
               />
             </div>
-            <Button type="submit" className="w-full md:w-auto mt-4 md:mt-0">Add Reviewer</Button>
+            <Button type="submit" className="w-full md:w-auto mt-4 md:mt-0" disabled={addLoading}>
+              {addLoading ? "Adding..." : "Add Reviewer"}
+            </Button>
           </form>
+          {addError && <div className="text-red-600 mt-2 col-span-3">{addError}</div>}
         </CardContent>
       </Card>
       <Card>
@@ -282,20 +267,27 @@ export default function ReviewersPage() {
                               <SelectValue placeholder="Choose a paper to assign" />
                             </SelectTrigger>
                             <SelectContent>
-                              {availablePapers.map((paper) => (
-                                <SelectItem value={paper.id} key={paper.id}>
-                                  {paper.id} — {paper.title}
-                                </SelectItem>
-                              ))}
+                              {papers
+                                .filter(
+                                  (paper) =>
+                                    !reviewers.some((rev) =>
+                                      Array.isArray(rev.assignedPapers) && rev.assignedPapers.some((ap) => ap.id === paper.id)
+                                    )
+                                )
+                                .map((paper) => (
+                                  <SelectItem value={paper.id} key={paper.id}>
+                                    {paper.submissionId} — {paper.title}
+                                  </SelectItem>
+                                ))}
                             </SelectContent>
                           </Select>
                         </div>
                         <Button
                           type="button"
-                          disabled={!selectedPaperId}
+                          disabled={!selectedPaperId || assignLoading}
                           onClick={() => handleAssignPaper(reviewer.id, selectedPaperId)}
                         >
-                          Assign
+                          {assignLoading ? "Assigning..." : "Assign"}
                         </Button>
                       </div>
                     )}
