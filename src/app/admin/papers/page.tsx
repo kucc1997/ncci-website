@@ -1,5 +1,7 @@
 'use client'
 
+import { Theme } from '@/app'
+import { getThemes } from '@/lib/api/themes'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 
@@ -19,7 +21,7 @@ export default function PapersPage() {
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState<string | null>(null)
 	const [filterTheme, setFilterTheme] = useState<string>('all')
-	const themes = ['all', 'Artificial Intelligence', 'Blockchain', 'Machine Learning', 'Cybersecurity']
+	const [themes, setThemes] = useState<(Theme | 'all')[]>(['all'])
 
 	useEffect(() => {
 		const fetchPapers = async () => {
@@ -45,7 +47,15 @@ export default function PapersPage() {
 				setLoading(false)
 			}
 		}
+
+		const fetchThemes = async () => {
+			const res = await getThemes();
+			const data = res.data
+			setThemes(['all', ...data.data]);
+		}
+
 		fetchPapers()
+		fetchThemes()
 	}, [])
 
 	const updatePaperStatus = (id: string, newStatus: Paper['status']) => {
@@ -84,8 +94,8 @@ export default function PapersPage() {
 						className="border border-gray-300 rounded-md px-3 py-1 text-sm"
 					>
 						{themes.map(theme => (
-							<option key={theme} value={theme}>
-								{theme === 'all' ? 'All Themes' : theme}
+							<option key={theme === 'all' ? 'all' : theme.id} value={theme === 'all' ? 'all' : theme.name}>
+								{theme === 'all' ? 'All Themes' : theme.name}
 							</option>
 						))}
 					</select>
