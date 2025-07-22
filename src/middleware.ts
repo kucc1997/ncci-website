@@ -9,19 +9,7 @@ export async function middleware(request: Request) {
 	});
 	console.log("Token in middleware:", token);
 
-	// Check if the path starts with /admin
-	if (request.url.includes("/admin")) {
-		if (!token) {
-			// If no token exists, redirect to login
-			return NextResponse.redirect(new URL("/", request.url));
-		}
 
-		// Check if user has admin role
-		if (token.role !== "admin") {
-			// If user is not an admin, redirect to home page
-			return NextResponse.redirect(new URL("/", request.url));
-		}
-	}
 
 	return NextResponse.next();
 }
