@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select"
 import { toast } from "sonner"
+import axios from "axios"
 
 interface Paper {
 	id: string;
@@ -30,6 +31,7 @@ interface Review {
 	suggestedComments: string,
 	overallRecommendation: string
 	forwarded?: boolean;
+	reviewId: string;
 }
 
 interface AssignedPaper {
@@ -126,7 +128,7 @@ export default function ReviewersPage() {
 		}
 	}
 
-	const handleForwardReview = (reviewerId: string, paperId: string) => {
+	const handleForwardReview = async (reviewerId: string, paperId: string, reviewId: string) => {
 		setReviewers(
 			reviewers.map((r) => {
 				if (r.id === reviewerId) {
@@ -146,6 +148,8 @@ export default function ReviewersPage() {
 				return r
 			})
 		)
+
+		await axios.post('/api/reviewers/forward-review?reviewId=' + reviewId)
 	}
 
 	const renderReviewDetails = (review?: Review, reviewerId?: string, paperId?: string) => {
@@ -157,7 +161,7 @@ export default function ReviewersPage() {
 					{review.forwarded ? (
 						<span className="inline-block px-3 py-1 text-xs font-semibold bg-green-100 text-green-700 rounded">Forwarded</span>
 					) : reviewerId && paperId ? (
-						<Button size="sm" onClick={() => handleForwardReview(reviewerId, paperId)}>Forward</Button>
+						<Button size="sm" onClick={() => handleForwardReview(reviewerId, paperId, review.reviewId)}>Forward</Button>
 					) : null}
 				</div>
 				<div>
