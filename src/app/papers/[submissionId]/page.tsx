@@ -21,6 +21,7 @@ import {
 } from "lucide-react"
 import { getPaperById } from "@/lib/api/papers"
 import { PaperWithTheme as Paper } from "@/app"
+import ReviewsTab from "./reviews-tab"
 
 export default function PaperDetails() {
 	const { status } = useSession()
@@ -146,9 +147,10 @@ export default function PaperDetails() {
 			</div>
 
 			<Tabs defaultValue="details" className="max-w-5xl">
-				<TabsList className="grid w-full grid-cols-2 mb-8">
+				<TabsList className="grid w-full grid-cols-3 mb-8">
 					<TabsTrigger value="details">Paper Details</TabsTrigger>
 					<TabsTrigger value="authors">Authors</TabsTrigger>
+					<TabsTrigger value="reviews">Reviews</TabsTrigger>
 				</TabsList>
 
 				<TabsContent value="details">
@@ -300,6 +302,9 @@ export default function PaperDetails() {
 						</CardContent>
 					</Card>
 				</TabsContent>
+
+
+				<ReviewsTab paperId={submissionId?.toString() || ''} />
 			</Tabs>
 		</div>
 	)

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X, User, LogOut, FileText, UserPlus, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useSession, signIn, signOut } from "next-auth/react";
@@ -17,6 +17,17 @@ import {
 export function SiteHeader() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const { data: session, status } = useSession();
+	const [isReviewer, setIsReviewer] = useState(false);
+
+	useEffect(() => {
+		if (session?.user?.email) {
+			fetch("/api/users/is-reviewer")
+				.then((res) => res.json())
+				.then((data) => {
+					if (data.success) setIsReviewer(data.data);
+				});
+		}
+	}, [session?.user?.email]);
 
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
@@ -131,6 +142,22 @@ export function SiteHeader() {
 									</Link>
 								</DropdownMenuItem>
 								<DropdownMenuSeparator />
+								{session.user?.role === "admin" && (
+									<DropdownMenuItem asChild>
+										<Link href="/admin" className="flex items-center gap-2">
+											<User className="h-4 w-4" />
+											Admin Dashboard
+										</Link>
+									</DropdownMenuItem>
+								)}
+								{isReviewer && (
+									<DropdownMenuItem asChild>
+										<Link href="/reviewer" className="flex items-center gap-2">
+											<User className="h-4 w-4" />
+											Reviewer Dashboard
+										</Link>
+									</DropdownMenuItem>
+								)}
 								<DropdownMenuItem
 									className="flex items-center gap-2 cursor-pointer"
 									onClick={() => signOut()}
@@ -228,6 +255,22 @@ export function SiteHeader() {
 										</Link>
 									</DropdownMenuItem>
 									<DropdownMenuSeparator />
+									{session.user?.role === "admin" && (
+										<DropdownMenuItem asChild>
+											<Link href="/admin" className="flex items-center gap-2">
+												<User className="h-4 w-4" />
+												Admin Dashboard
+											</Link>
+										</DropdownMenuItem>
+									)}
+									{isReviewer && (
+										<DropdownMenuItem asChild>
+											<Link href="/reviewer" className="flex items-center gap-2">
+												<User className="h-4 w-4" />
+												Reviewer Dashboard
+											</Link>
+										</DropdownMenuItem>
+									)}
 									<DropdownMenuItem
 										className="flex items-center gap-2 cursor-pointer"
 										onClick={() => signOut()}

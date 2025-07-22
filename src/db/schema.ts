@@ -4,6 +4,7 @@ import {
 	text,
 	uuid,
 	boolean,
+  jsonb,
 } from "drizzle-orm/pg-core"
 import postgres from "postgres"
 import { drizzle } from "drizzle-orm/postgres-js"
@@ -93,4 +94,30 @@ export const registrations = pgTable('registrations', {
 	paymentVoucherPath: text('payment_voucher_path').notNull(),
 	status: text('status').default('pending').notNull(),
 	createdAt: timestamp('created_at').defaultNow()
+})
+
+export const reviewers = pgTable('reviewers', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').references(() => users.id, { onDelete: 'set null' }),
+  name: text('name').notNull(),
+  email: text('email').notNull().unique(),
+  createdAt: timestamp('created_at').defaultNow(),
+})
+
+export const paperReviewerAssignments = pgTable('paper_reviewer_assignments', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  paperId: uuid('paper_id').notNull().references(() => papers.id, { onDelete: 'cascade' }),
+  reviewerId: uuid('reviewer_id').notNull().references(() => reviewers.id, { onDelete: 'cascade' }),
+  assignedAt: timestamp('assigned_at').defaultNow(),
+  status: text('status').default('assigned').notNull(), // assigned, completed, etc.
+})
+
+export const reviews = pgTable('reviews', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  paperId: uuid('paper_id').notNull().references(() => papers.id, { onDelete: 'cascade' }),
+  reviewerId: uuid('reviewer_id').notNull().references(() => reviewers.id, { onDelete: 'cascade' }),
+  reviewJson: jsonb('review_json').notNull(),
+  forwarded: boolean('forwarded').default(false).notNull(),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
 })
