@@ -17,6 +17,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 		{ name: 'Registrations', href: '/admin/registrations' },
 		{ name: 'Papers', href: '/admin/papers' },
 		{ name: 'Users', href: '/admin/users' },
+		{ name: 'Reviewers', href: '/admin/reviewers' },
 	]
 
 	// Function to handle navigation click
