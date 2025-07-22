@@ -133,11 +133,11 @@ export default function PaperDetails() {
 				</div>
 				<Badge
 					className={
-						paper.status === "Accepted"
+						`min-w-max mx-2 ${paper.status === "Accepted"
 							? "bg-green-100 text-green-800 hover:bg-green-200"
 							: paper.status === "Rejected"
 								? "bg-red-100 text-red-800 hover:bg-red-200"
-								: "bg-yellow-100 text-yellow-800 hover:bg-yellow-200"
+								: "bg-yellow-100 text-yellow-800 hover:bg-yellow-200"}`
 					}
 				>
 					{/* split from '_' and capitalize */}
