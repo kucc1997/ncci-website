@@ -16,14 +16,22 @@ interface Paper {
 }
 
 interface Review {
-	paperType: string;
-	evaluation: Record<string, string>;
-	comfortLevel: string;
-	mandatoryComments: string;
-	suggestedComments: string;
-	overallRecommendation: string;
+	typeOfPaper: string,
+	significance: string,
+	originality: string,
+	technicalQuality: string,
+	relatedWork: string,
+	presentationClarity: string,
+	manuscriptOrganization: string,
+	references: string,
+	paperLength: string,
+	comfortLevel: string,
+	mandatoryComments: string,
+	suggestedComments: string,
+	overallRecommendation: string
 	forwarded?: boolean;
 }
+
 interface AssignedPaper {
 	id: string;
 	submissionId?: string;
@@ -91,7 +99,6 @@ export default function ReviewersPage() {
 		}
 	}
 
-	// TODO: Implement real assignment API call
 	const handleAssignPaper = async (reviewerId: string, paperId: string) => {
 		setAssignLoading(true)
 		try {
@@ -154,33 +161,42 @@ export default function ReviewersPage() {
 					) : null}
 				</div>
 				<div>
-					<Label>Paper Type</Label>
-					<div>{review.paperType}</div>
+					<Label className="text-bold text-primary">Paper Type</Label>
+					<div>{review.typeOfPaper}</div>
 				</div>
 				<div>
-					<Label>Evaluation</Label>
+					<Label className="text-lg text-primary text-bold">Evaluation</Label>
 					<div className="grid grid-cols-2 gap-x-8 gap-y-2 mt-2">
-						{Object.entries(review.evaluation).map(([key, value]) => (
+						{Object.entries({
+							significance: review.significance,
+							originality: review.originality,
+							technicalQuality: review.technicalQuality,
+							relatedWork: review.relatedWork,
+							presentationClarity: review.presentationClarity,
+							manuscriptOrganization: review.manuscriptOrganization,
+							references: review.references,
+							paperLength: review.paperLength,
+						}).map(([key, value]) => (
 							<div key={key}>
-								<span className="font-medium capitalize">{key.replace(/([A-Z])/g, " $1")}:</span> {value}
+								<span className="font-medium capitalize text-primary">{key.replace(/([A-Z])/g, " $1")}:</span> {value}
 							</div>
 						))}
 					</div>
 				</div>
 				<div>
-					<Label>Comfort Level</Label>
+					<Label className="text-bold text-primary">Comfort Level</Label>
 					<div>{review.comfortLevel}</div>
 				</div>
 				<div>
-					<Label>Overall comments and changes that MUST be made before publication</Label>
+					<Label className="text-bold text-primary">Overall comments and changes that MUST be made before publication</Label>
 					<div className="whitespace-pre-wrap">{review.mandatoryComments}</div>
 				</div>
 				<div>
-					<Label>Suggestions which would improve the quality of the paper but are NOT essential for publication</Label>
+					<Label className="text-bold text-primary">Suggestions which would improve the quality of the paper but are NOT essential for publication</Label>
 					<div className="whitespace-pre-wrap">{review.suggestedComments}</div>
 				</div>
 				<div>
-					<Label>Overall Recommendation</Label>
+					<Label className="text-bold text-primary">Overall Recommendation</Label>
 					<div className="font-bold">{review.overallRecommendation}</div>
 				</div>
 			</div>
@@ -270,9 +286,6 @@ export default function ReviewersPage() {
 															{papers
 																.filter(
 																	(paper) =>
-																		// !reviewers.some((rev) =>
-																		//   Array.isArray(rev.assignedPapers) && rev.assignedPapers.some((ap) => ap.id === paper.id)
-																		// )
 																		!reviewers.some(rev => rev.id === assigningReviewerId && rev.assignedPapers.some(ap => ap.id === paper.id))
 																)
 																.map((paper) => (
