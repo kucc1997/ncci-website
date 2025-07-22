@@ -17,6 +17,9 @@ export async function GET() {
     paper_title: papers.title,
     user_name:users.name,
     coauthor_name: coAuthors.name,
+    user_email: users.email,
+    co_author_email: coAuthors.email,
+    paper_track_type: papers.trackType,
   }).from(papers)
     .innerJoin(users, eq(papers.authorId, users.id))
     .innerJoin(coAuthors, eq(papers.id, coAuthors.paperId))
