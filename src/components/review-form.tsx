@@ -27,8 +27,14 @@ import {
     CardFooter,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
-export default function ReviewForm() {
+interface ReviewFormProps {
+    paperId: string;
+    onSubmitSuccess: () => void;
+}
+
+export default function ReviewForm({ paperId, onSubmitSuccess }: ReviewFormProps) {
     const [formData, setFormData] = useState({
         typeOfPaper: "",
         significance: "",
@@ -44,6 +50,7 @@ export default function ReviewForm() {
         suggestedComments: "",
         overallRecommendation: "",
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = (field: string, value: string) => {
         setFormData((prev) => ({ ...prev, [field]: value }));
@@ -53,13 +60,32 @@ export default function ReviewForm() {
         return Object.values(formData).every((value) => value.trim() !== "");
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (isFormValid()) {
-            console.log("Form submitted:", formData);
-            // Here you would typically send the data to your API
-        } else {
-            console.log("Form is invalid");
+        if (!isFormValid()) {
+            toast.error("Please fill out all fields before submitting.");
+            return;
+        }
+        setIsSubmitting(true);
+        try {
+            const response = await fetch("/api/reviewer/submit-review", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ paperId, ...formData }),
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                toast.success("Review submitted successfully!");
+                onSubmitSuccess();
+            } else {
+                toast.error(result.message || "Failed to submit review.");
+            }
+        } catch (error) {
+            toast.error("An error occurred while submitting the review.");
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -177,8 +203,8 @@ export default function ReviewForm() {
                     </div>
                 </CardContent>
                 <CardFooter>
-                    <Button type="submit" disabled={!isFormValid()}>
-                        Submit Review
+                    <Button type="submit" disabled={!isFormValid() || isSubmitting}>
+                        {isSubmitting ? "Submitting..." : "Submit Review"}
                     </Button>
                 </CardFooter>
             </form>

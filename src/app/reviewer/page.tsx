@@ -1,18 +1,31 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import ReviewForm from "@/components/review-form";
 
 interface AssignedPaper {
     id: string;
     title: string;
+    reviewId: string | null;
 }
 
 export default function ReviewerPage() {
     const router = useRouter();
     const [assignedPapers, setAssignedPapers] = useState<AssignedPaper[]>([]);
     const [expandedPaperId, setExpandedPaperId] = useState<string | null>(null);
+
+    const fetchAssignedPapers = useCallback(async () => {
+        try {
+            const res = await fetch("/api/reviewer/papers");
+            const data = await res.json();
+            if (data.success) {
+                setAssignedPapers(data.data);
+            }
+        } catch (error) {
+            console.error("Failed to fetch assigned papers:", error);
+        }
+    }, []);
 
     useEffect(() => {
         const checkReviewerStatus = async () => {
@@ -24,20 +37,17 @@ export default function ReviewerPage() {
             }
         };
 
-        const fetchAssignedPapers = async () => {
-            const res = await fetch("/api/reviewer/papers");
-            const data = await res.json();
-            if (data.success) {
-                setAssignedPapers(data.data);
-            }
-        };
-
         checkReviewerStatus();
         fetchAssignedPapers();
-    }, [router]);
+    }, [router, fetchAssignedPapers]);
 
     const handlePaperClick = (paperId: string) => {
         setExpandedPaperId(expandedPaperId === paperId ? null : paperId);
+    };
+
+    const handleReviewSuccess = () => {
+        setExpandedPaperId(null); // Collapse the form
+        fetchAssignedPapers(); // Refresh the paper list
     };
 
     return (
@@ -54,15 +64,22 @@ export default function ReviewerPage() {
                 {assignedPapers.length > 0 ? (
                     assignedPapers.map((paper) => (
                         <div key={paper.id}>
-                            <button
-                                onClick={() => handlePaperClick(paper.id)}
-                                className="text-xl font-semibold text-[var(--bg-accent2)]"
-                            >
-                                {paper.title}
-                            </button>
+                            <div className="flex items-center justify-between">
+                                <h2 className="text-xl font-semibold text-[var(--bg-accent2)]">{paper.title}</h2>
+                                {paper.reviewId ? (
+                                    <span className="text-green-600 font-semibold">Reviewed</span>
+                                ) : (
+                                    <button
+                                        onClick={() => handlePaperClick(paper.id)}
+                                        className="text-blue-600 hover:underline"
+                                    >
+                                        {expandedPaperId === paper.id ? "Collapse" : "Review"}
+                                    </button>
+                                )}
+                            </div>
                             {expandedPaperId === paper.id && (
                                 <div className="mt-4">
-                                    <ReviewForm />
+                                    <ReviewForm paperId={paper.id} onSubmitSuccess={handleReviewSuccess} />
                                 </div>
                             )}
                         </div>
