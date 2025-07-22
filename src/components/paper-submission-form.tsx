@@ -25,7 +25,7 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 	const [keywords, setKeywords] = useState("")
 	const [coAuthors, setCoAuthors] = useState<CoAuthor[]>([{ name: "", email: "", orcid: "", affiliation: "" }])
 	const [selectedFile, setSelectedFile] = useState<File | null>(null)
-	const [trackType, setTrackType] = useState("Regular Paper")
+	const [trackType, setTrackType] = useState("Full Paper")
 	const [theme, setTheme] = useState("")
 	const [themes, setThemes] = useState<Theme[]>([]);
 
@@ -178,7 +178,7 @@ export default function PaperSubmissionForm({ onSubmitAction: onSubmit, isSubmit
 								className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
 								required
 							>
-								<option value="Regular Paper">Regular Paper</option>
+								<option value="Full Paper">Full Paper</option>
 								<option value="Short Paper">Short Paper</option>
 								<option value="Poster Presentation">Poster Presentation</option>
 							</select>
