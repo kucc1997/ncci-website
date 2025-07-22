@@ -13,11 +13,11 @@ export async function GET(req: NextRequest) {
 
 		const reviewRows = await db.select().from(reviews).where(eq(reviews.paperId, paper.id));
 
-		const result = await Promise.all(reviewRows.map(async review => {
+		const result = reviewRows.filter(rev => rev.forwarded).map(review => {
 			return (typeof review.reviewJson === 'object' && review.reviewJson !== null
 				? { ...review.reviewJson, forwarded: review.forwarded, reviewId: review.id }
 				: { reviewJson: review.reviewJson, forwarded: review.forwarded, reviewId: review.id })
-		}));
+		});
 
 		return Response.json({ success: true, data: result });
 	} catch (error) {
