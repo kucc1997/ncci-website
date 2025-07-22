@@ -139,7 +139,8 @@ export default function Papers() {
 													: "bg-yellow-100 text-yellow-800 hover:bg-yellow-200"
 										}
 									>
-										{paper.status || "Under Review"}
+										{/* split from '_' and capitalize */}
+										{(paper.status as string).split("_").map(word => word.split('').map((letter, idx) => idx === 0 ? letter.toUpperCase() : letter).join('')).join(' ')}
 									</Badge>
 								</div>
 							</CardHeader>
@@ -170,7 +171,7 @@ export default function Papers() {
 									<div className="grid grid-cols-2 gap-4">
 										<div>
 											<h3 className="text-sm font-medium mb-1">Track Type</h3>
-											<p className="text-gray-700 capitalize">{paper.trackType} Paper</p>
+											<p className="text-gray-700 capitalize">{paper.trackType}</p>
 										</div>
 										<div>
 											<h3 className="text-sm font-medium mb-1">Theme</h3>

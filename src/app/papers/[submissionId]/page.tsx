@@ -140,7 +140,8 @@ export default function PaperDetails() {
 								: "bg-yellow-100 text-yellow-800 hover:bg-yellow-200"
 					}
 				>
-					{paper.status || "Under Review"}
+					{/* split from '_' and capitalize */}
+					{(paper.status as string).split("_").map(word => word.split('').map((letter, idx) => idx === 0 ? letter.toUpperCase() : letter).join('')).join(' ')}
 				</Badge>
 			</div>
 
@@ -198,7 +199,7 @@ export default function PaperDetails() {
 										<FileText className="h-5 w-5 text-blue-600 mt-0.5" />
 										<div>
 											<h3 className="font-medium">Track Type</h3>
-											<p className="text-gray-700 capitalize">{paper.trackType} Paper</p>
+											<p className="text-gray-700 capitalize">{paper.trackType}</p>
 										</div>
 									</div>
 
@@ -223,7 +224,8 @@ export default function PaperDetails() {
 															: "text-yellow-600 font-medium"
 												}
 											>
-												{paper.status || "Under Review"}
+												{/* split from '_' and capitalize */}
+												{(paper.status as string).split("_").map(word => word.split('').map((letter, idx) => idx === 0 ? letter.toUpperCase() : letter).join('')).join(' ')}
 											</p>
 										</div>
 									</div>
