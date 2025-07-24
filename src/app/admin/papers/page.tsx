@@ -1,9 +1,11 @@
 'use client'
 
 import { Theme } from '@/app'
+import { Button } from '@/components/ui/button'
 import { getThemes } from '@/lib/api/themes'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import {sendReviewDecisionMail} from '@/lib/mail'
 
 interface Paper {
 	id: string
@@ -159,9 +161,12 @@ export default function PapersPage() {
 											<option value="submitted">Submitted</option>
 											<option value="under_review">Under Review</option>
 											<option value="accepted">Accepted</option>
+											<option value="accepted">Reviewed</option>
 											<option value="rejected">Rejected</option>
 										</select>
 									</td>
+									<td className="px-6 py-4  whitespace-nowrap text-sm text-gray-500">
+                  </td>
 								</tr>
 							))}
 						</tbody>

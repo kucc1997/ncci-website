@@ -15,6 +15,7 @@ export async function GET() {
                 id: papers.id,
                 title: papers.title,
                 submissionId: papers.submissionId,
+                status: paperReviewerAssignments.status,  // status of the assignment (NOT paper)
             })
             .from(papers)
             .innerJoin(paperReviewerAssignments, eq(papers.id, paperReviewerAssignments.paperId))
