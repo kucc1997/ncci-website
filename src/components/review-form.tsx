@@ -45,7 +45,7 @@ export default function ReviewForm({ paperId, onSubmitSuccess }: ReviewFormProps
 		manuscriptOrganization: "",
 		references: "",
 		paperLength: "",
-		comfortLevel: "",
+		expertiseLevel: "",
 		mandatoryComments: "",
 		suggestedComments: "",
 		overallRecommendation: "",
@@ -154,17 +154,17 @@ export default function ReviewForm({ paperId, onSubmitSuccess }: ReviewFormProps
 					</div>
 
 					<div>
-						<Label className="text-lg font-semibold text-[var(--bg-accent2)]">How comfortable are you in reviewing this paper?</Label>
-						<Select onValueChange={(value) => handleChange("comfortLevel", value)} value={formData.comfortLevel}>
+						<Label className="text-lg font-semibold text-[var(--bg-accent2)]">What is your level of expertise in the domain of this paper?</Label>
+						<Select onValueChange={(value) => handleChange("expertiseLevel", value)} value={formData.expertiseLevel}>
 							<SelectTrigger>
-								<SelectValue placeholder="Select comfort level" />
+								<SelectValue placeholder="Select expertise level" />
 							</SelectTrigger>
 							<SelectContent>
-								<SelectItem value="very-confident">Very Confident</SelectItem>
-								<SelectItem value="confident">Confident</SelectItem>
-								<SelectItem value="adequate">Adequate</SelectItem>
-								<SelectItem value="not-confident">Not Confident</SelectItem>
-								<SelectItem value="not-my-area">Not my Area</SelectItem>
+								<SelectItem value="no-familiarity">No familiarity</SelectItem>
+								<SelectItem value="some-familiarity">Some familiarity </SelectItem>
+								<SelectItem value="moderate-expertise">Moderate expertise</SelectItem>
+								<SelectItem value="high-expertise">High expertise</SelectItem>
+								<SelectItem value="expert">Expert</SelectItem>
 							</SelectContent>
 						</Select>
 					</div>
