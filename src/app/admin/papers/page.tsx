@@ -1,11 +1,11 @@
 'use client'
 
 import { Theme } from '@/app'
-import { Button } from '@/components/ui/button'
+// import { Button } from '@/components/ui/button'
 import { getThemes } from '@/lib/api/themes'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
-import {sendReviewDecisionMail} from '@/lib/mail'
+// import {sendReviewDecisionMail} from '@/lib/mail'
 
 interface Paper {
 	id: string
