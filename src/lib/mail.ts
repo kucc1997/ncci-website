@@ -19,6 +19,14 @@ interface SendRegistrationEmailParams {
 	participantType: string
 	tier: string
 }
+interface sendReviewArrivalMailParams{
+	to: string
+  paperTitle: string
+  firstName: string
+  coAuthors: string[] | null
+  status: string
+	paperReview: string
+}
 
 export async function sendRegistrationEmail({
 	to,
@@ -91,3 +99,39 @@ export async function sendRegistrationEmail({
 		return { success: false, error }
 	}
 } 
+
+export async function sendReviewDecisionMail({
+    to ,
+    paperTitle,
+    firstName,
+    coAuthors, // Optional co-authors
+    status,
+}:sendReviewArrivalMailParams) {
+    const mailOptions = {
+        from: `"NCCI" <${process.env.EMAIL_USER}>`,
+        to: to,
+        subject: `Paper Decision: ${paperTitle}`,
+        html: `
+<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto">
+  <div style="background:#1a365d;padding:15px;text-align:center;color:white">
+    <h1 style="margin:0">NCCI 2025</h1>
+  </div>
+  <div style="padding:15px">
+    <p>Dear ${firstName},</p>
+    ${coAuthors?.length ? `<p>Co-authors: ${coAuthors.join(', ')}</p>` : ''}
+    <p>Your paper "${paperTitle}" status:</p>
+    <div style="background:#f8fafc;padding:10px;margin:10px 0">
+      ${status === 'accepted' 
+        ? "We'll be in touch soon." 
+        : "Please submit a rebuttal on the website portal!"}
+    </div>
+    <div style="background:#f1f5f9;padding:10px;margin-top:20px">
+      <p style="margin:0">© 2025 NCCI</p>
+    </div>
+  </div>
+</div>
+        `
+    };
+
+    await transporter.sendMail(mailOptions);
+}

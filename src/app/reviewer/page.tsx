@@ -8,6 +8,7 @@ interface AssignedPaper {
     id: string;
     title: string;
     reviewId: string | null;
+    status: string;
 }
 
 export default function ReviewerPage() {
@@ -73,7 +74,7 @@ export default function ReviewerPage() {
                                         onClick={() => handlePaperClick(paper.id)}
                                         className="text-blue-600 hover:underline"
                                     >
-                                        {expandedPaperId === paper.id ? "Collapse" : "Review"}
+                                    {(paper.status === 'reviewed' )?"Edit Review":(expandedPaperId === paper.id ? "Collapse" : "Review")}
                                     </button>
                                 )}
                             </div>
