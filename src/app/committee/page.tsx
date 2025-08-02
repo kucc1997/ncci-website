@@ -316,7 +316,7 @@ export default function CommitteePage() {
           <div className="text-center sm:max-w-xs">
             <div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
               <Image
-                src="/oc/HarishChandraBhandari.webp"
+                src="/oc/HarishChandra.webp"
                 alt="Harish Chandra Bhandari"
                 fill
                 className="object-cover"
@@ -324,7 +324,7 @@ export default function CommitteePage() {
               />
             </div>
             <h3 className="text-xl font-semibold">Harish Chandra Bhandari, PhD</h3>
-            <p className="text-gray-600"></p>
+            <p className="text-gray-600">Lecturer</p>
             <p className="text-gray-600 max-w-60">Department of Computer Science and Engineering</p>
             <p className="text-gray-600">Kathmandu University</p>
           </div>
