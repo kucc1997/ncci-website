@@ -1,10 +1,11 @@
 'use client'
 
 import { Theme } from '@/app'
+// import { Button } from '@/components/ui/button'
 import { getThemes } from '@/lib/api/themes'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
-import { sendReviewArrivalMailParams ,sendReviewDecisionMail } from '@/lib/mail'
+// import {sendReviewDecisionMail} from '@/lib/mail'
 
 interface Paper {
   id: string
@@ -85,23 +86,23 @@ export default function PapersPage() {
       })
 
       // Send appropriate email based on status
-      if (newStatus === 'accepted') {
-        await sendReviewDecisionMail(sendReviewArrivalMailParams{
-          to: paperToUpdate.authorEmail,
-          paperTitle: paperToUpdate.title,
-          firstName: paperToUpdate.author.split(' ')[0],
-          coAuthors: paperToUpdate.coAuthors,
-          status: 'accepted'
-        })
-      } else if (newStatus === 'rejected') {
-        await sendReviewDecisionMail(sendReviewArrivalMailParams{
-          to: paperToUpdate.authorEmail,
-          paperTitle: paperToUpdate.title,
-          firstName: paperToUpdate.author.split(' ')[0],
-          coAuthors: paperToUpdate.coAuthors,
-          status: 'rebuttal'
-        })
-      }
+      // if (newStatus === 'accepted') {
+      //   await sendReviewDecisionMail(sendReviewArrivalMailParams{
+      //     to: paperToUpdate.authorEmail,
+      //     paperTitle: paperToUpdate.title,
+      //     firstName: paperToUpdate.author.split(' ')[0],
+      //     coAuthors: paperToUpdate.coAuthors,
+      //     status: 'accepted'
+      //   })
+      // } else if (newStatus === 'rejected') {
+      //   await sendReviewDecisionMail(sendReviewArrivalMailParams{
+      //     to: paperToUpdate.authorEmail,
+      //     paperTitle: paperToUpdate.title,
+      //     firstName: paperToUpdate.author.split(' ')[0],
+      //     coAuthors: paperToUpdate.coAuthors,
+      //     status: 'rebuttal'
+      //   })
+      // }
     } catch (error) {
       console.error('Error updating paper status:', error)
       // Revert local state if there was an error
