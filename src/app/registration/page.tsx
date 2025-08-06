@@ -37,10 +37,10 @@ export default function RegistrationPage() {
 	const [registrationId, setRegistrationId] = useState("")
 	const [isSubmitting, setIsSubmitting] = useState(false)
 
-	// Check if early registration (before August 5th midnight NPT)
+	// Check if early registration (before August 15th midnight NPT)
 	const isEarlyRegistration = useMemo(() => {
 		const now = new Date()
-		const deadline = new Date("2025-08-06T00:00:00")
+		const deadline = new Date("2025-08-16T00:00:00")
 		return now < deadline
 	}, [])
 
@@ -231,7 +231,7 @@ export default function RegistrationPage() {
 						<Clock className={`h-5 w-5 ${isEarlyRegistration ? "text-green-600" : "text-orange-600"}`} />
 						<span className={`font-medium ${isEarlyRegistration ? "text-green-800" : "text-orange-800"}`}>
 							{isEarlyRegistration
-								? "Early Registration Available until August 5th, 2025 (Midnight NPT)"
+								? "Early Registration Available until August 15th, 2025 (Midnight NPT)"
 								: "Late Registration Period - Deadline: August 21st, 2025 (Midnight NPT)"}
 						</span>
 					</div>
@@ -650,11 +650,11 @@ export default function RegistrationPage() {
 						<ul className="space-y-2 text-sm">
 							<li className="flex items-center gap-2">
 								<Clock className="h-4 w-4 text-[var(--bg-accent2)]" />
-								<span>Early Registration: Until August 5th, 2025 (Midnight NPT)</span>
+								<span>Early Registration: Until August 15th, 2025 (Midnight NPT)</span>
 							</li>
 							<li className="flex items-center gap-2">
 								<Clock className="h-4 w-4 text-orange-600" />
-								<span>Late Registration: August 6th - 21st, 2025 (Midnight NPT)</span>
+								<span>Late Registration: August 16th - 21st, 2025 (Midnight NPT)</span>
 							</li>
 							<li className="flex items-center gap-2">
 								<AlertCircle className="h-4 w-4 text-red-600" />

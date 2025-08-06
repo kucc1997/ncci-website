@@ -145,7 +145,7 @@ export default function TimelinePage() {
 								<CardContent>
 									<div className="flex items-center gap-2 text-gray-600 mb-2">
 										<Calendar1 className="h-4 w-4" />
-										<span>5<sup>th</sup> August 2025 11:59 PM NPT</span>
+										<span>15<sup>th</sup> August 2025 11:59 PM NPT</span>
 									</div>
 									<p className="text-gray-700">
 										The early registration for all the participants as well as
