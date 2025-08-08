@@ -23,7 +23,7 @@ interface sendReviewArrivalMailParams{
 	to: string
   paperTitle: string
   firstName: string
-  coAuthors: string[] | null
+  coAuthors: string[] | undefined 
   status: string
 	paperReview: string
 }
