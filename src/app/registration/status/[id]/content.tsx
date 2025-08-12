@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { AlertCircle, CheckCircle2, Clock, User, Building, Mail, Phone, FileText } from "lucide-react"
 import Link from "next/link"
 
-type RegistrationStatus = "pending" | "approved" | "rejected"
+type RegistrationStatus = "pending" | "accepted" | "rejected"
 
 interface RegistrationDetails {
 	registrationId: string
@@ -51,6 +51,7 @@ export default function RegistrationStatusContent({ params }: { params: { id: st
 				}
 
 				setRegistration(result.data)
+				console.log(result.data)
 			} catch (err) {
 				setError(err instanceof Error ? err.message : "Failed to fetch registration details")
 			} finally {
@@ -98,15 +99,18 @@ export default function RegistrationStatusContent({ params }: { params: { id: st
 	}
 
 	const getStatusBadge = (status: RegistrationStatus) => {
-		switch (status) {
-			case "approved":
-				return <Badge className="bg-green-100 text-green-800">Approved</Badge>
+		console.log(status)
+		switch (status.trim()) {
+			case "accepted":
+				return <Badge className="bg-green-100 text-green-800">Accepted</Badge>
 			case "rejected":
 				return <Badge className="bg-red-100 text-red-800">Rejected</Badge>
 			default:
 				return <Badge className="bg-yellow-100 text-yellow-800">Pending</Badge>
 		}
 	}
+
+	if (!registration) return <>Loading...</>
 
 	return (
 		<div className="container px-4 md:px-6 py-12">
@@ -228,7 +232,7 @@ export default function RegistrationStatusContent({ params }: { params: { id: st
 									<p>• You will receive an email once your registration is confirmed</p>
 								</>
 							)}
-							{registration.status === "approved" && (
+							{registration.status === "accepted" && (
 								<>
 									<p>• Your registration has been approved</p>
 									<p>• Please check your email for further instructions</p>
