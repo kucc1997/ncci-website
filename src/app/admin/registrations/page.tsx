@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { toast } from 'sonner'
+import { Download } from 'lucide-react'
 
 interface Registration {
 	id: string
@@ -13,6 +14,13 @@ interface Registration {
 	status: 'pending' | 'accepted' | 'rejected'
 	registrationDate: string
 	fileUrl: string
+	participantType: string
+	tier: string
+	isKuccMember: boolean
+	isInternational: boolean
+	paperSubmission: boolean
+	dietaryRestrictions: string | null
+	phone: string
 }
 
 export default function RegistrationsPage() {
@@ -37,7 +45,14 @@ export default function RegistrationsPage() {
 					organization: r.institution,
 					status: r.status,
 					registrationDate: r.createdAt ? new Date(r.createdAt).toISOString().slice(0, 10) : '',
-					fileUrl: r.paymentVoucherPath
+					fileUrl: r.paymentVoucherPath,
+					participantType: r.participantType,
+					tier: r.tier,
+					isKuccMember: r.isKuccMember,
+					isInternational: r.isInternational,
+					paperSubmission: r.paperSubmission,
+					dietaryRestrictions: r.dietaryRestrictions,
+					phone: r.phone
 				})))
 			} catch (err) {
 				setError(err instanceof Error ? err.message : 'Failed to fetch registrations')
@@ -93,9 +108,77 @@ export default function RegistrationsPage() {
 		}
 	}
 
+	const exportToCSV = () => {
+		if (registrations.length === 0) {
+			toast.error('No registrations to export')
+			return
+		}
+
+		// Prepare CSV data
+		console.log(registrations[0])
+		const csvData = registrations.map(reg => ({
+			'Registration ID': reg.registrationId,
+			'Name': reg.name,
+			'Email': reg.email,
+			'Organization': reg.organization,
+			'Registration Date': reg.registrationDate,
+			'Participation Type': reg.participantType,
+			'Tier': reg.tier,
+			'Special Categories': [
+				reg.isKuccMember && 'KUCC Member',
+				reg.isInternational && 'International',
+				reg.paperSubmission && 'Paper Submission'
+			].filter(Boolean).join(', '),
+			'Dietary Restrictions': reg.dietaryRestrictions,
+			'Status': reg.status,
+			'Payment Voucher': reg.fileUrl,
+			'Institution': reg.organization,
+			'Phone Number': reg.phone
+		}))
+
+		// Convert to CSV string
+		const headers = Object.keys(csvData[0])
+		const csvString = [
+			headers.join(','),
+			...csvData.map(row => 
+				headers.map(header => {
+					const value = row[header as keyof typeof row]
+					// Escape commas and quotes in CSV values
+					if (typeof value === 'string' && (value.includes(',') || value.includes('"'))) {
+						return `"${value.replace(/"/g, '""')}"`
+					}
+					return value
+				}).join(',')
+			)
+		].join('\n')
+
+		// Create and download CSV file
+		const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' })
+		const link = document.createElement('a')
+		const url = URL.createObjectURL(blob)
+		link.setAttribute('href', url)
+		link.setAttribute('download', `registrations_${new Date().toISOString().slice(0, 10)}.csv`)
+		link.style.visibility = 'hidden'
+		document.body.appendChild(link)
+		link.click()
+		document.body.removeChild(link)
+		URL.revokeObjectURL(url)
+
+		toast.success('Registrations exported successfully!')
+	}
+
 	return (
 		<div className="space-y-6">
-			<h1 className="text-2xl font-bold text-gray-900">Registrations</h1>
+			<div className="flex justify-between items-center">
+				<h1 className="text-2xl font-bold text-gray-900">Registrations</h1>
+				<button
+					onClick={exportToCSV}
+					className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+				>
+					<Download className="h-4 w-4" />
+					Export to CSV
+				</button>
+			</div>
 
 			{loading ? (
 				<div className="p-8 text-center">Loading...</div>
