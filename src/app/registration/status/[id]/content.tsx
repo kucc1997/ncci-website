@@ -26,6 +26,7 @@ interface RegistrationDetails {
 	specialRequirements: string | null
 	status: RegistrationStatus
 	createdAt: string
+	paymentVoucherPath: string
 }
 
 export default function RegistrationStatusContent({ params }: { params: { id: string } }) {
@@ -197,6 +198,19 @@ export default function RegistrationStatusContent({ params }: { params: { id: st
 									{new Date(registration.createdAt).toLocaleDateString()}
 								</p>
 							</div>
+							{registration.paymentVoucherPath && (
+								<div>
+									<p className="text-sm text-gray-500">Payment Voucher</p>
+									<a
+										href={registration.paymentVoucherPath}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="font-medium text-blue-600 underline hover:text-blue-800"
+									>
+										View Payment Voucher
+									</a>
+								</div>
+							)}
 						</div>
 					</div>
 
