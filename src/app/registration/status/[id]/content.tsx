@@ -51,7 +51,6 @@ export default function RegistrationStatusContent({ params }: { params: { id: st
 				}
 
 				setRegistration(result.data)
-				console.log(result.data)
 			} catch (err) {
 				setError(err instanceof Error ? err.message : "Failed to fetch registration details")
 			} finally {
@@ -99,7 +98,6 @@ export default function RegistrationStatusContent({ params }: { params: { id: st
 	}
 
 	const getStatusBadge = (status: RegistrationStatus) => {
-		console.log(status)
 		switch (status.trim()) {
 			case "accepted":
 				return <Badge className="bg-green-100 text-green-800">Accepted</Badge>
