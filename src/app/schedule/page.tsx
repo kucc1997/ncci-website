@@ -832,7 +832,7 @@ export default function SchedulePage() {
 								<div className="flex justify-between items-start">
 									<div>
 									<CardTitle className="text-base">
-										Factors Influencing Nepali Students' Study Abroad Decisions: An Integration of Discrete Choice and Predictive Models
+										Factors Influencing Nepali Students Study Abroad Decisions: An Integration of Discrete Choice and Predictive Models
 									</CardTitle>
 									<CardDescription>
 										3:00 PM - 3:15 PM | Submission ID: P54HQ8A9 | Full Paper
