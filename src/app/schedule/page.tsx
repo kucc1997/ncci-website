@@ -31,12 +31,15 @@ export default function SchedulePage() {
 			</div>
 
 			<Tabs defaultValue="all" className="max-w-5xl mx-auto">
-				<TabsList className="grid w-full grid-cols-4 mb-8">
+				<TabsList className="grid w-full grid-cols-5 mb-8">
 					<TabsTrigger value="all">All Sessions</TabsTrigger>
 					<TabsTrigger value="keynotes">Keynotes</TabsTrigger>
 					<TabsTrigger value="papers">Paper Presentations</TabsTrigger>
 					<TabsTrigger value="panels">Panel Discussions</TabsTrigger>
+					<TabsTrigger value="guests">Guests</TabsTrigger>
 				</TabsList>
+
+
 
 				<TabsContent value="all">
 					<div className="space-y-8">
@@ -963,6 +966,93 @@ export default function SchedulePage() {
 						</Card>
 					</div>
 				</TabsContent>
+
+				<TabsContent value="guests">
+					<div className="space-y-6">
+						{/* Chief Guest */}
+						<Card>
+						<CardHeader className="pb-2">
+							<div className="flex justify-between items-start">
+							<div>
+								<CardTitle className="text-xl font-semibold text-gray-900">
+								Chief Guest
+								</CardTitle>
+							</div>
+							<Badge className="bg-purple-100 text-purple-800 hover:bg-purple-200">
+								Guest
+							</Badge>
+							</div>
+						</CardHeader>
+						<CardContent>
+							<p className="text-gray-800 font-medium">
+							Prof. Dr. Achyut Prasad Wagle
+							</p>
+							<p className="text-gray-600">
+							Vice Chancellor,<br />Kathmandu University
+							</p>
+						</CardContent>
+						</Card>
+
+						{/* Special Guest */}
+						<Card>
+						<CardHeader className="pb-2">
+							<div className="flex justify-between items-start">
+							<div>
+								<CardTitle className="text-xl font-semibold text-gray-900">
+								Special Guest
+								</CardTitle>
+							</div>
+							<Badge className="bg-purple-100 text-purple-800 hover:bg-purple-200">
+								Guest
+							</Badge>
+							</div>
+						</CardHeader>
+						<CardContent>
+							<p className="text-gray-800 font-medium">Dr. Subarna Shakya</p>
+							<p className="text-gray-600">
+							Professor of Computer Engineering,<br />
+							Department of Electronics and Computer Engineering,<br />
+							Pulchowk Campus, Institute of Engineering
+							</p>
+						</CardContent>
+						</Card>
+
+						{/* Guests */}
+						<Card>
+						<CardHeader className="pb-2">
+							<div className="flex justify-between items-start">
+							<div>
+								<CardTitle className="text-xl font-semibold text-gray-900">
+								Guests
+								</CardTitle>
+							</div>
+							<Badge className="bg-purple-100 text-purple-800 hover:bg-purple-200">
+								Guests
+							</Badge>
+							</div>
+						</CardHeader>
+						<CardContent>
+							<ul className="list-disc list-inside ml-4 space-y-2 text-gray-700">
+							<li>
+								<span className="font-medium">Prof. Dr. Manish Pokharel</span> — Dean, School of Engineering, Kathmandu University
+							</li>
+							<li>
+								<span className="font-medium">Prof. Dr. Bed Mani Dahal</span> — Dean, School of Science, Kathmandu University
+							</li>
+							<li>
+								<span className="font-medium">Sailesh Chitrakar, PhD.</span> — KUSET Co Editor-in-Chief
+							</li>
+							<li>
+								<span className="font-medium">Assoc. Prof. Brijesh Adhikary</span> — KU RDI Acting Director
+							</li>
+							<li>
+								<span className="font-medium">Prof. Dr. Ujjwol Man Joshi</span> — Associate Dean, School of Science, Kathmandu University
+							</li>
+							</ul>
+						</CardContent>
+						</Card>
+					</div>
+					</TabsContent>
 			</Tabs>
 
 			<div className="max-w-4xl mx-auto mt-12 bg-blue-50 p-6 rounded-lg">
