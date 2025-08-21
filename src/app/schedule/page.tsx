@@ -31,12 +31,9 @@ export default function SchedulePage() {
 			</div>
 
 			<Tabs defaultValue="all" className="max-w-5xl mx-auto">
-				<TabsList className="grid w-full grid-cols-5 mb-8">
+				<TabsList className="grid w-full grid-cols-2 mb-8">
 					<TabsTrigger value="all">All Sessions</TabsTrigger>
-					<TabsTrigger value="keynotes">Keynotes</TabsTrigger>
 					<TabsTrigger value="papers">Paper Presentations</TabsTrigger>
-					<TabsTrigger value="panels">Panel Discussions</TabsTrigger>
-					<TabsTrigger value="guests">Guests</TabsTrigger>
 				</TabsList>
 
 
@@ -367,88 +364,6 @@ export default function SchedulePage() {
 						</div>
 					</div>
 				</TabsContent>
-
-				<TabsContent value="keynotes">
-					<div className="space-y-4">
-						<Card>
-							<CardHeader className="pb-4 border-b border-gray-100">
-								<div className="flex justify-between items-start">
-								<div>
-									<CardTitle className="text-xl font-semibold text-gray-900 leading-snug">
-									Keynote: Strategic AI
-									</CardTitle>
-									<CardDescription className="mt-1 text-sm font-medium text-gray-500">
-									Building Nepal’s Secure, Sovereign, and Sustainable Digital Economy
-									</CardDescription>
-								</div>
-								<Badge className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium shadow-sm hover:bg-blue-100 transition">
-									Keynote
-								</Badge>
-								</div>
-							</CardHeader>
-							<CardContent>
-								<div className="flex items-center gap-2 text-gray-600 mb-2">
-								<MapPin className="h-4 w-4" />
-								<span>CV Raman Hall</span>
-								</div>
-								<div className="flex items-center gap-2 text-gray-600 mb-3">
-								<Mic className="h-4 w-4" />
-								<span>
-									Prof. Dr. Sudan Jha, Department of Computer Science and Engineering, Kathmandu University, Nepal
-								</span>
-								</div>
-								<p className="text-gray-700">
-								In the global AI race, nations face a pivotal choice: consume imported technology or architect a sovereign
-								digital future. This keynote advocates for a strategic, homegrown approach to Artificial Intelligence as the
-								foundation of Nepal’s next economic chapter. We will outline a concrete framework to leverage Nepal’s unique
-								hydropower and climate advantages for building a sustainable, secure AI infrastructure. The address will then
-								delve into AI’s transformative impact from core sectors to accelerating scientific research and innovation.
-								</p>
-							</CardContent>
-							</Card>
-						<Card>
-							<CardHeader className="pb-4 border-b border-gray-100">
-								<div className="flex justify-between items-start">
-								<div>
-									<CardTitle className="text-xl font-semibold text-gray-900 leading-snug">
-									Keynote: Beyond Interference
-									</CardTitle>
-									<CardDescription className="mt-1 text-sm font-medium text-gray-500">
-									AI2XPR: AI-Enabled Interference-Resilience Next Generation Photonics Radar
-									</CardDescription>
-								</div>
-								<Badge className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium shadow-sm hover:bg-blue-100 transition">
-									Keynote
-								</Badge>
-								</div>
-							</CardHeader>
-							<CardContent>
-								<div className="flex items-center gap-2 text-gray-600 mb-2">
-								<MapPin className="h-4 w-4" />
-								<span>CV Raman Hall</span>
-								</div>
-								<div className="flex items-center gap-2 text-gray-600 mb-3">
-								<Mic className="h-4 w-4" />
-								<span>
-									Prof. Dr. Bikash Nakarmi, Department of Computer Science and Engineering, Kathmandu University, Nepal
-								</span>
-								</div>
-								<p className="text-gray-700">
-								The rapid advancements in Artificial Intelligence (AI) and Microwave Photonics (MWP) are changing industries by
-								enhancing performance, efficiency, and reliability across secure communications, satellite systems, autonomous
-								systems, and radar. This keynote introduces AI2XPR, an AI-powered, photonics-based radar system that delivers
-								next-generation detection with enhanced accuracy, resilience, and efficiency at minimal computational load. As
-								radar operates in congested bands, mitigating interference (improving SINR) and enhancing target detection
-								(improving range resolution) are critical. AI2XPR combines photonics-based signal processing, robust waveform
-								generation (RWG), high-bandwidth and multi-band operation, and AI for real-time interference recognition and
-								mitigation—ensuring interference-resilient performance. It will cover radar foundations, photonics radar features,
-								and how AI2XPR shapes resilient sensing in complex multi-radar environments.
-								</p>
-							</CardContent>
-							</Card>
-					</div>
-				</TabsContent>
-
 				<TabsContent value="papers">
 					<div className="space-y-4">
 						<div className="bg-gray-50 p-4 rounded-lg mb-6">
@@ -966,93 +881,6 @@ export default function SchedulePage() {
 						</Card>
 					</div>
 				</TabsContent>
-
-				<TabsContent value="guests">
-					<div className="space-y-6">
-						{/* Chief Guest */}
-						<Card>
-						<CardHeader className="pb-2">
-							<div className="flex justify-between items-start">
-							<div>
-								<CardTitle className="text-xl font-semibold text-gray-900">
-								Chief Guest
-								</CardTitle>
-							</div>
-							<Badge className="bg-purple-100 text-purple-800 hover:bg-purple-200">
-								Guest
-							</Badge>
-							</div>
-						</CardHeader>
-						<CardContent>
-							<p className="text-gray-800 font-medium">
-							Prof. Dr. Achyut Prasad Wagle
-							</p>
-							<p className="text-gray-600">
-							Vice Chancellor,<br />Kathmandu University
-							</p>
-						</CardContent>
-						</Card>
-
-						{/* Special Guest */}
-						<Card>
-						<CardHeader className="pb-2">
-							<div className="flex justify-between items-start">
-							<div>
-								<CardTitle className="text-xl font-semibold text-gray-900">
-								Special Guest
-								</CardTitle>
-							</div>
-							<Badge className="bg-purple-100 text-purple-800 hover:bg-purple-200">
-								Guest
-							</Badge>
-							</div>
-						</CardHeader>
-						<CardContent>
-							<p className="text-gray-800 font-medium">Dr. Subarna Shakya</p>
-							<p className="text-gray-600">
-							Professor of Computer Engineering,<br />
-							Department of Electronics and Computer Engineering,<br />
-							Pulchowk Campus, Institute of Engineering
-							</p>
-						</CardContent>
-						</Card>
-
-						{/* Guests */}
-						<Card>
-						<CardHeader className="pb-2">
-							<div className="flex justify-between items-start">
-							<div>
-								<CardTitle className="text-xl font-semibold text-gray-900">
-								Guests
-								</CardTitle>
-							</div>
-							<Badge className="bg-purple-100 text-purple-800 hover:bg-purple-200">
-								Guests
-							</Badge>
-							</div>
-						</CardHeader>
-						<CardContent>
-							<ul className="list-disc list-inside ml-4 space-y-2 text-gray-700">
-							<li>
-								<span className="font-medium">Prof. Dr. Manish Pokharel</span> — Dean, School of Engineering, Kathmandu University
-							</li>
-							<li>
-								<span className="font-medium">Prof. Dr. Bed Mani Dahal</span> — Dean, School of Science, Kathmandu University
-							</li>
-							<li>
-								<span className="font-medium">Sailesh Chitrakar, PhD.</span> — KUSET Co Editor-in-Chief
-							</li>
-							<li>
-								<span className="font-medium">Assoc. Prof. Brijesh Adhikary</span> — KU RDI Acting Director
-							</li>
-							<li>
-								<span className="font-medium">Prof. Dr. Ujjwol Man Joshi</span> — Associate Dean, School of Science, Kathmandu University
-							</li>
-							</ul>
-						</CardContent>
-						</Card>
-					</div>
-					</TabsContent>
 			</Tabs>
 
 			<div className="max-w-4xl mx-auto mt-12 bg-blue-50 p-6 rounded-lg">
@@ -1071,14 +899,6 @@ export default function SchedulePage() {
 						<p className="text-gray-700 mt-1">
 							The schedule is subject to change. Please check the conference
 							website or mobile app for the most up-to-date information.
-						</p>
-					</div>
-
-					<div>
-						<h3 className="font-semibold">Mobile App</h3>
-						<p className="text-gray-700 mt-1">
-							Download the NCCI 2025 mobile app for real-time schedule updates,
-							speaker information, and networking features.
 						</p>
 					</div>
 				</div>

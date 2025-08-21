@@ -37,7 +37,7 @@ export default function sitemap() {
 			priority: 0.6,
 		},
 		{
-			url: 'https://conf.kucc.ku.edu.np/timeline',
+			url: 'https://conf.kucc.ku.edu.np/schedule',
 			lastModified: new Date(),
 			changeFrequency: 'weekly',
 			priority: 0.7,
