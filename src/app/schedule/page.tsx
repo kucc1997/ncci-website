@@ -7,7 +7,7 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Clock, MapPin, Users, Coffee, FileText, Mic } from "lucide-react";
+import { Clock, MapPin, Users, Coffee, Mic } from "lucide-react";
 
 export default function SchedulePage() {
 	return (
