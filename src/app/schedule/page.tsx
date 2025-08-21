@@ -183,7 +183,7 @@ export default function SchedulePage() {
 									<CardContent>
 									<div className="flex items-center gap-2 text-gray-600 mb-2">
 										<MapPin className="h-4 w-4" />
-										<span>Main Auditorium</span>
+										<span>CV Raman Hall</span>
 									</div>
 									<p className="text-gray-700">
 										Addresses and keynote messages from distinguished guests and speakers.
@@ -294,10 +294,6 @@ export default function SchedulePage() {
 										</div>
 									</CardHeader>
 									<CardContent>
-										<div className="flex items-center gap-2 text-gray-600 mb-2">
-											<MapPin className="h-4 w-4" />
-											<span>Exhibition Hall</span>
-										</div>
 										<div className="flex items-center gap-2 text-gray-600 mb-3">
 											<Coffee className="h-4 w-4" />
 											<span>Refreshments provided</span>
@@ -366,198 +362,87 @@ export default function SchedulePage() {
 								</Card>
 							</div>
 						</div>
-
-						{/* Closing Session */}
-						<div>
-							<h2 className="text-2xl font-bold mb-4">Closing Session</h2>
-							<div className="space-y-4">
-								<Card>
-									<CardHeader className="pb-2">
-										<div className="flex justify-between items-start">
-											<div>
-												<CardTitle>
-													Best Paper Awards & Closing Ceremony
-												</CardTitle>
-												<CardDescription>5:30 PM - 6:00 PM</CardDescription>
-											</div>
-											<Badge className="bg-purple-100 text-purple-800 hover:bg-purple-200">
-												Ceremony
-											</Badge>
-										</div>
-									</CardHeader>
-									<CardContent>
-										<div className="flex items-center gap-2 text-gray-600 mb-2">
-											<MapPin className="h-4 w-4" />
-											<span>Main Auditorium</span>
-										</div>
-										<div className="flex items-center gap-2 text-gray-600 mb-3">
-											<FileText className="h-4 w-4" />
-											<span>Awards for best papers and presentations</span>
-										</div>
-										<p className="text-gray-700">
-											Recognition of outstanding papers and presentations,
-											followed by closing remarks and announcement of future
-											events.
-										</p>
-									</CardContent>
-								</Card>
-
-								<Card>
-									<CardHeader className="pb-2">
-										<div className="flex justify-between items-start">
-											<div>
-												<CardTitle>Networking Reception</CardTitle>
-												<CardDescription>6:00 PM - 7:30 PM</CardDescription>
-											</div>
-											<Badge className="bg-green-100 text-green-800 hover:bg-green-200">
-												Social
-											</Badge>
-										</div>
-									</CardHeader>
-									<CardContent>
-										<div className="flex items-center gap-2 text-gray-600 mb-2">
-											<MapPin className="h-4 w-4" />
-											<span>Garden Area</span>
-										</div>
-										<p className="text-gray-700">
-											Join us for a farewell reception with light refreshments
-											and networking opportunities. Connect with speakers,
-											fellow attendees, and industry representatives in a
-											relaxed setting.
-										</p>
-									</CardContent>
-								</Card>
-							</div>
-						</div>
 					</div>
 				</TabsContent>
 
 				<TabsContent value="keynotes">
 					<div className="space-y-4">
 						<Card>
-							<CardHeader className="pb-2">
+							<CardHeader className="pb-4 border-b border-gray-100">
 								<div className="flex justify-between items-start">
-									<div>
-										<CardTitle>
-											Keynote: The Future of AI: Opportunities and Challenges
-										</CardTitle>
-										<CardDescription>9:30 AM - 10:30 AM</CardDescription>
-									</div>
-									<Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200">
-										Keynote
-									</Badge>
+								<div>
+									<CardTitle className="text-xl font-semibold text-gray-900 leading-snug">
+									Keynote: Strategic AI
+									</CardTitle>
+									<CardDescription className="mt-1 text-sm font-medium text-gray-500">
+									Building Nepal’s Secure, Sovereign, and Sustainable Digital Economy
+									</CardDescription>
+								</div>
+								<Badge className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium shadow-sm hover:bg-blue-100 transition">
+									Keynote
+								</Badge>
 								</div>
 							</CardHeader>
 							<CardContent>
 								<div className="flex items-center gap-2 text-gray-600 mb-2">
-									<MapPin className="h-4 w-4" />
-									<span>Main Auditorium</span>
+								<MapPin className="h-4 w-4" />
+								<span>CV Raman Hall</span>
 								</div>
 								<div className="flex items-center gap-2 text-gray-600 mb-3">
-									<Mic className="h-4 w-4" />
-									<span>Dr. Rajesh Sharma, Stanford University</span>
+								<Mic className="h-4 w-4" />
+								<span>
+									Prof. Dr. Sudan Jha, Department of Computer Science and Engineering, Kathmandu University, Nepal
+								</span>
 								</div>
 								<p className="text-gray-700">
-									An exploration of the current state and future directions of
-									artificial intelligence, including ethical considerations,
-									technological advancements, and potential societal impacts.
+								In the global AI race, nations face a pivotal choice: consume imported technology or architect a sovereign
+								digital future. This keynote advocates for a strategic, homegrown approach to Artificial Intelligence as the
+								foundation of Nepal’s next economic chapter. We will outline a concrete framework to leverage Nepal’s unique
+								hydropower and climate advantages for building a sustainable, secure AI infrastructure. The address will then
+								delve into AI’s transformative impact from core sectors to accelerating scientific research and innovation.
 								</p>
 							</CardContent>
-						</Card>
-
+							</Card>
 						<Card>
-							<CardHeader className="pb-2">
+							<CardHeader className="pb-4 border-b border-gray-100">
 								<div className="flex justify-between items-start">
-									<div>
-										<CardTitle>
-											Keynote: Cybersecurity in the Age of Quantum Computing
-										</CardTitle>
-										<CardDescription>11:00 AM - 12:00 PM</CardDescription>
-									</div>
-									<Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200">
-										Keynote
-									</Badge>
+								<div>
+									<CardTitle className="text-xl font-semibold text-gray-900 leading-snug">
+									Keynote: Beyond Interference
+									</CardTitle>
+									<CardDescription className="mt-1 text-sm font-medium text-gray-500">
+									AI2XPR: AI-Enabled Interference-Resilience Next Generation Photonics Radar
+									</CardDescription>
+								</div>
+								<Badge className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium shadow-sm hover:bg-blue-100 transition">
+									Keynote
+								</Badge>
 								</div>
 							</CardHeader>
 							<CardContent>
 								<div className="flex items-center gap-2 text-gray-600 mb-2">
-									<MapPin className="h-4 w-4" />
-									<span>Main Auditorium</span>
+								<MapPin className="h-4 w-4" />
+								<span>CV Raman Hall</span>
 								</div>
 								<div className="flex items-center gap-2 text-gray-600 mb-3">
-									<Mic className="h-4 w-4" />
-									<span>Dr. Lisa Chen, TechGlobal Inc.</span>
+								<Mic className="h-4 w-4" />
+								<span>
+									Prof. Dr. Bikash Nakarmi, Department of Computer Science and Engineering, Kathmandu University, Nepal
+								</span>
 								</div>
 								<p className="text-gray-700">
-									An in-depth look at how quantum computing is reshaping the
-									cybersecurity landscape, including threats to current
-									encryption methods and the development of quantum-resistant
-									cryptography.
+								The rapid advancements in Artificial Intelligence (AI) and Microwave Photonics (MWP) are changing industries by
+								enhancing performance, efficiency, and reliability across secure communications, satellite systems, autonomous
+								systems, and radar. This keynote introduces AI2XPR, an AI-powered, photonics-based radar system that delivers
+								next-generation detection with enhanced accuracy, resilience, and efficiency at minimal computational load. As
+								radar operates in congested bands, mitigating interference (improving SINR) and enhancing target detection
+								(improving range resolution) are critical. AI2XPR combines photonics-based signal processing, robust waveform
+								generation (RWG), high-bandwidth and multi-band operation, and AI for real-time interference recognition and
+								mitigation—ensuring interference-resilient performance. It will cover radar foundations, photonics radar features,
+								and how AI2XPR shapes resilient sensing in complex multi-radar environments.
 								</p>
 							</CardContent>
-						</Card>
-
-						<Card>
-							<CardHeader className="pb-2">
-								<div className="flex justify-between items-start">
-									<div>
-										<CardTitle>
-											Keynote: Cloud Computing: Trends and Future Directions
-										</CardTitle>
-										<CardDescription>2:00 PM - 3:00 PM</CardDescription>
-									</div>
-									<Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200">
-										Keynote
-									</Badge>
-								</div>
-							</CardHeader>
-							<CardContent>
-								<div className="flex items-center gap-2 text-gray-600 mb-2">
-									<MapPin className="h-4 w-4" />
-									<span>Main Auditorium</span>
-								</div>
-								<div className="flex items-center gap-2 text-gray-600 mb-3">
-									<Mic className="h-4 w-4" />
-									<span>Prof. David Kumar, MIT</span>
-								</div>
-								<p className="text-gray-700">
-									An overview of the latest developments in cloud computing,
-									including serverless architectures, edge computing, and
-									multi-cloud strategies.
-								</p>
-							</CardContent>
-						</Card>
-
-						<Card>
-							<CardHeader className="pb-2">
-								<div className="flex justify-between items-start">
-									<div>
-										<CardTitle>
-											Keynote: Big Data Analytics: Extracting Value from Data
-										</CardTitle>
-										<CardDescription>3:30 PM - 4:30 PM</CardDescription>
-									</div>
-									<Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200">
-										Keynote
-									</Badge>
-								</div>
-							</CardHeader>
-							<CardContent>
-								<div className="flex items-center gap-2 text-gray-600 mb-2">
-									<MapPin className="h-4 w-4" />
-									<span>Main Auditorium</span>
-								</div>
-								<div className="flex items-center gap-2 text-gray-600 mb-3">
-									<Mic className="h-4 w-4" />
-									<span>Dr. Sarah Johnson, Google Research</span>
-								</div>
-								<p className="text-gray-700">
-									A deep dive into the world of big data analytics, exploring
-									techniques for data processing, analysis, and visualization to
-									derive meaningful insights.
-								</p>
-							</CardContent>
-						</Card>
+							</Card>
 					</div>
 				</TabsContent>
 
