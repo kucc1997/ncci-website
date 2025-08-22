@@ -65,16 +65,36 @@ export default function SpeakersPage() {
                   </Badge>
                 </div>
               </CardHeader>
+
               <CardContent>
-                <p className="text-gray-800 font-medium">Dr. Subarna Shakya</p>
-                <p className="text-gray-600">
-                  Professor of Computer Engineering,<br />
-                  Department of Electronics and Computer Engineering,<br />
-                  Pulchowk Campus, Institute of Engineering
-                </p>
+                <ul className="list-none space-y-3 text-gray-700">
+                  <li>
+                    <p className="text-gray-800 font-medium m-0">Prof. Dr. Subarna Shakya</p>
+                    <p className="text-gray-600 m-0">
+                      Professor of Computer Engineering,<br />
+                      Department of Electronics and Computer Engineering,<br />
+                      Pulchowk Campus, Institute of Engineering
+                    </p>
+                  </li>
+
+                  <li>
+                    <p className="text-gray-800 font-medium m-0">Prof. Dr. Manish Pokharel</p>
+                    <p className="text-gray-600 m-0">
+                      Dean, School of Engineering,<br />
+                      Kathmandu University
+                    </p>
+                  </li>
+
+                  <li>
+                    <p className="text-gray-800 font-medium m-0">Prof. Dr. Bed Mani Dahal</p>
+                    <p className="text-gray-600 m-0">
+                      Dean, School of Science,<br />
+                      Kathmandu University
+                    </p>
+                  </li>
+                </ul>
               </CardContent>
             </Card>
-
             {/* Guests */}
             <Card>
               <CardHeader className="pb-2">
@@ -91,12 +111,6 @@ export default function SpeakersPage() {
               </CardHeader>
               <CardContent>
                 <ul className="list-disc list-inside ml-4 space-y-2 text-gray-700">
-                  <li>
-                    <span className="font-medium">Prof. Dr. Manish Pokharel</span> — Dean, School of Engineering, Kathmandu University
-                  </li>
-                  <li>
-                    <span className="font-medium">Prof. Dr. Bed Mani Dahal</span> — Dean, School of Science, Kathmandu University
-                  </li>
                   <li>
                     <span className="font-medium">Sailesh Chitrakar, PhD.</span> — KUSET Co Editor-in-Chief
                   </li>
@@ -176,7 +190,7 @@ export default function SpeakersPage() {
                 <div className="flex items-center gap-2 text-gray-600 mb-3">
                   <Mic className="h-4 w-4" />
                   <span>
-                    Prof. Dr. Bikash Nakarmi, Department of Computer Science and Engineering, Kathmandu University, Nepal
+                    Prof. Dr. Bikash Nakarmi,Professor, College of Electronic and Information Engineering, NUAA, China
                   </span>
                 </div>
                 <p className="text-gray-700">
