@@ -47,20 +47,18 @@ export default function RootLayout({
 	children: React.ReactNode,
 }) {
 	return (
-		<>
-			<EventSchema />
-			<SessionProvider>
-				<html lang="en">
-					<body className={inter.className}>
-						<div className="relative flex min-h-screen flex-col">
-							<SiteHeader />
-							<main className="flex-1">{children}</main>
-							<SiteFooter />
-							<Toaster richColors closeButton />
-						</div>
-					</body>
-				</html>
-			</SessionProvider>
-		</>
+		<SessionProvider>
+			<html lang="en">
+				<body className={inter.className}>
+					<EventSchema />
+					<div className="relative flex min-h-screen flex-col">
+						<SiteHeader />
+						<main className="flex-1">{children}</main>
+						<SiteFooter />
+						<Toaster richColors closeButton />
+					</div>
+				</body>
+			</html>
+		</SessionProvider>
 	);
 }
