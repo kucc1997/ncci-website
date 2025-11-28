@@ -39,6 +39,7 @@ export function SiteHeader() {
 		{ name: "Committee", href: "/committee" },
 		{ name: "Speakers", href: "/speakers" },
 		{ name: "Timeline", href: "/timeline" },
+		{ name: "Archive", href: "/archive" },
 		{ name: "Contact", href: "/contact" },
 	];
 
