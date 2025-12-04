@@ -65,7 +65,7 @@ export default async function CategoriesManagementPage() {
       <div className="mt-8 p-4 border rounded-lg bg-muted/50">
         <h3 className="font-semibold mb-2">About Categories</h3>
         <p className="text-sm text-muted-foreground">
-          Categories organize archive content. The "Papers Repository" category is special and handled separately.
+          Categories organize archive content. The &quot;Papers Repository&quot; category is special and handled separately.
           Other categories like Photos, Documents, Schedules can contain multiple content items.
         </p>
       </div>

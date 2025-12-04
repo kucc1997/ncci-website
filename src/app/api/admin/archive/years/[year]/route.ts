@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { db, archiveYears } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { auth } from "@/auth";
