@@ -5,6 +5,7 @@ import {
 	uuid,
 	boolean,
   jsonb,
+  integer,
 } from "drizzle-orm/pg-core"
 import postgres from "postgres"
 import { drizzle } from "drizzle-orm/postgres-js"
@@ -120,4 +121,53 @@ export const reviews = pgTable('reviews', {
   forwarded: boolean('forwarded').default(false).notNull(),
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow(),
+})
+
+export const archiveYears = pgTable('archive_years', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  year: integer('year').notNull().unique(),
+  title: text('title').notNull(),
+  description: text('description'),
+  eventDate: text('event_date'),
+  location: text('location'),
+  theme: text('theme'),
+  coverImage: text('cover_image'),
+  createdAt: timestamp('created_at').defaultNow(),
+})
+
+export const archiveCategories = pgTable('archive_categories', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  name: text('name').notNull(),
+  slug: text('slug').notNull().unique(),
+  description: text('description'),
+  displayOrder: integer('display_order').default(0),
+})
+
+export const archiveContent = pgTable('archive_content', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  yearId: uuid('year_id').notNull().references(() => archiveYears.id, { onDelete: 'cascade' }),
+  categoryId: uuid('category_id').notNull().references(() => archiveCategories.id, { onDelete: 'cascade' }),
+  title: text('title').notNull(),
+  description: text('description'),
+  fileUrl: text('file_url'),
+  fileType: text('file_type'),
+  thumbnailUrl: text('thumbnail_url'),
+  metadata: jsonb('metadata'),
+  displayOrder: integer('display_order').default(0),
+  createdAt: timestamp('created_at').defaultNow(),
+})
+
+export const archivePapers = pgTable('archive_papers', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  yearId: uuid('year_id').notNull().references(() => archiveYears.id, { onDelete: 'cascade' }),
+  paperId: uuid('paper_id').references(() => papers.id, { onDelete: 'set null' }),
+  title: text('title').notNull(),
+  authors: text('authors').notNull(),
+  abstract: text('abstract'),
+  keywords: text('keywords').array(),
+  fileUrl: text('file_url').notNull(),
+  trackType: text('track_type'),
+  isAccepted: boolean('is_accepted').default(true),
+  presentedAt: text('presented_at'),
+  createdAt: timestamp('created_at').defaultNow(),
 })

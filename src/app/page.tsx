@@ -1,8 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import {
-  Calendar,
-  MapPin,
   Users,
   FileText,
   Mic,
@@ -35,19 +33,9 @@ export default function Home() {
             National Conference on{" "}
             <span className="text-[var(--bg-secondary)]">Computer Innovations</span>
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-6">
+          <p className="text-xl md:text-2xl text-white/90 mb-8">
             Exploring the Future of Technology and Innovation
           </p>
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-white">
-              <Calendar className="h-5 w-5" />
-              <span>August 24, 2025</span>
-            </div>
-            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-white">
-              <MapPin className="h-5 w-5" />
-              <span>Kathmandu University</span>
-            </div>
-          </div>
           <div className="flex flex-wrap justify-center gap-4">
             <Button
               size="lg"
@@ -170,7 +158,7 @@ export default function Home() {
       <section className="py-16 bg-[var(--bg-accent2)] text-white">
         <div className="container px-4 md:px-6 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Ready to be part of NCCI 2025?
+            Ready to be part of NCCI?
           </h2>
           <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
             Join us for a day of innovation, learning, and networking with the
