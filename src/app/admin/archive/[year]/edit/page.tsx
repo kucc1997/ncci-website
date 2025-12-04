@@ -10,6 +10,8 @@ export default function EditArchiveYearPage() {
   const params = useParams();
   const yearNum = params.year as string;
   const [loading, setLoading] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [coverImageUrl, setCoverImageUrl] = useState("");
   const [yearData, setYearData] = useState<any>(null);
 
   useEffect(() => {
@@ -18,12 +20,38 @@ export default function EditArchiveYearPage() {
       .then(data => {
         if (data) {
           setYearData(data);
+          setCoverImageUrl(data.coverImage || "");
         }
       })
       .catch(() => {
         toast.error("Failed to fetch year information");
       });
   }, [yearNum]);
+
+  const handleFileUpload = async (file: File) => {
+    setUploading(true);
+    const uploadFormData = new FormData();
+    uploadFormData.append("file", file);
+
+    try {
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: uploadFormData,
+      });
+
+      if (!response.ok) throw new Error("Upload failed");
+
+      const data = await response.json();
+      setCoverImageUrl(data.url);
+      toast.success("Cover image uploaded successfully");
+      return data.url;
+    } catch {
+      toast.error("Cover image upload failed");
+      return null;
+    } finally {
+      setUploading(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,7 +64,7 @@ export default function EditArchiveYearPage() {
       eventDate: formData.get("eventDate") as string,
       location: formData.get("location") as string,
       theme: formData.get("theme") as string,
-      coverImage: formData.get("coverImage") as string,
+      coverImage: coverImageUrl,
     };
 
     try {
@@ -145,25 +173,42 @@ export default function EditArchiveYearPage() {
 
         <div>
           <label htmlFor="coverImage" className="block text-sm font-medium mb-2">
-            Cover Image URL
+            Cover Image
           </label>
           <input
-            type="url"
+            type="file"
             id="coverImage"
-            name="coverImage"
-            defaultValue={yearData.coverImage || ""}
+            accept="image/*"
+            disabled={uploading}
+            onChange={async (e) => {
+              const file = e.target.files?.[0];
+              if (file) {
+                await handleFileUpload(file);
+              }
+            }}
             className="w-full px-3 py-2 border rounded-md"
-            placeholder="https://example.com/image.jpg"
           />
+          {uploading && (
+            <p className="text-sm text-blue-600 mt-1">Uploading image...</p>
+          )}
+          {coverImageUrl && (
+            <div className="mt-2">
+              <p className="text-sm text-green-600">Current image: {coverImageUrl}</p>
+              <img src={coverImageUrl} alt="Cover preview" className="mt-2 w-32 h-32 object-cover rounded" />
+            </div>
+          )}
+          <p className="text-xs text-muted-foreground mt-1">
+            Upload a new image to replace the current one. Maximum size: 10MB
+          </p>
         </div>
 
         <div className="flex gap-4">
           <button
             type="submit"
-            disabled={loading}
+            disabled={loading || uploading}
             className="px-6 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 disabled:opacity-50"
           >
-            {loading ? "Updating..." : "Update Archive Year"}
+            {loading ? "Updating..." : uploading ? "Uploading..." : "Update Archive Year"}
           </button>
           <button
             type="button"
