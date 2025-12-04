@@ -73,44 +73,43 @@ export default async function Archive2025Page() {
         </div>
 
         <div className="space-y-12">
+          {papers.length > 0 && (
+            <section id="papers">
+              <h2 className="text-3xl font-bold mb-6">Papers Repository</h2>
+              <p className="text-muted-foreground mb-6">
+                Published papers from NCCI {year.year}
+              </p>
+              <div className="space-y-4">
+                {papers.map((paper) => (
+                  <div key={paper.id} className="border rounded-lg p-6">
+                    <h3 className="text-xl font-semibold mb-2">{paper.title}</h3>
+                    <p className="text-sm text-muted-foreground mb-2">by {paper.authors}</p>
+                    {paper.trackType && (
+                      <span className="inline-block text-xs px-2 py-1 rounded bg-muted mb-3">
+                        {paper.trackType}
+                      </span>
+                    )}
+                    {paper.abstract && (
+                      <p className="text-sm mb-4 line-clamp-3">{paper.abstract}</p>
+                    )}
+                    <a
+                      href={paper.fileUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-primary hover:underline"
+                    >
+                      View Paper →
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
           {categories.map((category) => {
             const items = contentByCategory.get(category.id) || [];
-            if (items.length === 0 && category.slug !== 'papers' && category.slug !== 'abstract-book') return null;
-
-            if (category.slug === 'papers') {
-              return (
-                <section key={category.id} id={category.slug}>
-                  <h2 className="text-3xl font-bold mb-6">{category.name}</h2>
-                  {category.description && (
-                    <p className="text-muted-foreground mb-6">{category.description}</p>
-                  )}
-                  <div className="space-y-4">
-                    {papers.map((paper) => (
-                      <div key={paper.id} className="border rounded-lg p-6">
-                        <h3 className="text-xl font-semibold mb-2">{paper.title}</h3>
-                        <p className="text-sm text-muted-foreground mb-2">by {paper.authors}</p>
-                        {paper.trackType && (
-                          <span className="inline-block text-xs px-2 py-1 rounded bg-muted mb-3">
-                            {paper.trackType}
-                          </span>
-                        )}
-                        {paper.abstract && (
-                          <p className="text-sm mb-4 line-clamp-3">{paper.abstract}</p>
-                        )}
-                        <a
-                          href={paper.fileUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-sm text-primary hover:underline"
-                        >
-                          View Paper →
-                        </a>
-                      </div>
-                    ))}
-                  </div>
-                </section>
-              );
-            }
+            if (items.length === 0 && category.slug !== 'abstract-book') return null;
+            if (category.slug === 'papers') return null;
 
             return (
               <section key={category.id} id={category.slug}>
