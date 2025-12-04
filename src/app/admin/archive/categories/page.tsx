@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { db, archiveCategories } from "@/db/schema";
 
+export const dynamic = 'force-dynamic';
+
 export default async function CategoriesManagementPage() {
   const categories = await db.select().from(archiveCategories).orderBy(archiveCategories.displayOrder);
 

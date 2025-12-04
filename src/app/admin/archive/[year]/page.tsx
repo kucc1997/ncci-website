@@ -3,6 +3,8 @@ import { db, archiveYears, archiveCategories, archivePapers } from "@/db/schema"
 import { eq } from "drizzle-orm";
 import { notFound } from "next/navigation";
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminArchiveYearPage({ params }: { params: Promise<{ year: string }> }) {
   const { year: yearStr } = await params;
   const year = parseInt(yearStr);

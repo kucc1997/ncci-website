@@ -3,6 +3,9 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import Image from "next/image";
+
+export const dynamic = 'force-dynamic';
 
 export default function CreateArchiveYearPage() {
   const router = useRouter();
@@ -176,7 +179,9 @@ export default function CreateArchiveYearPage() {
           {coverImageUrl && (
             <div className="mt-2">
               <p className="text-sm text-green-600">Image uploaded: {coverImageUrl}</p>
-              <img src={coverImageUrl} alt="Cover preview" className="mt-2 w-32 h-32 object-cover rounded" />
+              <div className="relative w-32 h-32 mt-2">
+                <Image src={coverImageUrl} alt="Cover preview" fill className="object-cover rounded" />
+              </div>
             </div>
           )}
           <p className="text-xs text-muted-foreground mt-1">

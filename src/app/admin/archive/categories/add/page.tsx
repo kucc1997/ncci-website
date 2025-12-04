@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+
+export const dynamic = 'force-dynamic';
 import Link from "next/link";
 
 export default function AddCategoryPage() {

@@ -2,6 +2,8 @@ import Link from "next/link";
 import { db, archiveYears } from "@/db/schema";
 import { desc } from "drizzle-orm";
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminArchivePage() {
   const years = await db.select().from(archiveYears).orderBy(desc(archiveYears.year));
 

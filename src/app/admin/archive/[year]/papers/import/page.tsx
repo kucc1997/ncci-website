@@ -5,6 +5,8 @@ import { useRouter, useParams } from "next/navigation";
 import { toast } from "sonner";
 import Link from "next/link";
 
+export const dynamic = 'force-dynamic';
+
 interface Paper {
   id: string;
   submissionId: string;
