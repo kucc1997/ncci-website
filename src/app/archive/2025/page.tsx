@@ -4,6 +4,8 @@ import { db, archiveYears, archiveCategories, archiveContent, archivePapers } fr
 import { eq, and } from "drizzle-orm";
 import { notFound } from "next/navigation";
 
+export const dynamic = 'force-dynamic';
+
 export default async function Archive2025Page() {
   const yearData = await db.select().from(archiveYears).where(eq(archiveYears.year, 2025)).limit(1);
   

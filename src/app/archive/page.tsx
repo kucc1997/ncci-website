@@ -3,6 +3,8 @@ import Image from "next/image";
 import { db, archiveYears } from "@/db/schema";
 import { desc } from "drizzle-orm";
 
+export const dynamic = 'force-dynamic';
+
 export default async function ArchivePage() {
   const years = await db.select().from(archiveYears).orderBy(desc(archiveYears.year));
 
