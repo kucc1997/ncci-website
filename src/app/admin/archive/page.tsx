@@ -33,6 +33,12 @@ export default async function AdminArchivePage() {
                 Manage Content
               </Link>
               <Link
+                href={`/admin/archive/${year.year}/edit`}
+                className="px-4 py-2 border rounded-md hover:bg-muted"
+              >
+                Edit
+              </Link>
+              <Link
                 href={`/archive/${year.year}`}
                 className="px-4 py-2 border rounded-md hover:bg-muted"
               >
