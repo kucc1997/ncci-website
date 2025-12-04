@@ -11,6 +11,8 @@ export default function EditArchivePaperPage() {
   const year = params.year as string;
   const paperId = params.id as string;
   const [loading, setLoading] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [fileUrl, setFileUrl] = useState("");
   const [paper, setPaper] = useState<any>(null);
 
   useEffect(() => {
@@ -19,12 +21,38 @@ export default function EditArchivePaperPage() {
       .then(data => {
         if (data) {
           setPaper(data);
+          setFileUrl(data.fileUrl);
         }
       })
       .catch(() => {
         toast.error("Failed to fetch paper");
       });
   }, [paperId]);
+
+  const handleFileUpload = async (file: File) => {
+    setUploading(true);
+    const uploadFormData = new FormData();
+    uploadFormData.append("file", file);
+
+    try {
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: uploadFormData,
+      });
+
+      if (!response.ok) throw new Error("Upload failed");
+
+      const data = await response.json();
+      setFileUrl(data.url);
+      toast.success("File uploaded successfully");
+      return data.url;
+    } catch {
+      toast.error("File upload failed");
+      return null;
+    } finally {
+      setUploading(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -41,7 +69,7 @@ export default function EditArchivePaperPage() {
       authors: formData.get("authors") as string,
       abstract: formData.get("abstract") as string,
       keywords,
-      fileUrl: formData.get("fileUrl") as string,
+      fileUrl: fileUrl,
       trackType: formData.get("trackType") as string,
       isAccepted: formData.get("isAccepted") === "true",
       presentedAt: formData.get("presentedAt") as string,
@@ -162,18 +190,41 @@ export default function EditArchivePaperPage() {
         </div>
 
         <div>
-          <label htmlFor="fileUrl" className="block text-sm font-medium mb-2">
-            Paper File URL *
+          <label htmlFor="file" className="block text-sm font-medium mb-2">
+            Paper File (PDF)
           </label>
           <input
-            type="url"
-            id="fileUrl"
-            name="fileUrl"
-            required
-            defaultValue={paper.fileUrl}
+            type="file"
+            id="file"
+            accept=".pdf,application/pdf"
+            disabled={uploading}
+            onChange={async (e) => {
+              const file = e.target.files?.[0];
+              if (file) {
+                await handleFileUpload(file);
+              }
+            }}
             className="w-full px-3 py-2 border rounded-md"
-            placeholder="https://example.com/papers/paper.pdf"
           />
+          {uploading && (
+            <p className="text-sm text-blue-600 mt-1">Uploading file...</p>
+          )}
+          {fileUrl && (
+            <div className="mt-2">
+              <p className="text-sm text-green-600">Current file: {fileUrl}</p>
+              <a
+                href={fileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-blue-600 hover:underline"
+              >
+                View current file
+              </a>
+            </div>
+          )}
+          <p className="text-xs text-muted-foreground mt-1">
+            Upload a new file to replace the current one. Maximum file size: 10MB
+          </p>
         </div>
 
         <div>
@@ -254,10 +305,10 @@ export default function EditArchivePaperPage() {
             </button>
             <button
               type="submit"
-              disabled={loading}
+              disabled={loading || uploading}
               className="px-6 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 disabled:opacity-50"
             >
-              {loading ? "Updating..." : "Update Paper"}
+              {loading ? "Updating..." : uploading ? "Uploading..." : "Update Paper"}
             </button>
           </div>
         </div>

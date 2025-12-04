@@ -18,6 +18,9 @@ export default function AddArchiveContentPage() {
   const searchParams = useSearchParams();
   const year = params.year as string;
   const [loading, setLoading] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [fileUrl, setFileUrl] = useState("");
+  const [thumbnailUrl, setThumbnailUrl] = useState("");
   const [yearId, setYearId] = useState("");
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState(searchParams.get("category") || "");
@@ -46,6 +49,35 @@ export default function AddArchiveContentPage() {
       });
   }, [year]);
 
+  const handleFileUpload = async (file: File, type: "file" | "thumbnail") => {
+    setUploading(true);
+    const uploadFormData = new FormData();
+    uploadFormData.append("file", file);
+
+    try {
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: uploadFormData,
+      });
+
+      if (!response.ok) throw new Error("Upload failed");
+
+      const data = await response.json();
+      if (type === "file") {
+        setFileUrl(data.url);
+      } else {
+        setThumbnailUrl(data.url);
+      }
+      toast.success(`${type === "file" ? "File" : "Thumbnail"} uploaded successfully`);
+      return data.url;
+    } catch {
+      toast.error("File upload failed");
+      return null;
+    } finally {
+      setUploading(false);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
@@ -56,9 +88,9 @@ export default function AddArchiveContentPage() {
       categoryId: formData.get("categoryId") as string,
       title: formData.get("title") as string,
       description: formData.get("description") as string,
-      fileUrl: formData.get("fileUrl") as string,
+      fileUrl: fileUrl,
       fileType: formData.get("fileType") as string,
-      thumbnailUrl: formData.get("thumbnailUrl") as string,
+      thumbnailUrl: thumbnailUrl,
       displayOrder: parseInt(formData.get("displayOrder") as string) || 0,
     };
 
@@ -147,18 +179,32 @@ export default function AddArchiveContentPage() {
         </div>
 
         <div>
-          <label htmlFor="fileUrl" className="block text-sm font-medium mb-2">
-            File URL
+          <label htmlFor="file" className="block text-sm font-medium mb-2">
+            Content File
           </label>
           <input
-            type="url"
-            id="fileUrl"
-            name="fileUrl"
+            type="file"
+            id="file"
+            accept=".pdf,image/*"
+            disabled={uploading}
+            onChange={async (e) => {
+              const file = e.target.files?.[0];
+              if (file) {
+                await handleFileUpload(file, "file");
+              }
+            }}
             className="w-full px-3 py-2 border rounded-md"
-            placeholder="https://example.com/file.pdf"
           />
+          {uploading && (
+            <p className="text-sm text-blue-600 mt-1">Uploading file...</p>
+          )}
+          {fileUrl && (
+            <p className="text-sm text-green-600 mt-1">
+              File uploaded: {fileUrl}
+            </p>
+          )}
           <p className="text-xs text-muted-foreground mt-1">
-            Link to document, image, or other file
+            Upload document, image, or other file. Maximum size: 10MB
           </p>
         </div>
 
@@ -181,16 +227,27 @@ export default function AddArchiveContentPage() {
         </div>
 
         <div>
-          <label htmlFor="thumbnailUrl" className="block text-sm font-medium mb-2">
-            Thumbnail URL
+          <label htmlFor="thumbnail" className="block text-sm font-medium mb-2">
+            Thumbnail Image (Optional)
           </label>
           <input
-            type="url"
-            id="thumbnailUrl"
-            name="thumbnailUrl"
+            type="file"
+            id="thumbnail"
+            accept="image/*"
+            disabled={uploading}
+            onChange={async (e) => {
+              const file = e.target.files?.[0];
+              if (file) {
+                await handleFileUpload(file, "thumbnail");
+              }
+            }}
             className="w-full px-3 py-2 border rounded-md"
-            placeholder="https://example.com/thumbnail.jpg"
           />
+          {thumbnailUrl && (
+            <p className="text-sm text-green-600 mt-1">
+              Thumbnail uploaded: {thumbnailUrl}
+            </p>
+          )}
           <p className="text-xs text-muted-foreground mt-1">
             Optional preview image for the content
           </p>
@@ -216,10 +273,10 @@ export default function AddArchiveContentPage() {
         <div className="flex gap-4 pt-4">
           <button
             type="submit"
-            disabled={loading}
+            disabled={loading || uploading}
             className="px-6 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 disabled:opacity-50"
           >
-            {loading ? "Adding..." : "Add Content"}
+            {loading ? "Adding..." : uploading ? "Uploading..." : "Add Content"}
           </button>
           <button
             type="button"

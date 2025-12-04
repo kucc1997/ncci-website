@@ -10,6 +10,8 @@ export default function AddArchivePaperPage() {
   const params = useParams();
   const year = params.year as string;
   const [loading, setLoading] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [fileUrl, setFileUrl] = useState("");
   const [yearId, setYearId] = useState("");
 
   useEffect(() => {
@@ -25,8 +27,39 @@ export default function AddArchivePaperPage() {
       });
   }, [year]);
 
+  const handleFileUpload = async (file: File) => {
+    setUploading(true);
+    const uploadFormData = new FormData();
+    uploadFormData.append("file", file);
+
+    try {
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: uploadFormData,
+      });
+
+      if (!response.ok) throw new Error("Upload failed");
+
+      const data = await response.json();
+      setFileUrl(data.url);
+      toast.success("File uploaded successfully");
+      return data.url;
+    } catch {
+      toast.error("File upload failed");
+      return null;
+    } finally {
+      setUploading(false);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    if (!fileUrl) {
+      toast.error("Please upload a paper file");
+      return;
+    }
+    
     setLoading(true);
 
     const formData = new FormData(e.currentTarget);
@@ -41,7 +74,7 @@ export default function AddArchivePaperPage() {
       authors: formData.get("authors") as string,
       abstract: formData.get("abstract") as string,
       keywords,
-      fileUrl: formData.get("fileUrl") as string,
+      fileUrl: fileUrl,
       trackType: formData.get("trackType") as string,
       isAccepted: formData.get("isAccepted") === "true",
       presentedAt: formData.get("presentedAt") as string,
@@ -141,17 +174,33 @@ export default function AddArchivePaperPage() {
         </div>
 
         <div>
-          <label htmlFor="fileUrl" className="block text-sm font-medium mb-2">
-            Paper File URL *
+          <label htmlFor="file" className="block text-sm font-medium mb-2">
+            Paper File (PDF) *
           </label>
           <input
-            type="url"
-            id="fileUrl"
-            name="fileUrl"
-            required
+            type="file"
+            id="file"
+            accept=".pdf,application/pdf"
+            disabled={uploading}
+            onChange={async (e) => {
+              const file = e.target.files?.[0];
+              if (file) {
+                await handleFileUpload(file);
+              }
+            }}
             className="w-full px-3 py-2 border rounded-md"
-            placeholder="https://example.com/papers/paper.pdf"
           />
+          {uploading && (
+            <p className="text-sm text-blue-600 mt-1">Uploading file...</p>
+          )}
+          {fileUrl && (
+            <p className="text-sm text-green-600 mt-1">
+              File uploaded successfully: {fileUrl}
+            </p>
+          )}
+          <p className="text-xs text-muted-foreground mt-1">
+            Maximum file size: 10MB. Accepted format: PDF
+          </p>
         </div>
 
         <div>
@@ -214,10 +263,10 @@ export default function AddArchivePaperPage() {
         <div className="flex gap-4 pt-4">
           <button
             type="submit"
-            disabled={loading}
+            disabled={loading || uploading || !fileUrl}
             className="px-6 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 disabled:opacity-50"
           >
-            {loading ? "Adding..." : "Add Paper"}
+            {loading ? "Adding..." : uploading ? "Uploading..." : "Add Paper"}
           </button>
           <button
             type="button"
