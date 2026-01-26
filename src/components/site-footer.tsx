@@ -15,7 +15,6 @@ export function SiteFooter() {
 								width={160}
 								height={160}
 							/>
-							<div className="font-bold text-xl text-white">2025</div>
 						</Link>
 						<p className="text-sm text-[var(--bg-secondary)] mb-4">
 							National Conference on Computer Innovations, organized by
