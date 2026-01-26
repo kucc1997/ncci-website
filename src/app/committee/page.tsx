@@ -188,7 +188,6 @@ export default function CommitteePage() {
 								/>
 							</div>
 							<h3 className="text-xl font-semibold">Dr. Manoj Shakya</h3>
-							<p className="text-gray-600">Assistant Professor</p>
 							<p className="text-gray-600">Acting Head</p>
 							<p className="text-gray-600 max-w-60">Department of Artificial Intelligence</p>
 							<p className="text-gray-600">Kathmandu University</p>
@@ -272,13 +271,13 @@ export default function CommitteePage() {
 							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
 								<Image
 									src="/oc/AmritDahal.webp"
-									alt="Amrit Dahal"
+									alt="Mr. Amrit Dahal"
 									fill
 									className="object-cover"
 									style={{ objectPosition: 'top' }}
 								/>
 							</div>
-							<h3 className="text-xl font-semibold">Amrit Dahal</h3>
+							<h3 className="text-xl font-semibold">Mr. Amrit Dahal</h3>
 							<p className="text-gray-600">Assistant Professor</p>
 							<p className="text-gray-600 max-w-60">Department of Artificial Intelligence</p>
 							<p className="text-gray-600">Kathmandu University</p>
