@@ -4,9 +4,10 @@ import { eq } from "drizzle-orm";
 import { customAlphabet } from "nanoid";
 import path from "path";
 import { writeFile, mkdir } from "fs/promises";
+import { getUploadDir, getUploadPublicBasePath } from "@/lib/upload-path";
 
-// Get upload directory from environment variable or use default
-const UPLOAD_DIR = process.env.UPLOAD_DIR || "public/uploads";
+const UPLOAD_DIR = getUploadDir();
+const UPLOAD_PUBLIC_BASE = getUploadPublicBasePath();
 
 export default async function POST(req: Request) {
   const formData = await req.formData();
@@ -40,7 +41,7 @@ export default async function POST(req: Request) {
       title: data.title,
       abstract: data.abstract,
       keywords: data.keywords,
-      fileUrl: `/uploads/papers/${paperID}.pdf`,
+      fileUrl: `${UPLOAD_PUBLIC_BASE}/papers/${paperID}.pdf`,
       themeId: data.theme,
       trackType: data.trackType,
       authorId: authorFromDb[0].id,
