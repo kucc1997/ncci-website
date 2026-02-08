@@ -1,21 +1,45 @@
 import Link from "next/link";
 import Image from "next/image";
-import { db, archiveYears, archiveCategories, archiveContent, archivePapers } from "@/db/schema";
+import {
+  db,
+  archiveYears,
+  archiveCategories,
+  archiveContent,
+  archivePapers,
+} from "@/db/schema";
 import { eq, and } from "drizzle-orm";
 import { notFound } from "next/navigation";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
-export default async function Archive2025Page() {
-  const yearData = await db.select().from(archiveYears).where(eq(archiveYears.year, 2025)).limit(1);
-  
+export default async function ArchiveYearPage({
+  params,
+}: {
+  params: Promise<{ year: string }>;
+}) {
+  const { year: yearStr } = await params;
+  const yearNumber = Number.parseInt(yearStr, 10);
+
+  if (Number.isNaN(yearNumber)) {
+    notFound();
+  }
+
+  const yearData = await db
+    .select()
+    .from(archiveYears)
+    .where(eq(archiveYears.year, yearNumber))
+    .limit(1);
+
   if (yearData.length === 0) {
     notFound();
   }
 
   const year = yearData[0];
-  const categories = await db.select().from(archiveCategories).orderBy(archiveCategories.displayOrder);
-  
+  const categories = await db
+    .select()
+    .from(archiveCategories)
+    .orderBy(archiveCategories.displayOrder);
+
   const contentByCategory = new Map<string, typeof archiveContent.$inferSelect[]>();
   for (const category of categories) {
     const content = await db
@@ -35,17 +59,17 @@ export default async function Archive2025Page() {
     .select()
     .from(archivePapers)
     .where(
-      and(
-        eq(archivePapers.yearId, year.id),
-        eq(archivePapers.isAccepted, true)
-      )
+      and(eq(archivePapers.yearId, year.id), eq(archivePapers.isAccepted, true))
     );
 
   return (
     <div className="container mx-auto px-4 py-16">
       <div className="max-w-6xl mx-auto">
         <div className="mb-8">
-          <Link href="/archive" className="text-sm text-muted-foreground hover:text-foreground">
+          <Link
+            href="/archive"
+            className="text-sm text-muted-foreground hover:text-foreground"
+          >
             ← Back to Archives
           </Link>
         </div>
@@ -69,9 +93,7 @@ export default async function Archive2025Page() {
             {year.eventDate && <span>{year.eventDate}</span>}
             {year.location && <span>• {year.location}</span>}
           </div>
-          {year.description && (
-            <p className="text-lg">{year.description}</p>
-          )}
+          {year.description && <p className="text-lg">{year.description}</p>}
         </div>
 
         <div className="space-y-12">
@@ -85,7 +107,9 @@ export default async function Archive2025Page() {
                 {papers.map((paper) => (
                   <div key={paper.id} className="border rounded-lg p-6">
                     <h3 className="text-xl font-semibold mb-2">{paper.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-2">by {paper.authors}</p>
+                    <p className="text-sm text-muted-foreground mb-2">
+                      by {paper.authors}
+                    </p>
                     {paper.trackType && (
                       <span className="inline-block text-xs px-2 py-1 rounded bg-muted mb-3">
                         {paper.trackType}
@@ -110,8 +134,8 @@ export default async function Archive2025Page() {
 
           {categories.map((category) => {
             const items = contentByCategory.get(category.id) || [];
-            if (items.length === 0 && category.slug !== 'abstract-book') return null;
-            if (category.slug === 'papers') return null;
+            if (items.length === 0 && category.slug !== "abstract-book") return null;
+            if (category.slug === "papers") return null;
 
             return (
               <section key={category.id} id={category.slug}>
