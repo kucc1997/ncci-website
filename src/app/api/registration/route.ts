@@ -6,6 +6,7 @@ import path from "path"
 import { writeFile, mkdir } from "fs/promises"
 import { sendRegistrationEmail } from "@/lib/mail"
 import { getUploadDir, getUploadPublicBasePath } from "@/lib/upload-path"
+import { detectMimeType, getExtensionForMimeType } from "@/lib/file-upload-validation"
 
 const UPLOAD_DIR = getUploadDir()
 const UPLOAD_PUBLIC_BASE = getUploadPublicBasePath()
@@ -61,13 +62,16 @@ export async function POST(req: Request) {
 		// Upload payment voucher
 		const uploadDir = path.join(process.cwd(), UPLOAD_DIR, "vouchers")
 
-		// Get file extension from the uploaded file
-		const fileExtension = paymentVoucher.name.split('.').pop()?.toLowerCase()
-		if (!fileExtension || !['pdf', 'png', 'jpg', 'jpeg'].includes(fileExtension)) {
+		const voucherBuffer = Buffer.from(await paymentVoucher.arrayBuffer())
+		const detectedMimeType = detectMimeType(voucherBuffer)
+		const fileExtension = detectedMimeType ? getExtensionForMimeType(detectedMimeType) : null
+		const allowedMimeTypes = new Set(["application/pdf", "image/png", "image/jpeg"])
+
+		if (!detectedMimeType || !allowedMimeTypes.has(detectedMimeType) || !fileExtension) {
 			return NextResponse.json(
 				{
 					success: false,
-					data: "Invalid file type. Please upload PDF, PNG, or JPG files only."
+					data: "Invalid file type. Please upload a valid PDF, PNG, or JPG file."
 				},
 				{ status: 400 }
 			)
@@ -77,7 +81,7 @@ export async function POST(req: Request) {
 
 		// Ensure the upload directory exists
 		await mkdir(uploadDir, { recursive: true })
-		await writeFile(filePath, Buffer.from(await paymentVoucher.arrayBuffer()))
+		await writeFile(filePath, voucherBuffer)
 
 		// Insert registration into database
 		const registration = await db.insert(registrations).values({

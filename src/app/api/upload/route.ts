@@ -3,6 +3,11 @@ import { NextRequest, NextResponse } from "next/server";
 import path from "path";
 import { auth } from "@/auth";
 import { getUploadDir, getUploadPublicBasePath } from "@/lib/upload-path";
+import {
+  detectMimeType,
+  getExtensionForMimeType,
+  sanitizeFileStem,
+} from "@/lib/file-upload-validation";
 
 const UPLOAD_DIR = getUploadDir();
 const UPLOAD_PUBLIC_BASE = getUploadPublicBasePath();
@@ -21,23 +26,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "No file provided" }, { status: 400 });
     }
 
-    // Validate file type
-    const allowedTypes = [
-      "application/pdf",
-      "image/jpeg",
-      "image/jpg",
-      "image/png",
-      "image/webp",
-      "image/gif",
-    ];
-
-    if (!allowedTypes.includes(file.type)) {
-      return NextResponse.json(
-        { error: "Invalid file type. Only PDF and images are allowed." },
-        { status: 400 }
-      );
-    }
-
     // Validate file size (10MB max)
     const maxSize = 10 * 1024 * 1024; // 10MB
     if (file.size > maxSize) {
@@ -48,7 +36,27 @@ export async function POST(request: NextRequest) {
     }
 
     const buffer = Buffer.from(await file.arrayBuffer());
-    const filename = `${Date.now()}-${file.name.replace(/\s+/g, "-")}`;
+    const detectedMimeType = detectMimeType(buffer);
+    const fileExtension = detectedMimeType
+      ? getExtensionForMimeType(detectedMimeType)
+      : null;
+    const allowedMimeTypes = new Set([
+      "application/pdf",
+      "image/jpeg",
+      "image/png",
+      "image/webp",
+      "image/gif",
+    ]);
+
+    if (!detectedMimeType || !allowedMimeTypes.has(detectedMimeType) || !fileExtension) {
+      return NextResponse.json(
+        { error: "Invalid file type. Only PDF and supported image files are allowed." },
+        { status: 400 }
+      );
+    }
+
+    const stem = sanitizeFileStem(file.name);
+    const filename = `${Date.now()}-${stem}.${fileExtension}`;
     const uploadDir = path.join(process.cwd(), UPLOAD_DIR, "archive");
     const filepath = path.join(uploadDir, filename);
 

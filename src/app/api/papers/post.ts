@@ -5,68 +5,101 @@ import { customAlphabet } from "nanoid";
 import path from "path";
 import { writeFile, mkdir } from "fs/promises";
 import { getUploadDir, getUploadPublicBasePath } from "@/lib/upload-path";
+import { detectMimeType } from "@/lib/file-upload-validation";
 
 const UPLOAD_DIR = getUploadDir();
 const UPLOAD_PUBLIC_BASE = getUploadPublicBasePath();
 
 export default async function POST(req: Request) {
-  const formData = await req.formData();
-  const data = parseFormData(formData)
+  try {
+    const formData = await req.formData();
+    const data = parseFormData(formData);
+    const fileBuffer = Buffer.from(await data.file.arrayBuffer());
+    const detectedMimeType = detectMimeType(fileBuffer);
 
-  const paperID = await generateSubmissionId();
-
-  // Upload file
-  const uploadDir = path.join(process.cwd(), UPLOAD_DIR, "papers");
-  const filePath = path.join(uploadDir, `${paperID}.pdf`);
-
-  // Ensure the upload directory exists
-  await mkdir(uploadDir, { recursive: true });
-  await writeFile(filePath, Buffer.from(await data.file.arrayBuffer()));
-
-  const authorFromDb = await db.select({ id: users.id }).from(users).where(
-    eq(users.email, data.coAuthors?.[0]?.email)
-  );
-  if (authorFromDb.length === 0) {
-    return Response.json({
-      success: false,
-      data: "First author not registered! Please make sure the email matches with your GitHub's primary email."
-    }, {
-      status: 400
-    })
-  }
-
-  const paperReturned = await db
-    .insert(papers)
-    .values({
-      title: data.title,
-      abstract: data.abstract,
-      keywords: data.keywords,
-      fileUrl: `${UPLOAD_PUBLIC_BASE}/papers/${paperID}.pdf`,
-      themeId: data.theme,
-      trackType: data.trackType,
-      authorId: authorFromDb[0].id,
-      submissionId: paperID
-    }).returning({ id: papers.id, submissionId: papers.submissionId })
-
-  await Promise.all(
-    data.coAuthors.map(async (coauthor, index) => {
-      if (index >= 1) {                     // Neglecting the first co-author 
-        await db.insert(coAuthors).values({
-          name: coauthor.name,
-          email: coauthor.email,
-          paperId: paperReturned[0].id,
-          orcid: coauthor?.orcid,
-          affiliation: coauthor?.affiliation
-        })
-      }
-    })
-  )
-
-  return Response.json({
-    success: true, data: {
-      submissionId: paperReturned[0].submissionId
+    if (detectedMimeType !== "application/pdf") {
+      return Response.json(
+        {
+          success: false,
+          data: "Invalid file type. Please upload a valid PDF file.",
+        },
+        {
+          status: 400,
+        }
+      );
     }
-  })
+
+    const paperID = await generateSubmissionId();
+
+    // Upload file
+    const uploadDir = path.join(process.cwd(), UPLOAD_DIR, "papers");
+    const filePath = path.join(uploadDir, `${paperID}.pdf`);
+
+    // Ensure the upload directory exists
+    await mkdir(uploadDir, { recursive: true });
+    await writeFile(filePath, fileBuffer);
+
+    const authorFromDb = await db.select({ id: users.id }).from(users).where(
+      eq(users.email, data.coAuthors?.[0]?.email)
+    );
+    if (authorFromDb.length === 0) {
+      return Response.json(
+        {
+          success: false,
+          data: "First author not registered! Please make sure the email matches with your GitHub's primary email.",
+        },
+        {
+          status: 400,
+        }
+      );
+    }
+
+    const paperReturned = await db
+      .insert(papers)
+      .values({
+        title: data.title,
+        abstract: data.abstract,
+        keywords: data.keywords,
+        fileUrl: `${UPLOAD_PUBLIC_BASE}/papers/${paperID}.pdf`,
+        themeId: data.theme,
+        trackType: data.trackType,
+        authorId: authorFromDb[0].id,
+        submissionId: paperID,
+      })
+      .returning({ id: papers.id, submissionId: papers.submissionId });
+
+    await Promise.all(
+      data.coAuthors.map(async (coauthor, index) => {
+        if (index >= 1) {
+          await db.insert(coAuthors).values({
+            name: coauthor.name,
+            email: coauthor.email,
+            paperId: paperReturned[0].id,
+            orcid: coauthor?.orcid,
+            affiliation: coauthor?.affiliation,
+          });
+        }
+      })
+    );
+
+    return Response.json({
+      success: true,
+      data: {
+        submissionId: paperReturned[0].submissionId,
+      },
+    });
+  } catch (error) {
+    console.error("Paper submission error:", error);
+    return Response.json(
+      {
+        success: false,
+        data: "Failed to process paper submission.",
+      },
+      {
+        status: 500,
+      }
+    );
+  }
 }
 
 async function generateSubmissionId() {
