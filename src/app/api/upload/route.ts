@@ -1,7 +1,11 @@
-import { writeFile } from "fs/promises";
+import { mkdir, writeFile } from "fs/promises";
 import { NextRequest, NextResponse } from "next/server";
 import path from "path";
 import { auth } from "@/auth";
+import { getUploadDir, getUploadPublicBasePath } from "@/lib/upload-path";
+
+const UPLOAD_DIR = getUploadDir();
+const UPLOAD_PUBLIC_BASE = getUploadPublicBasePath();
 
 export async function POST(request: NextRequest) {
   try {
@@ -45,15 +49,13 @@ export async function POST(request: NextRequest) {
 
     const buffer = Buffer.from(await file.arrayBuffer());
     const filename = `${Date.now()}-${file.name.replace(/\s+/g, "-")}`;
-    const filepath = path.join(
-      process.cwd(),
-      "public/uploads/archive",
-      filename
-    );
+    const uploadDir = path.join(process.cwd(), UPLOAD_DIR, "archive");
+    const filepath = path.join(uploadDir, filename);
 
+    await mkdir(uploadDir, { recursive: true });
     await writeFile(filepath, buffer);
 
-    return NextResponse.json({ url: `/uploads/archive/${filename}` });
+    return NextResponse.json({ url: `${UPLOAD_PUBLIC_BASE}/archive/${filename}` });
   } catch (error) {
     console.error("Upload error:", error);
     return NextResponse.json(

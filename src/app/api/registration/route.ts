@@ -5,9 +5,10 @@ import { customAlphabet } from "nanoid"
 import path from "path"
 import { writeFile, mkdir } from "fs/promises"
 import { sendRegistrationEmail } from "@/lib/mail"
+import { getUploadDir, getUploadPublicBasePath } from "@/lib/upload-path"
 
-// Get upload directory from environment variable or use default
-const UPLOAD_DIR = process.env.UPLOAD_DIR || "public/uploads"
+const UPLOAD_DIR = getUploadDir()
+const UPLOAD_PUBLIC_BASE = getUploadPublicBasePath()
 
 // Create a custom nanoid generator for registration IDs
 const generateRegistrationId = customAlphabet('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 8)
@@ -94,7 +95,7 @@ export async function POST(req: Request) {
 			paperSubmission,
 			dietaryRestrictions: dietaryRestrictions || null,
 			specialRequirements: specialRequirements || null,
-			paymentVoucherPath: `/uploads/vouchers/${registrationId}.${fileExtension}`,
+			paymentVoucherPath: `${UPLOAD_PUBLIC_BASE}/vouchers/${registrationId}.${fileExtension}`,
 			status: "pending"
 		}).returning()
 
@@ -136,4 +137,3 @@ export async function GET() {
 	const allRegs = await db.select().from(registrations);
 	return NextResponse.json({ success: true, data: allRegs });
 }
-
