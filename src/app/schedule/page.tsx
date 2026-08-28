@@ -18,15 +18,14 @@ export default function SchedulePage() {
 				</h1>
 				<div className="w-20 h-1 bg-blue-600 mb-6"></div>
 				<p className="text-lg text-gray-600 max-w-3xl">
-					Detailed agenda for the National Conference on Computer Innovations
-					(NCCI) 2025, scheduled for August 24, 2025.
+					These are the Program Schedule from NCCI 2026. New schedule will be updated soon!!! STAY TUNED!!!
 				</p>
 			</div>
 
 			<div className="flex items-center justify-center mb-8">
 				<div className="flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full">
 					<Clock className="h-5 w-5" />
-					<span className="font-medium">August 24, 2025</span>
+					<span className="font-medium">August 24, 2026</span>
 				</div>
 			</div>
 
@@ -988,7 +987,7 @@ export default function SchedulePage() {
 					<div>
 						<h3 className="font-semibold">Mobile App</h3>
 						<p className="text-gray-700 mt-1">
-							Download the NCCI 2025 mobile app for real-time schedule updates,
+							Download the NCCI 2026 mobile app for real-time schedule updates,
 							speaker information, and networking features.
 						</p>
 					</div>

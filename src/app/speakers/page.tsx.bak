@@ -19,7 +19,7 @@ export default function SpeakersPage() {
 				<div className="w-20 h-1 bg-blue-600 mb-6"></div>
 				<p className="text-lg text-gray-600 max-w-3xl">
 					Meet our distinguished keynote speakers who will share their expertise
-					and insights at NCCI 2025.
+					and insights at NCCI 2026.
 				</p>
 			</div>
 

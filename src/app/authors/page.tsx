@@ -42,7 +42,7 @@ export default function AuthorsPage() {
 							<CardTitle>Paper Submission Guidelines</CardTitle>
 							<CardDescription>
 								Important information for authors submitting papers to NCCI
-								2025.
+								2026.
 							</CardDescription>
 						</CardHeader>
 						<CardContent className="space-y-6">
@@ -53,7 +53,7 @@ export default function AuthorsPage() {
 										<CalendarDays className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">Paper Submission Deadline</h4>
-											<p className="text-gray-600">20<sup>th</sup> July 2025 11:59 PM NPT</p>
+											<p className="text-gray-600">20<sup>th</sup> July 2026 11:59 PM NPT</p>
 										</div>
 									</div>
 									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
@@ -62,21 +62,21 @@ export default function AuthorsPage() {
 											<h4 className="font-medium">
 												Notification of Acceptance
 											</h4>
-											<p className="text-gray-600">31<sup>st</sup> July, 2025</p>
+											<p className="text-gray-600">31<sup>st</sup> July, 2026</p>
 										</div>
 									</div>
 									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
 										<CalendarDays className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">Camera-Ready Submission</h4>
-											<p className="text-gray-600">7<sup>th</sup> August, 2025</p>
+											<p className="text-gray-600">7<sup>th</sup> August, 2026</p>
 										</div>
 									</div>
 									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
 										<CalendarDays className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">Conference Date</h4>
-											<p className="text-gray-600">24<sup>th</sup> August, 2025</p>
+											<p className="text-gray-600">24<sup>th</sup> August, 2026</p>
 										</div>
 									</div>
 								</div>
@@ -349,7 +349,7 @@ export default function AuthorsPage() {
 											Papers are checked for formatting, plagiarism, and relevance.
 										</p>
 										<p className="text-sm text-[var(--bg-accent2)]">
-											July 16, 2025
+											July 16, 2026
 										</p>
 									</div>
 
@@ -362,7 +362,7 @@ export default function AuthorsPage() {
 											Valid papers are assigned to qualified reviewers based on topic match.
 										</p>
 										<p className="text-sm text-[var(--bg-accent2)]">
-											July 16, 2025
+											July 16, 2026
 										</p>
 									</div>
 
@@ -375,7 +375,7 @@ export default function AuthorsPage() {
 											Each paper is reviewed by at least two independent reviewers under a double-blind process.
 										</p>
 										<p className="text-sm text-[var(--bg-accent2)]">
-											July 17–30, 2025
+											July 17–30, 2026
 										</p>
 									</div>
 
@@ -387,7 +387,7 @@ export default function AuthorsPage() {
 										<p className="text-gray-600">
 											Program committee resolves conflicts and finalizes acceptance decisions.
 										</p>
-										<p className="text-sm text-[var(--bg-accent2)]">July 31, 2025</p>
+										<p className="text-sm text-[var(--bg-accent2)]">July 31, 2026</p>
 									</div>
 
 									<div className="relative">
@@ -398,7 +398,7 @@ export default function AuthorsPage() {
 										<p className="text-gray-600">
 											Authors are notified of the decision along with reviewer comments.
 										</p>
-										<p className="text-sm text-[var(--bg-accent2)]">July 31, 2025</p>
+										<p className="text-sm text-[var(--bg-accent2)]">July 31, 2026</p>
 									</div>
 
 									<div className="relative">
@@ -409,7 +409,7 @@ export default function AuthorsPage() {
 										<p className="text-gray-600">
 											Authors of accepted papers submit the final version addressing reviewer comments.
 										</p>
-										<p className="text-sm text-[var(--bg-accent2)]">August 7, 2025</p>
+										<p className="text-sm text-[var(--bg-accent2)]">August 7, 2026</p>
 									</div>
 								</div>
 							</div>
@@ -433,7 +433,7 @@ export default function AuthorsPage() {
 			<div className="max-w-4xl mx-auto mt-12 bg-[var(--bg-secondary)] p-6 rounded-lg">
 				<h2 className="text-xl font-bold mb-4">Publication Opportunities</h2>
 				<p className="mb-4">
-					Selected papers from NCCI 2025 will be published in a special edition of {" "}
+					Selected papers from NCCI 2026 will be published in a special edition of {" "}
 					<a href="https://journals.ku.edu.np/kuset" target="_blank" className="text-blue-700">
 						Kathmandu University Journal of Science, Engineering and Technology (KUSET)
 					</a>.

@@ -11,22 +11,22 @@ const inter = Inter({ subsets: ["latin"] });
 
 // app/layout.js or app/page.js
 export const metadata = {
-	title: 'NCCI 2025 - National Conference on Computer Innovations | Kathmandu University',
-	description: 'Join NCCI 2025 on August 24, 2025 at Kathmandu University. Explore the future of technology and innovation with leading speakers and researchers.',
-	keywords: 'NCCI 2025, computer innovations, technology conference, Kathmandu University, Nepal, computer science, engineering',
+	title: 'NCCI 2026 - National Conference on Computer Innovations | Kathmandu University',
+	description: 'Join NCCI 2026 on December 21, 2026 at Kathmandu University. Explore the future of technology and innovation with leading speakers and researchers.',
+	keywords: 'NCCI 2026, computer innovations, technology conference, Kathmandu University, Nepal, computer science, engineering',
 	authors: [{ name: 'Kathmandu University Computer Club' }],
 	openGraph: {
-		title: 'NCCI 2025 - National Conference on Computer Innovations',
-		description: 'Exploring the Future of Technology and Innovation - August 24, 2025',
-		url: 'https://conf.kucc.ku.edu.np',
-		siteName: 'NCCI 2025',
+		title: 'NCCI 2026 - National Conference on Computer Innovations',
+		description: 'Exploring the Future of Technology and Innovation - December 21, 2026',
+		url: 'https://ncci.ku.edu.np',
+		siteName: 'NCCI 2026',
 		locale: 'en_US',
 		type: 'website',
 	},
 	twitter: {
 		card: 'summary_large_image',
-		title: 'NCCI 2025 - National Conference on Computer Innovations',
-		description: 'Join us August 24, 2025 at Kathmandu University',
+		title: 'NCCI 2026 - National Conference on Computer Innovations',
+		description: 'Join us December 21, 2026 at Kathmandu University',
 	},
 	robots: {
 		index: true,

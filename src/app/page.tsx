@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative w-full h-[80vh] flex items-center justify-center overflow-hidden">
+      <section className="relative w-full h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-[var(--bg-accent)]/80 z-10" />
         <div
           className="absolute inset-0 bg-cover bg-center bg-[url('/ku.webp')]"
@@ -25,17 +25,23 @@ export default function Home() {
             <Image
               src="/ncci-dark.svg"
               alt="NCCI Logo"
-              width={448}
-              height={448}
+              width={300}
+              height={300}
             />
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
             National Conference on{" "}
-            <span className="text-[var(--bg-secondary)]">Computer Innovations</span>
+            <span className="text-[var(--bg-secondary)]">Computer Innovations - 2026</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-8">
             Exploring the Future of Technology and Innovation
           </p>
+          <p className="text-xl md:text-2xl text-white/90 mb-8">
+            <span>21<sup>st</sup> December, 2026, Monday</span> <br/>
+            <span>Kathmandu University, Dhulikhel, Kavre</span>
+
+          </p>
+
           <div className="flex flex-wrap justify-center gap-4">
             <Button
               size="lg"
@@ -71,7 +77,9 @@ export default function Home() {
                 className="mx-auto mb-3"
               />
               <p className="font-large mx-12 max-w-96">
-                Department of Computer Science and Engineering
+                <a href="https://comp.ku.edu.np" target="_blank" rel="noopener noreferrer">
+                  Department of Computer Science and Engineering
+                </a>
                 <br/>
                 <span> Kathmandu University</span>
               </p>
@@ -85,7 +93,9 @@ export default function Home() {
                 className="mx-auto mb-3"
               />
               <p className="font-large mx-12">
-                Kathmandu University Computer Club
+                <a href="https://kucc.ku.edu.np" target="_blank" rel="noopener noreferrer">
+                  Kathmandu University Computer Club
+                </a>
               </p>
             </div>
           </div>
@@ -201,10 +211,10 @@ export default function Home() {
             <div className="flex items-center gap-3">
               <Mail className="h-5 w-5 text-blue-500" />
               <a
-                href="mailto:kucc@ku.edu.np"
+                href="mailto:ncci@ku.edu.np"
                 className="text-blue-500 hover:underline"
               >
-                kucc@ku.edu.np
+                ncci@ku.edu.np
               </a>
             </div>
             <Button asChild>

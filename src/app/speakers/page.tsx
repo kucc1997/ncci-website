@@ -7,7 +7,7 @@ export default function SpeakersPage() {
 				</h1>
 				<div className="w-20 h-1 bg-[var(--bg-accent2)] mb-6"></div>
 				<p className="text-lg text-[var(--bg-secondary-dark)] max-w-3xl">
-					Meet our distinguished keynote speakers who will share their expertise and insights at NCCI 2025.
+					Meet our distinguished keynote speakers who will share their expertise and insights at NCCI 2026.
 				</p>
 				<p className="text-2xl text-bold text-[var(--bg-accent2)] pt-8 animate-pulse">Speakers will be announced soon!</p>
 			</div>

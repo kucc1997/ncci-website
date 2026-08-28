@@ -40,7 +40,7 @@ export default function RegistrationPage() {
 	// Check if early registration (before August 15th midnight NPT)
 	const isEarlyRegistration = useMemo(() => {
 		const now = new Date()
-		const deadline = new Date("2025-08-16T00:00:00")
+		const deadline = new Date("2026-08-16T00:00:00")
 		return now < deadline
 	}, [])
 
@@ -178,7 +178,7 @@ export default function RegistrationPage() {
 				<h1 className="text-3xl md:text-4xl font-bold mb-4 text-[var(--bg-accent)]">Conference Registration</h1>
 				<div className="w-20 h-1 mb-6 bg-[var(--bg-accent2)]"></div>
 				<p className="text-lg text-gray-600 max-w-3xl">
-					Register for NCCI 2025 - Choose your registration type and tier based on your needs.
+					Register for NCCI 2026 - Choose your registration type and tier based on your needs.
 				</p>
 
 				{/* Already Registered Section */}
@@ -231,8 +231,8 @@ export default function RegistrationPage() {
 						<Clock className={`h-5 w-5 ${isEarlyRegistration ? "text-green-600" : "text-orange-600"}`} />
 						<span className={`font-medium ${isEarlyRegistration ? "text-green-800" : "text-orange-800"}`}>
 							{isEarlyRegistration
-								? "Early Registration Available until August 15th, 2025 (Midnight NPT)"
-								: "Late Registration Period - Deadline: August 21st, 2025 (Midnight NPT)"}
+								? "Early Registration Available until August 15th, 2026 (Midnight NPT)"
+								: "Late Registration Period - Deadline: August 21st, 2026 (Midnight NPT)"}
 						</span>
 					</div>
 				</div>
@@ -326,7 +326,7 @@ export default function RegistrationPage() {
 				<CardHeader>
 					<CardTitle className="text-[var(--bg-accent)]">Conference Registration</CardTitle>
 					<CardDescription>
-						Complete your registration for NCCI 2025. Authors must register as &quot;Author&quot; if presenting a paper.
+						Complete your registration for NCCI 2026. Authors must register as &quot;Author&quot; if presenting a paper.
 					</CardDescription>
 				</CardHeader>
 				<CardContent>
@@ -650,15 +650,15 @@ export default function RegistrationPage() {
 						<ul className="space-y-2 text-sm">
 							<li className="flex items-center gap-2">
 								<Clock className="h-4 w-4 text-[var(--bg-accent2)]" />
-								<span>Early Registration: Until August 15th, 2025 (Midnight NPT)</span>
+								<span>Early Registration: Until August 15th, 2026 (Midnight NPT)</span>
 							</li>
 							<li className="flex items-center gap-2">
 								<Clock className="h-4 w-4 text-orange-600" />
-								<span>Late Registration: August 16th - 21st, 2025 (Midnight NPT)</span>
+								<span>Late Registration: August 16th - 21st, 2026 (Midnight NPT)</span>
 							</li>
 							<li className="flex items-center gap-2">
 								<AlertCircle className="h-4 w-4 text-red-600" />
-								<span>Registration closes: August 21st, 2025 (Midnight NPT)</span>
+								<span>Registration closes: August 21st, 2026 (Midnight NPT)</span>
 							</li>
 						</ul>
 					</div>
@@ -687,9 +687,9 @@ export default function RegistrationPage() {
 					<div>
 						<h3 className="font-semibold mb-3">Cancellation Policy</h3>
 						<ul className="space-y-1 text-sm">
-							<li>• Before July 24, 2025: Full refund minus processing fee</li>
-							<li>• July 25 - August 10, 2025: 50% refund</li>
-							<li>• After August 10, 2025: No refund</li>
+							<li>• Before July 24, 2026: Full refund minus processing fee</li>
+							<li>• July 25 - August 10, 2026: 50% refund</li>
+							<li>• After August 10, 2026: No refund</li>
 						</ul>
 					</div>
 				</div>

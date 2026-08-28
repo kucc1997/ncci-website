@@ -114,7 +114,7 @@ export default function EditArchiveYearPage() {
             required
             defaultValue={yearData.title}
             className="w-full px-3 py-2 border rounded-md"
-            placeholder="NCCI 2025 - National Conference on Computer Innovations"
+            placeholder="NCCI 2026 - National Conference on Computer Innovations"
           />
         </div>
 
@@ -142,7 +142,7 @@ export default function EditArchiveYearPage() {
             name="eventDate"
             defaultValue={yearData.eventDate || ""}
             className="w-full px-3 py-2 border rounded-md"
-            placeholder="August 24, 2025"
+            placeholder="August 24, 2026"
           />
         </div>
 

@@ -6,7 +6,7 @@ export default function AboutPage() {
 	return (
 		<div className="container px-4 md:px-6 py-12">
 			<div className="flex flex-col items-center text-center mb-12">
-				<h1 className="text-3xl md:text-4xl font-bold mb-4 text-[var(--bg-accent)]">About NCCI 2025</h1>
+				<h1 className="text-3xl md:text-4xl font-bold mb-4 text-[var(--bg-accent)]">About NCCI 2026</h1>
 				<div className="w-20 h-1 bg-[var(--bg-accent2)] mb-6"></div>
 				<p className="text-lg text-gray-600 max-w-3xl">
 					Learn about the National Conference on Computer Innovations, its
@@ -26,9 +26,8 @@ export default function AboutPage() {
 						technology.
 					</p>
 					<p className="mb-4 text-[var(--bg-secondary-dark)]">
-						Hosted by Kathmandu University Computer Club (KUCC) in collaboration
-						with the Department of Computer Science and Engineering (DoCSE),
-						NCCI 2025 aims to foster innovation, collaboration, and knowledge
+						Hosted by Department of Computer Science and Engineering (DoCSE) and its departmental student club, Kathmandu University Computer Club (KUCC), NCCI 2026 will be held on December 21, 2026 at Kathmandu University, Nepal.
+						NCCI 2026 aims to foster innovation, collaboration, and knowledge
 						exchange in the rapidly evolving field of computer science.
 					</p>
 					<p className="text-[var(--bg-secondary-dark)] mb-4">
@@ -36,12 +35,12 @@ export default function AboutPage() {
 						peers, engage with industry leaders, and gain insights into
 						cutting-edge research and technological advancements.
 					</p>
-					<p className="text-[var(--bg-secondary-dark)]">
+					{/* <p className="text-[var(--bg-secondary-dark)]">
 						The selected papers will be published in a special edition of {" "}
 						<a href="https://journals.ku.edu.np/kuset" target="_blank" className="text-[var(--bg-accent2)]">
 							Kathmandu University Journal of Science, Engineering and Technology (KUSET)
 						</a>.
-					</p>
+					</p> */}
 				</div>
 				<div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-lg">
 					<Image
@@ -163,7 +162,7 @@ export default function AboutPage() {
 
 			<div className="bg-[var(--bg-accent2)] text-white p-8 md:p-12 rounded-xl text-center">
 				<h2 className="text-2xl md:text-3xl font-bold mb-4">
-					Join Us at NCCI 2025
+					Join Us at NCCI 2026
 				</h2>
 				<p className="text-lg text-white/90 max-w-2xl mx-auto mb-8">
 					Be part of this exciting event and contribute to the advancement of

@@ -73,7 +73,7 @@ export default function ContactPage() {
 				<div className="w-20 h-1 bg-[var(--bg-accent2)] mb-6"></div>
 				<p className="text-lg text-gray-600 max-w-3xl">
 					Have questions about the National Conference on Computer Innovations
-					(NCCI) 2025? Get in touch with our team.
+					(NCCI) 2026? Get in touch with our team.
 				</p>
 			</div>
 
@@ -92,10 +92,10 @@ export default function ContactPage() {
 								<div>
 									<h3 className="font-medium">Email</h3>
 									<a
-										href="mailto:kucc@ku.edu.np"
+										href="mailto:ncci@ku.edu.np"
 										className="text-[var(--bg-accent2)] hover:underline"
 									>
-										kucc@ku.edu.np
+										ncci@ku.edu.np
 									</a>
 								</div>
 							</div>
@@ -262,7 +262,7 @@ export default function ContactPage() {
 							<Link href="/registration" className="text-[var(--bg-accent2)] hover:underline">
 								registration page
 							</Link>
-							. Early bird registration is available until 27<sup>th</sup> July, 2025.
+							. Early bird registration is available until 27<sup>th</sup> July, 2026.
 						</p>
 					</div>
 
@@ -271,7 +271,7 @@ export default function ContactPage() {
 							What is the deadline for paper submission?
 						</h3>
 						<p className="text-gray-700 mt-1">
-							The deadline for paper submission is July 20, 2025. Please refer
+							The deadline for paper submission is July 20, 2026. Please refer
 							to our{" "}
 							<Link href="/authors" className="text-[var(--bg-accent2)] hover:underline">
 								authors page

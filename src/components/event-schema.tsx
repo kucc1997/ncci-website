@@ -2,11 +2,11 @@ export default function EventSchema() {
 	const eventData = {
 		"@context": "https://schema.org",
 		"@type": "Event",
-		"name": "National Conference on Computer Innovations 2025",
-		"alternateName": "NCCI 2025",
+		"name": "National Conference on Computer Innovations 2026",
+		"alternateName": "NCCI 2026",
 		"description": "Exploring the Future of Technology and Innovation",
-		"startDate": "2025-08-24T09:00:00+05:45",
-		"endDate": "2025-08-24T17:00:00+05:45",
+		"startDate": "2026-08-24T09:00:00+05:45",
+		"endDate": "2026-08-24T17:00:00+05:45",
 		"eventStatus": "https://schema.org/EventScheduled",
 		"eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
 		"location": {
@@ -29,9 +29,9 @@ export default function EventSchema() {
 			"name": "Department of Computer Science and Engineering, Kathmandu University"
 		},
 		"image": [
-			"https://conf.kucc.ku.edu.np/conference-banner.jpg"
+			"https://ncci.ku.edu.np/conference-banner.jpg"
 		],
-		"url": "https://conf.kucc.ku.edu.np"
+		"url": "https://ncci.ku.edu.np"
 	};
 
 	return (

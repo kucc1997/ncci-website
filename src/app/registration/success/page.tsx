@@ -43,7 +43,7 @@ function RegistrationSuccessContent() {
 						<CardTitle>Registration Successful!</CardTitle>
 					</div>
 					<CardDescription>
-						Thank you for registering for NCCI 2025. Your registration has been received and is being processed.
+						Thank you for registering for NCCI 2026. Your registration has been received and is being processed.
 					</CardDescription>
 				</CardHeader>
 				<CardContent className="space-y-6">

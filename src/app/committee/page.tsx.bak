@@ -10,7 +10,7 @@ export default function CommitteePage() {
 				<div className="w-20 h-1 bg-blue-600 mb-6"></div>
 				<p className="text-lg text-gray-600 max-w-3xl">
 					Meet the dedicated team behind the National Conference on Computer
-					Innovations (NCCI) 2025.
+					Innovations (NCCI) 2026.
 				</p>
 			</div>
 
