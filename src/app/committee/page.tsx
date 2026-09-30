@@ -28,7 +28,7 @@ export default function CommitteePage() {
 								/>
 							</div>
 							<h3 className="text-xl font-semibold">Prof. Dr. Bal Krishna Bal</h3>
-							<p className="text-gray-600">Associate Dean, School of Engineering</p>
+							<p className="text-gray-600">Dean, School of Engineering</p>
 							<p className="text-gray-600">Kathmandu University</p>
 						</div>
 						<div className="text-center sm:max-w-xs">
@@ -59,8 +59,8 @@ export default function CommitteePage() {
 								</div>
 								<h3 className="text-xl font-semibold">Er. Pankaj Raj Dawadi, PhD.</h3>
 								<p className="text-gray-600">Associate Professor</p>
-								<p className="text-gray-600">Head Of Department</p>
-								<p className="text-gray-600">DoCSE, Kathmandu University</p>
+								<p className="text-gray-600">Head, Department of Computer Science and Engineering,</p>
+								<p className="text-gray-600">Kathmandu University</p>
 						</div>
 					</div>
 
@@ -86,136 +86,116 @@ export default function CommitteePage() {
 
 					<div className="text-center sm:max-w-xs">
 					<div className="text-center sm:max-w-xs">
-						<h3 className="text-xl font-semibold">Logistics Coordinator</h3>
+						<h3 className="text-xl font-semibold">Finance & Logistics Coordinator</h3>
 						<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
 							<Image
-									src="/oc/profile.png"
+									src="/oc/prgiri.jpg"
 									alt="Logistics Coordinator"
 									fill
 									className="object-cover"
 									style={{ objectPosition: 'center' }}
 							/>
 							</div>
-								<h3 className="text-xl font-semibold">TBA</h3>
-								<p className="text-gray-600">DoCSE</p>
+								<h3 className="text-xl font-semibold">Pratit Raj Giri</h3>
+								<p className="text-gray-600">Lecturer, DoCSE</p>
 								<p className="text-gray-600">Kathmandu University</p>
 							</div>
 					</div>
-
-					<div className="text-center sm:max-w-xs">
-					<div className="text-center sm:max-w-xs">
-						<h3 className="text-xl font-semibold">Finance Coordinator</h3>
-						<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
-							<Image
-									src="/oc/profile.png"
-									alt="Finance Coordinator"
-									fill
-									className="object-cover"
-									style={{ objectPosition: 'center' }}
-							/>
-							</div>
-								<h3 className="text-xl font-semibold">TBA</h3>
-								<p className="text-gray-600">DoCSE</p>
-								<p className="text-gray-600">Kathmandu University</p>
-							</div>
-					</div>
-
-					<div className="text-center sm:max-w-xs">
-						<div className="text-center sm:max-w-xs">
-							<h3 className="text-xl font-semibold"> Coordinator</h3>
-							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
-								<Image
-										src="/oc/profile.png"
-										alt="Logistics Coordinator"
-										fill
-										className="object-cover"
-										style={{ objectPosition: 'center' }}
-								/>
-								</div>
-									<h3 className="text-xl font-semibold">TBA</h3>
-									<p className="text-gray-600">DoCSE</p>
-									<p className="text-gray-600">Kathmandu University</p>
-						</div>
-					</div>
-
-
 				</div>
+
 			<div className="mb-16">
 				{/* Conference Chair */}
 					<div className="my-12">
 						<h3 className="text-3xl font-semibold mb-6 text-center">Conference Committees</h3>
-						<h3 className="text-3xl font-semibold mb-6 text-center">Technical Program Committee (TPC)</h3>
-					</div>
-					{/* First Row */}
+						<h3 className="text-3xl font-semibold mb-6 text-center">Conference Advisory Committee</h3>
+
+				<div className="flex flex-col sm:flex-row gap-12 justify-center mb-12 flex-wrap">
 					<div className="flex flex-col sm:flex-row gap-12 justify-center mb-12 flex-wrap">
+						
 						<div className="text-center sm:max-w-xs">
 							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
 								<Image
-									src="/oc/profile.png"
-									alt="Profile"
+									src="/oc/advisory/mpokharel.png"
+									alt="Prof. Dr. Manish Pokharel"
 									fill
 									className="object-cover"
 									style={{ objectPosition: 'top' }}
 								/>
 							</div>
-							<h3 className="text-xl font-semibold">TBD</h3>
-							<p className="text-gray-600"><b>TPC Chair, Professor</b></p>
+							<h3 className="text-xl font-semibold">Prof. Dr. Manish Pokharel</h3>
 							<p className="text-gray-600">Professor</p>
-							<p className="text-gray-600 max-w-60">College of Electronic and Engineering</p>
-							<p className="text-gray-600">Nepal</p>
+							<p className="text-gray-600 max-w-60">Department of Computer Science and Engineering</p>
+							<p className="text-gray-600">Kathmandu University</p>
+						</div>
+
+						<div className="text-center sm:max-w-xs">
+							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+								<Image
+									src="/oc/advisory/sjha.png"
+									alt="Prof. Dr. Sudan Jha"
+									fill
+									className="object-cover"
+									style={{ objectPosition: 'top' }}
+								/>
+							</div>
+							<h3 className="text-xl font-semibold">Prof. Dr. Sudan Jha</h3>
+							<p className="text-gray-600">Professor</p>
+							<p className="text-gray-600">Department of Computer Science and Engineering</p>
+							<p className="text-gray-600">Kathmandu University</p>
+						</div>
+
+
+						<div className="flex flex-col sm:flex-row gap-12 justify-center mb-12 flex-wrap">
+							<div className="text-center sm:max-w-xs">
+								<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+									<Image
+										src="/oc/advisory/rbista.png"
+										alt="Prof. Dr. Rabindra Bista"
+										fill
+										className="object-cover"
+										style={{ objectPosition: 'top' }}
+									/>
+								</div>
+								<h3 className="text-xl font-semibold">Prof. Dr. Rabindra Bista</h3>
+								<p className="text-gray-600">Professor</p>
+								<p className="text-gray-600 max-w-60">Department of Computer Science and Engineering</p>
+								<p className="text-gray-600">Kathmandu University</p>
+							</div>
 						</div>
 
 						<div className="flex flex-col sm:flex-row gap-12 justify-center mb-12 flex-wrap">
-						<div className="text-center sm:max-w-xs">
-							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
-								<Image
-									src="/oc/profile.png"
-									alt="Profile"
-									fill
-									className="object-cover"
-									style={{ objectPosition: 'top' }}
-								/>
+							<div className="text-center sm:max-w-xs">
+								<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+									<Image
+										src="/oc/advisory/bnakarmi.jpeg"
+										alt="Prof. Dr. Bikash Nakarmi"
+										fill
+										className="object-cover"
+										style={{ objectPosition: 'top' }}
+									/>
+								</div>
+								<h3 className="text-xl font-semibold">Prof. Dr. Bikash Nakarmi</h3>
+								<p className="text-gray-600">Professor</p>
+								<p className="text-gray-600 max-w-60">Nanjing University of Aeronautics and Astronautics</p>
+								<p className="text-gray-600">China</p>
 							</div>
-							<h3 className="text-xl font-semibold">TBD</h3>
-							<p className="text-gray-600">Professor</p>
-							<p className="text-gray-600 max-w-60">College of Electronic and Engineering</p>
-							<p className="text-gray-600">Nepal</p>
 						</div>
 
-					<div className="flex flex-col sm:flex-row gap-12 justify-center mb-12 flex-wrap">
-						<div className="text-center sm:max-w-xs">
-							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
-								<Image
-									src="/oc/profile.png"
-									alt="Profile"
-									fill
-									className="object-cover"
-									style={{ objectPosition: 'top' }}
-								/>
-							</div>
-							<h3 className="text-xl font-semibold">TBD</h3>
-							<p className="text-gray-600">Professor</p>
-							<p className="text-gray-600 max-w-60">College of Electronic and Engineering</p>
-							<p className="text-gray-600">Nepal</p>
-						</div>
+
+					</div>
+			
 				</div>
-				
 
-						{/* <div className="text-center sm:max-w-xs">
-							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
-								<Image
-									src="/oc/AmanShakya.webp"
-									alt="Aman Shakya, PhD"
-									fill
-									className="object-cover"
-									style={{ objectPosition: 'center' }}
-								/>
-							</div>
-							<h3 className="text-xl font-semibold">Aman Shakya, PhD</h3>
-							<p className="text-gray-600">Assistant Professor</p>
-							<p className="text-gray-600 max-w-60">Department of Electronics and Computer Engineering</p>
-							<p className="text-gray-600">Pulchowk Campus </p>
-						</div>
+
+
+
+
+						<h3 className="text-3xl font-semibold mb-6 text-center">Technical Program Committee</h3>
+					</div>
+					{/* First Row */}
+				<div className="flex flex-col sm:flex-row gap-12 justify-center mb-12 flex-wrap">
+					<div className="flex flex-col sm:flex-row gap-12 justify-center mb-12 flex-wrap">
+				
 						<div className="text-center sm:max-w-xs">
 							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
 								<Image
@@ -227,10 +207,27 @@ export default function CommitteePage() {
 								/>
 							</div>
 							<h3 className="text-xl font-semibold">Dr. Manoj Shakya</h3>
-							<p className="text-gray-600">Acting Head</p>
+							<p className="text-gray-600">Associate Professor</p>
 							<p className="text-gray-600 max-w-60">Department of Artificial Intelligence</p>
 							<p className="text-gray-600">Kathmandu University</p>
 						</div>
+
+							<div className="text-center sm:max-w-xs">
+							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+								<Image
+									src="/oc/sshrestha.png"
+									alt="Dr. Sushil Shrestha"
+									fill
+									className="object-cover"
+									style={{ objectPosition: 'top' }}
+								/>
+							</div>
+							<h3 className="text-xl font-semibold">Dr. Sushil Shrestha</h3>
+							<p className="text-gray-600">Associate Professor</p>
+							<p className="text-gray-600 max-w-60">Department of Computer Science and Engineering</p>
+							<p className="text-gray-600">Kathmandu University</p>
+						</div>
+
 						<div className="text-center sm:max-w-xs">
 							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
 								<Image
@@ -246,6 +243,27 @@ export default function CommitteePage() {
 							<p className="text-gray-600">Researcher, ILPRL</p>
 							<p className="text-gray-600">Kathmandu University</p>
 						</div>
+
+
+						<div className="flex flex-col sm:flex-row gap-12 justify-center mb-12 flex-wrap">
+							<div className="text-center sm:max-w-xs">
+								<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+									<Image
+										src="/oc/rchulyadyo.png"
+										alt="Dr. Rajani Chulyadyo"
+										fill
+										className="object-cover"
+										style={{ objectPosition: 'top' }}
+									/>
+								</div>
+								<h3 className="text-xl font-semibold">Dr. Rajani Chulyadyo</h3>
+								<p className="text-gray-600">Assistant Professor</p>
+								<p className="text-gray-600 max-w-60">Department of Computer Science and Engineering</p>
+								<p className="text-gray-600">Kathmandu University</p>
+							</div>
+						</div>
+						
+						
 						<div className="text-center sm:max-w-xs">
 							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
 								<Image
@@ -261,6 +279,7 @@ export default function CommitteePage() {
 							<p className="text-gray-600 max-w-60">Department of Computer Science and Engineering</p>
 							<p className="text-gray-600">Kathmandu University</p>
 						</div>
+
 						<div className="text-center sm:max-w-xs">
 							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
 								<Image
@@ -276,6 +295,7 @@ export default function CommitteePage() {
 							<p className="text-gray-600 max-w-60">Department of Computer Science and Engineering</p>
 							<p className="text-gray-600">Kathmandu University</p>
 						</div>
+
 						<div className="text-center sm:max-w-xs">
 							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
 								<Image
@@ -291,6 +311,7 @@ export default function CommitteePage() {
 							<p className="text-gray-600 max-w-60">Department of Computer Science and Engineering</p>
 							<p className="text-gray-600">Kathmandu University</p>
 						</div>
+
 						<div className="text-center sm:max-w-xs">
 							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
 								<Image
@@ -306,6 +327,7 @@ export default function CommitteePage() {
 							<p className="text-gray-600 max-w-60">Department of Computer Science and Engineering</p>
 							<p className="text-gray-600">Kathmandu University</p>
 						</div>
+
 						<div className="text-center sm:max-w-xs">
 							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
 								<Image
@@ -316,11 +338,12 @@ export default function CommitteePage() {
 									style={{ objectPosition: 'top' }}
 								/>
 							</div>
-							<h3 className="text-xl font-semibold">Mr. Amrit Dahal</h3>
+							<h3 className="text-xl font-semibold">Amrit Dahal</h3>
 							<p className="text-gray-600">Assistant Professor</p>
 							<p className="text-gray-600 max-w-60">Department of Artificial Intelligence</p>
 							<p className="text-gray-600">Kathmandu University</p>
 						</div>
+
 						<div className="text-center sm:max-w-xs">
 							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
 								<Image
@@ -336,6 +359,7 @@ export default function CommitteePage() {
 							<p className="text-gray-600 max-w-60">Department of Computer Science and Engineering</p>
 							<p className="text-gray-600">Kathmandu University</p>
 						</div>
+
 						<div className="text-center sm:max-w-xs">
 							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
 								<Image
@@ -350,14 +374,33 @@ export default function CommitteePage() {
 							<p className="text-gray-600">Lecturer</p>
 							<p className="text-gray-600 max-w-60">Department of Computer Science and Engineering</p>
 							<p className="text-gray-600">Kathmandu University</p>
-						</div> 
-						 */}
 						</div>
-			
-												</div>
+
+						<div className="text-center sm:max-w-xs">
+							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+								<Image
+									src="/oc/sregmi.jpeg"
+									alt="Sunil Regmi"
+									fill
+									className="object-cover"
+									style={{ objectPosition: 'top' }}
+								/>
+							</div>
+							<h3 className="text-xl font-semibold">Sunil Regmi</h3>
+							<p className="text-gray-600">Lecturer</p>
+							<p className="text-gray-600 max-w-60">Department of Artificial Intelligence</p>
+							<p className="text-gray-600">Kathmandu University</p>
+						</div>
+
+
+
 
 					</div>
+			
 				</div>
+
+			</div>
+		</div>
 	);
 }
 
