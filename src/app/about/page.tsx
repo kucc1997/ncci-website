@@ -103,26 +103,28 @@ export default function AboutPage() {
 				<h2 className="text-2xl font-bold mb-6 text-[var(--bg-accent)]">Conference Themes</h2>
 
 				<div className="space-y-8 text-left max-w-4xl mx-auto">
-
-					{/* Intelligent Systems */}
+					{/* Software Engineering */}
 					<div>
-						<h3 className="text-lg font-semibold mb-2 text-blue-900">Intelligent Systems and Data Innovation</h3>
-						<p className="text-sm text-gray-600 mb-2">Exploring the power of intelligent algorithms, data processing, and automation.</p>
+						<h3 className="text-lg font-semibold mb-2 text-blue-900">Software Engineering and Project Management </h3>
+						<p className="text-sm text-gray-600 mb-2">Software engineering applies systematic, disciplined, and quantifiable approaches to the design, development, maintenance, and evolution of high-quality software systems. It blends modern methodologies, engineering principles, and automated tools to build scalable, secure, and user-centered software solutions.</p>
 						<div className="flex flex-wrap gap-2">
-							{["Artificial Intelligence", "Machine Learning", "Data Science", "Deep Learning", "Computer Vision", "Natural Language Processing"].map((theme, index) => (
+							{["Software Architecture","Agile, Lean and Scaled Frameworks", "DevOps", "DevSecOps","Continuous Delivery", "Requirement Engineering",
+							"Systems Modeling", "Software Testing","Quality Assurance",
+							"AI4SE: AI for Software Engineering","Emperical Software Engineering",
+							"Code Analytics", "Dependability","Fault Tolerance","Resilience Engineering", ].map((theme, index) => (
 								<span key={index} className="bg-[var(--bg-secondary)] text-blue-800 px-3 py-1 rounded-full text-sm">
 									{theme}
 								</span>
 							))}
 						</div>
 					</div>
-
 					{/* Secure & Scalable Systems */}
 					<div>
-						<h3 className="text-lg font-semibold mb-2 text-blue-900">Secure and Scalable Computing</h3>
-						<p className="text-sm text-gray-600 mb-2">Focusing on building reliable, connected, and protected digital infrastructures.</p>
+						<h3 className="text-lg font-semibold mb-2 text-blue-900">Artificial Intelligence and Langauge Models</h3>
+						<p className="text-sm text-gray-600 mb-2">Focuses on core intelligent algorithms, model architectures</p>
 						<div className="flex flex-wrap gap-2">
-							{["Cybersecurity", "Cloud Computing", "Computer Networks"].map((theme, index) => (
+							{["Artificial Intelligence", "Machine Learning", "Neural Networks", "Data Science", 
+							"Deep Learning", "Computer Vision", "Natural Language Processing", "Reinforcement Learning","Large Language Models","Tiny Models","LLM Architecture", "Inferencing"].map((theme, index) => (
 								<span key={index} className="bg-[var(--bg-secondary)] text-blue-800 px-3 py-1 rounded-full text-sm">
 									{theme}
 								</span>
@@ -130,12 +132,11 @@ export default function AboutPage() {
 						</div>
 					</div>
 
-					{/* Emerging Tech */}
 					<div>
-						<h3 className="text-lg font-semibold mb-2 text-blue-900">Emerging Technologies</h3>
-						<p className="text-sm text-gray-600 mb-2">Innovations that are transforming industries and the future of tech.</p>
+						<h3 className="text-lg font-semibold mb-2 text-blue-900">Human-Centered Computing and Emerging Tech</h3>
+						<p className="text-sm text-gray-600 mb-2">Focuses on human interaction with technology, immersive media, novel paradigms, and next-generation Web/Hardware technology.</p>
 						<div className="flex flex-wrap gap-2">
-							{["Internet of Things", "Blockchain Technology"].map((theme, index) => (
+							{["Human-Computer Interaction (HCI)", "Extended Reality (AR/VR)","Internet of Things (IoT)","Web3/Blockchain"].map((theme, index) => (
 								<span key={index} className="bg-[var(--bg-secondary)] text-blue-800 px-3 py-1 rounded-full text-sm">
 									{theme}
 								</span>
@@ -143,12 +144,24 @@ export default function AboutPage() {
 						</div>
 					</div>
 
-					{/* Human & Software */}
+
 					<div>
-						<h3 className="text-lg font-semibold mb-2 text-blue-900">Human-Centered Software and Interaction</h3>
-						<p className="text-sm text-gray-600 mb-2">Bridging technology with usability, design, and system development.</p>
+						<h3 className="text-lg font-semibold mb-2 text-blue-900">Systems, Networks, and Cybersecurity</h3>
+						<p className="text-sm text-gray-600 mb-2">Covers high-performance digital infrastructure, distributed computing, hardware/network security, and cloud scalability</p>
 						<div className="flex flex-wrap gap-2">
-							{["Human-Computer Interaction", "Software Engineering"].map((theme, index) => (
+							{["Cybersecurity", "Distributed Computing", "Cloud Computing and Scalability", ""].map((theme, index) => (
+								<span key={index} className="bg-[var(--bg-secondary)] text-blue-800 px-3 py-1 rounded-full text-sm">
+									{theme}
+								</span>
+							))}
+						</div>
+					</div>
+
+					<div>
+						<h3 className="text-lg font-semibold mb-2 text-blue-900">Applied Informatics and Digital Transformation</h3>
+						<p className="text-sm text-gray-600 mb-2">Dedicated to interdisciplinary computational solutions targeting specific societal sectors, healthcare, government, and localized domain applications.</p>
+						<div className="flex flex-wrap gap-2">
+							{["Health Informatics", "AgriTech", "E-Governance", "Digital Public Infrastructure", "FinTech", "EdTech", "Early Warning Systems"].map((theme, index) => (
 								<span key={index} className="bg-[var(--bg-secondary)] text-blue-800 px-3 py-1 rounded-full text-sm">
 									{theme}
 								</span>
