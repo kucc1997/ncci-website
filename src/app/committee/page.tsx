@@ -185,13 +185,10 @@ export default function CommitteePage() {
 					</div>
 			
 				</div>
+				
+				<h3 className="text-3xl font-semibold mb-6 text-center">Technical Program Committee</h3>
+				</div>
 
-
-
-
-
-						<h3 className="text-3xl font-semibold mb-6 text-center">Technical Program Committee</h3>
-					</div>
 					{/* First Row */}
 				<div className="flex flex-col sm:flex-row gap-12 justify-center mb-12 flex-wrap">
 					<div className="flex flex-col sm:flex-row gap-12 justify-center mb-12 flex-wrap">
@@ -260,6 +257,24 @@ export default function CommitteePage() {
 								<p className="text-gray-600">Assistant Professor</p>
 								<p className="text-gray-600 max-w-60">Department of Computer Science and Engineering</p>
 								<p className="text-gray-600">Kathmandu University</p>
+							</div>
+						</div>
+
+												<div className="flex flex-col sm:flex-row gap-12 justify-center mb-12 flex-wrap">
+							<div className="text-center sm:max-w-xs">
+								<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+									<Image
+										src="/oc/aadeshnpn.jpeg"
+										alt="Dr. Aadesh Neupane"
+										fill
+										className="object-cover"
+										style={{ objectPosition: 'top' }}
+									/>
+								</div>
+								<h3 className="text-xl font-semibold">Dr. Aadesh Neupane</h3>
+								<p className="text-gray-600">PhD in Computer Science</p>
+								<p className="text-gray-600 max-w-60">Brigham Young University</p>
+								<p className="text-gray-600">Utah, USA</p>
 							</div>
 						</div>
 						

@@ -158,10 +158,23 @@ export default function AboutPage() {
 					</div>
 
 					<div>
+						<h3 className="text-lg font-semibold mb-2 text-blue-900">Data Structures and Algorithms</h3>
+						<p className="text-sm text-gray-600 mb-2">Dedicated to study of algorithms their advancement, experimentation, adaptation in diverse domain</p>
+						<div className="flex flex-wrap gap-2">
+							{["Algorithms", "Design and Analysis of Algorithms", "Data Structures", "Parallel Algorithms", "Algorithms and AI"].map((theme, index) => (
+								<span key={index} className="bg-[var(--bg-secondary)] text-blue-800 px-3 py-1 rounded-full text-sm">
+									{theme}
+								</span>
+							))}
+						</div>
+					</div>
+
+
+					<div>
 						<h3 className="text-lg font-semibold mb-2 text-blue-900">Applied Informatics and Digital Transformation</h3>
 						<p className="text-sm text-gray-600 mb-2">Dedicated to interdisciplinary computational solutions targeting specific societal sectors, healthcare, government, and localized domain applications.</p>
 						<div className="flex flex-wrap gap-2">
-							{["Health Informatics", "AgriTech", "E-Governance", "Digital Public Infrastructure", "FinTech", "EdTech", "Early Warning Systems"].map((theme, index) => (
+							{["Health Informatics", "AgriTech", "E-Governance", "Digital Public Infrastructure", "FinTech", "EdTech", "Early Warning Systems", "Digital Learning", "AI in Education"].map((theme, index) => (
 								<span key={index} className="bg-[var(--bg-secondary)] text-blue-800 px-3 py-1 rounded-full text-sm">
 									{theme}
 								</span>
