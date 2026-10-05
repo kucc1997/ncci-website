@@ -48,7 +48,7 @@ export function SiteHeader() {
 			<div className="container flex h-16 items-center justify-between">
 				<Link href="/" className="flex items-center gap-2">
 					<Image
-						src="/ncci-light.svg"
+						src="/ncci-dark.svg"
 						alt="NCCI Logo"
 						width={160}
 						height={160}

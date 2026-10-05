@@ -18,26 +18,18 @@ export function SiteFooter() {
 						</Link>
 						<p className="text-sm text-[var(--bg-secondary)] mb-4">
 							National Conference on Computer Innovations, organized by
-							Kathmandu University Computer Club in collaboration with the
-							Department of Computer Science and Engineering.
+							Department of Computer Science and Engineering in collaboration with Kathmandu Unviersity Computer Club
 						</p>
 						<div className="flex gap-4">
 							<a
-								href="https://www.facebook.com/kucc1997"
+								href="https://www.facebook.com/docse.ku/"
 								className="text-gray-400 hover:text-white transition-colors"
 							>
 								<Facebook className="h-5 w-5" />
 								<span className="sr-only">Facebook</span>
 							</a>
 							<a
-								href="https://x.com/kucc1997"
-								className="text-gray-400 hover:text-white transition-colors"
-							>
-								<Twitter className="h-5 w-5" />
-								<span className="sr-only">Twitter</span>
-							</a>
-							<a
-								href="https://www.linkedin.com/school/kucc/"
+								href="https://www.linkedin.com/company/docse-kathmandu-university/"
 								className="text-gray-400 hover:text-white transition-colors"
 							>
 								<Linkedin className="h-5 w-5" />
@@ -128,10 +120,10 @@ export function SiteFooter() {
 							<p className="flex items-center gap-2 mb-2">
 								<Mail className="h-4 w-4" />
 								<a
-									href="mailto:kucc@ku.edu.np"
+									href="mailto:ncci@ku.edu.np"
 									className="hover:text-white transition-colors"
 								>
-									kucc@ku.edu.np
+									ncci@ku.edu.np
 								</a>
 							</p>
 						</address>
