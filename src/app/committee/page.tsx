@@ -311,6 +311,23 @@ export default function CommitteePage() {
 							<p className="text-gray-600">Kathmandu University</p>
 						</div>
 
+
+						<div className="text-center sm:max-w-xs">
+							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+								<Image
+									src="/oc/stamrakar.jpg"
+									alt="Sameer Tamrakar"
+									fill
+									className="object-cover"
+									style={{ objectPosition: 'top' }}
+								/>
+							</div>
+							<h3 className="text-xl font-semibold">Sameer Tamrakar</h3>
+							<p className="text-gray-600">Assistant Professor</p>
+							<p className="text-gray-600 max-w-60">Department of Computer Science and Engineering</p>
+							<p className="text-gray-600">Kathmandu University</p>
+						</div>
+
 						<div className="text-center sm:max-w-xs">
 							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
 								<Image
@@ -322,6 +339,22 @@ export default function CommitteePage() {
 								/>
 							</div>
 							<h3 className="text-xl font-semibold">Nabin Ghimire</h3>
+							<p className="text-gray-600">Assistant Professor</p>
+							<p className="text-gray-600 max-w-60">Department of Computer Science and Engineering</p>
+							<p className="text-gray-600">Kathmandu University</p>
+						</div>
+
+						<div className="text-center sm:max-w-xs">
+							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+								<Image
+									src="/oc/pkarki.png"
+									alt="Nabin Ghimire"
+									fill
+									className="object-cover"
+									style={{ objectPosition: 'top' }}
+								/>
+							</div>
+							<h3 className="text-xl font-semibold">Praynita Karki</h3>
 							<p className="text-gray-600">Assistant Professor</p>
 							<p className="text-gray-600 max-w-60">Department of Computer Science and Engineering</p>
 							<p className="text-gray-600">Kathmandu University</p>
@@ -359,6 +392,7 @@ export default function CommitteePage() {
 							<p className="text-gray-600">Kathmandu University</p>
 						</div>
 
+						
 						<div className="text-center sm:max-w-xs">
 							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
 								<Image
@@ -391,6 +425,38 @@ export default function CommitteePage() {
 							<p className="text-gray-600">Kathmandu University</p>
 						</div>
 
+												<div className="text-center sm:max-w-xs">
+							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+								<Image
+									src="/oc/ssingh.jpeg"
+									alt="Saugat Singh"
+									fill
+									className="object-cover"
+									style={{ objectPosition: 'top' }}
+								/>
+							</div>
+							<h3 className="text-xl font-semibold">Saugat Singh</h3>
+							<p className="text-gray-600">Lecturer</p>
+							<p className="text-gray-600 max-w-60">Department of Computer Science and Engineering</p>
+							<p className="text-gray-600">Kathmandu University</p>
+						</div>
+
+						<div className="text-center sm:max-w-xs">
+							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+								<Image
+									src="/oc/gsubedi.png"
+									alt="Gobinda Subedi"
+									fill
+									className="object-cover"
+									style={{ objectPosition: 'top' }}
+								/>
+							</div>
+							<h3 className="text-xl font-semibold">Gobinda Subedi</h3>
+							<p className="text-gray-600">Lecturer</p>
+							<p className="text-gray-600 max-w-60">Department of Computer Science and Engineering</p>
+							<p className="text-gray-600">Kathmandu University</p>
+						</div>
+
 						<div className="text-center sm:max-w-xs">
 							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
 								<Image
@@ -404,6 +470,70 @@ export default function CommitteePage() {
 							<h3 className="text-xl font-semibold">Sunil Regmi</h3>
 							<p className="text-gray-600">Lecturer</p>
 							<p className="text-gray-600 max-w-60">Department of Artificial Intelligence</p>
+							<p className="text-gray-600">Kathmandu University</p>
+						</div>
+
+						<div className="text-center sm:max-w-xs">
+							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+								<Image
+									src="/oc/sacharya.png"
+									alt="Sagar Archarya"
+									fill
+									className="object-cover"
+									style={{ objectPosition: 'top' }}
+								/>
+							</div>
+							<h3 className="text-xl font-semibold">Sagar Acharya</h3>
+							<p className="text-gray-600">Lecturer</p>
+							<p className="text-gray-600 max-w-60">Department of Computer Science and Engineering</p>
+							<p className="text-gray-600">Kathmandu University</p>
+						</div>
+
+						<div className="text-center sm:max-w-xs">
+							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+								<Image
+									src="/oc/bsubedi.png"
+									alt="Bipesh Subedi"
+									fill
+									className="object-cover"
+									style={{ objectPosition: 'top' }}
+								/>
+							</div>
+							<h3 className="text-xl font-semibold">Bipesh Subedi</h3>
+							<p className="text-gray-600">Lecturer</p>
+							<p className="text-gray-600 max-w-60">Department of Computer Science and Engineering</p>
+							<p className="text-gray-600">Kathmandu University</p>
+						</div>
+
+						<div className="text-center sm:max-w-xs">
+							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+								<Image
+									src="/oc/pdhakal.jpeg"
+									alt="Prakriti Dhakal"
+									fill
+									className="object-cover"
+									style={{ objectPosition: 'top' }}
+								/>
+							</div>
+							<h3 className="text-xl font-semibold">Prakriti Dhakal</h3>
+							<p className="text-gray-600">Lecturer</p>
+							<p className="text-gray-600 max-w-60">Department of Computer Science and Engineering</p>
+							<p className="text-gray-600">Kathmandu University</p>
+						</div>
+
+						<div className="text-center sm:max-w-xs">
+							<div className="relative w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100">
+								<Image
+									src="/oc/sshaha.png"
+									alt="Santosh Shaha"
+									fill
+									className="object-cover"
+									style={{ objectPosition: 'top' }}
+								/>
+							</div>
+							<h3 className="text-xl font-semibold">Santosh Shaha</h3>
+							<p className="text-gray-600">Lecturer</p>
+							<p className="text-gray-600 max-w-60">Department of Computer Science and Engineering</p>
 							<p className="text-gray-600">Kathmandu University</p>
 						</div>
 
