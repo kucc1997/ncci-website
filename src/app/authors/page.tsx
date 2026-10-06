@@ -53,7 +53,7 @@ export default function AuthorsPage() {
 										<CalendarDays className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">Paper Submission Deadline</h4>
-											<p className="text-gray-600">20<sup>th</sup> July 2026 11:59 PM NPT</p>
+											<p className="text-gray-600">15<sup>th</sup> October 2026 11:59 PM NPT</p>
 										</div>
 									</div>
 									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
@@ -62,21 +62,21 @@ export default function AuthorsPage() {
 											<h4 className="font-medium">
 												Notification of Acceptance
 											</h4>
-											<p className="text-gray-600">31<sup>st</sup> July, 2026</p>
+											<p className="text-gray-600">1<sup>st</sup> - 4<sup>th</sup> Nov, 2026</p>
 										</div>
 									</div>
 									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
 										<CalendarDays className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">Camera-Ready Submission</h4>
-											<p className="text-gray-600">7<sup>th</sup> August, 2026</p>
+											<p className="text-gray-600">11<sup>th</sup> November, 2026</p>
 										</div>
 									</div>
 									<div className="flex items-start gap-3 p-4 bg-[var(--bg-secondary)] rounded-lg">
 										<CalendarDays className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 										<div>
 											<h4 className="font-medium">Conference Date</h4>
-											<p className="text-gray-600">24<sup>th</sup> August, 2026</p>
+											<p className="text-gray-600">21<sup>st</sup> December, 2026</p>
 										</div>
 									</div>
 								</div>
