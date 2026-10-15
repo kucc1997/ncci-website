@@ -5,7 +5,7 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar1, LucideStrikethrough, Strikethrough } from "lucide-react";
+import { Calendar1} from "lucide-react";
 import Link from "next/link";
 
 export default function TimelinePage() {
