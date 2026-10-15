@@ -684,14 +684,14 @@ export default function RegistrationPage() {
 						</ul>
 					</div>
 
-					<div>
+					{/* <div>
 						<h3 className="font-semibold mb-3">Cancellation Policy</h3>
 						<ul className="space-y-1 text-sm">
 							<li>• Before July 24, 2026: Full refund minus processing fee</li>
 							<li>• July 25 - August 10, 2026: 50% refund</li>
 							<li>• After August 10, 2026: No refund</li>
 						</ul>
-					</div>
+					</div> */}
 				</div>
 			</div>
 		</div>
