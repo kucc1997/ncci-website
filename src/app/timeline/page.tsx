@@ -5,7 +5,7 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar1 } from "lucide-react";
+import { Calendar1, LucideStrikethrough, Strikethrough } from "lucide-react";
 import Link from "next/link";
 
 export default function TimelinePage() {
@@ -41,12 +41,12 @@ export default function TimelinePage() {
 								<CardContent>
 									<div className="flex items-center gap-2 text-gray-600 mb-2">
 										<Calendar1 className="h-4 w-4" />
-										<span>29<sup>th</sup> August 2026 - 15<sup>th</sup> October 2026</span>
+										<span>29<sup>th</sup> August 2026 -<s>15<sup>th</sup> October 2026</s> Eextended: 30 <sup>th</sup> October 2026 </span>
 									</div>
 									<p className="text-gray-700">
 										Submit your paper following the details mentioned in {" "}
 										<Link href="/authors" className="text-[var(--bg-accent2)]">
-											authors section</Link> within the deadline of <strong>15<sup>th</sup>
+											authors section</Link> within the deadline of <strong>30<sup>th</sup>
 											October 2026 11:59 PM NPT</strong>.
 									</p>
 								</CardContent>
@@ -93,7 +93,7 @@ export default function TimelinePage() {
 								<CardContent>
 									<div className="flex items-center gap-2 text-gray-600 mb-2">
 										<Calendar1 className="h-4 w-4" />
-										<span>16<sup>th</sup> October - 31<sup>st</sup> October, 2026 </span>
+										<span>1<sup>st</sup> November - 30<sup>th</sup> November, 2026 </span>
 									</div>
 									<p className="text-gray-700">
 										The submitted papers will be screened and reviewed by the
@@ -119,7 +119,7 @@ export default function TimelinePage() {
 								<CardContent>
 									<div className="flex items-center gap-2 text-gray-600 mb-2">
 										<Calendar1 className="h-4 w-4" />
-										<span>1<sup>st</sup> November - 4<sup>th</sup> November,2026</span>
+										<span>1<sup>st</sup> December - 03<sup>th</sup> December, 2026</span>
 									</div>
 									<p className="text-gray-700">
 										The authors of the papers accepted from the review committee
@@ -145,11 +145,11 @@ export default function TimelinePage() {
 								<CardContent>
 									<div className="flex items-center gap-2 text-gray-600 mb-2">
 										<Calendar1 className="h-4 w-4" />
-										<span>11<sup>th</sup> November, 2026 11:59 PM NPT</span>
+										<span>07<sup>th</sup> December, 2026 11:59 PM NPT</span>
 									</div>
 									<p className="text-gray-700">
 										The authors of the accepted paper should submit a camera-ready version
-										of the paper by 11<sup>th</sup> November, 2026 11:59 PM NPT in the proper
+										of the paper by 07<sup>th</sup> December, 2026 11:59 PM NPT in the proper
 										format. The camera-ready version template will be provided
 										after the acceptance of the paper.
 									</p>
@@ -171,7 +171,7 @@ export default function TimelinePage() {
 								<CardContent>
 									<div className="flex items-center gap-2 text-gray-600 mb-2">
 										<Calendar1 className="h-4 w-4" />
-										<span>18<sup>th</sup> November, 2026 11:59 PM NPT</span>
+										<span>10<sup>th</sup> December, 2026 11:59 PM NPT</span>
 									</div>
 									<p className="text-gray-700">
 										The early registration for all the participants as well as
@@ -194,7 +194,7 @@ export default function TimelinePage() {
 								<CardContent>
 									<div className="flex items-center gap-2 text-gray-600 mb-2">
 										<Calendar1 className="h-4 w-4" />
-										<span>25<sup>th</sup> November, 2026 11:59 PM NPT</span>
+										<span>14<sup>th</sup> December, 2026 11:59 PM NPT</span>
 									</div>
 									<p className="text-gray-700">
 										Final chance to register—secure your spot before the deadline!
