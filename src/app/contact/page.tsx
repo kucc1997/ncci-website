@@ -104,9 +104,9 @@ export default function ContactPage() {
 								<Phone className="h-5 w-5 text-[var(--bg-accent2)] mt-0.5" />
 								<div>
 									<h3 className="font-medium">Phone</h3>
-									<a className="text-[var(--bg-accent2)]" href="tel:+9779847382531">+977 9847382531</a>
+									<a className="text-[var(--bg-accent2)]" href="tel:+9779847382531">+977 9701002626</a>
 									<br />
-									<a className="text-[var(--bg-accent2)]" href="tel:+9779861367984">+977 9861367984</a>
+									<a className="text-[var(--bg-accent2)]" href="tel:+9779861367984">+977 9841497866</a>
 								</div>
 							</div>
 

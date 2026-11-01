@@ -41,13 +41,13 @@ export default function TimelinePage() {
 								<CardContent>
 									<div className="flex items-center gap-2 text-gray-600 mb-2">
 										<Calendar1 className="h-4 w-4" />
-										<span>29<sup>th</sup> August 2026 -<s>15<sup>th</sup> October 2026</s> Eextended: 30 <sup>th</sup> October 2026 </span>
+										<span>29<sup>th</sup> August, 2026 -<s>30<sup>th</sup> October, 2026</s> Eextended: 15 <sup>th</sup> November, 2026 </span>
 									</div>
 									<p className="text-gray-700">
 										Submit your paper following the details mentioned in {" "}
 										<Link href="/authors" className="text-[var(--bg-accent2)]">
-											authors section</Link> within the deadline of <strong>30<sup>th</sup>
-											October 2026 11:59 PM NPT</strong>.
+											authors section</Link> within the deadline of <strong>15<sup>th</sup>
+											November, 2026 11:59 PM NPT</strong>.
 									</p>
 								</CardContent>
 							</Card>

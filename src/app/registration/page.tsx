@@ -650,15 +650,15 @@ export default function RegistrationPage() {
 						<ul className="space-y-2 text-sm">
 							<li className="flex items-center gap-2">
 								<Clock className="h-4 w-4 text-[var(--bg-accent2)]" />
-								<span>Early Registration: Until August 15th, 2026 (Midnight NPT)</span>
+								<span>Early Registration: Until December 12th, 2026 (Midnight NPT)</span>
 							</li>
 							<li className="flex items-center gap-2">
 								<Clock className="h-4 w-4 text-orange-600" />
-								<span>Late Registration: August 16th - 21st, 2026 (Midnight NPT)</span>
+								<span>Late Registration: December 13th - 18th, 2026 (Midnight NPT)</span>
 							</li>
 							<li className="flex items-center gap-2">
 								<AlertCircle className="h-4 w-4 text-red-600" />
-								<span>Registration closes: August 21st, 2026 (Midnight NPT)</span>
+								<span>Registration closes: December 18th, 2026 (Midnight NPT)</span>
 							</li>
 						</ul>
 					</div>

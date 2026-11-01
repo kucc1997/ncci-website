@@ -25,8 +25,8 @@ export default function Home() {
             <Image
               src="/ncci-dark.svg"
               alt="NCCI Logo"
-              width={300}
-              height={300}
+              width={200}
+              height={200}
             />
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
@@ -37,11 +37,10 @@ export default function Home() {
             Exploring the Future of Technology and Innovation
           </p>
           <p className="text-xl md:text-2xl text-white/90 mb-8">
-            <span>21<sup>st</sup> December, 2026, Monday</span> <br/>
+            Last Date of Paper Submission: 15<sup>th</sup> November, 2026<br/>
+            21<sup>st</sup> December, 2026, Monday<br/>
             <span>Kathmandu University, Dhulikhel, Kavre</span>
-
           </p>
-
           <div className="flex flex-wrap justify-center gap-4">
             <Button
               size="lg"
